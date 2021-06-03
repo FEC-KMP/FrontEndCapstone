@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 
 class App extends React.Component {
@@ -6,12 +6,14 @@ class App extends React.Component {
     super();
     this.state = {
 
-    }
+    };
   }
   render() {
     return (
+      <div>
 
-    )
+      </div>
+    );
   }
 
 }
