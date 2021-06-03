@@ -1,0 +1,30 @@
+{
+  "name": "front-end-capstone-KMP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "webpack -w",
+    "start": "node server/index.js",
+    "start:dev": "npx nodemon server/index.js -w server"
+  },
+  "author": "Kirk Easton, Meagan Provencher, Phong Trinh",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bluebird": "^3.7.2",
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "underscore": "^1.12.0"
+  }
+}

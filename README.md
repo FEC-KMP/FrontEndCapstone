@@ -1,3 +1,10 @@
-# FrontEndCapstone
+# Front-End Capstone
+FIXME: Description
+## Installation
 
-add new line
+## Usage
+
+## Authors and acknowledgment
+Kirk Easton (@kirkeaston)
+Meagan Provencher (@mrprov12)
+Phong Trinh (@ThanhPhongUSC)
