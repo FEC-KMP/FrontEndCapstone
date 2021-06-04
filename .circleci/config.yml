@@ -21,7 +21,7 @@ jobs:
       image: ubuntu-1604:202007-01
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
-    working_directory: ~/repo
+    working_directory: ~/FrontEndCapstone
     steps:
       # Checkout the code as the first step.
       - checkout
