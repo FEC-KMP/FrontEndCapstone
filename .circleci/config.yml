@@ -33,6 +33,7 @@ jobs:
       - run:
           name: xcodebuild
           command: xcodebuild -version
+      - run:
           name: Run tests
           command: npm test
 
