@@ -16,9 +16,10 @@ class App extends React.Component {
     getListOfProducts(end.listProducts);
   }
   render() {
+    console.log('app');
     return (
       <div>
-        <h1>hello </h1>
+        hello world!
       </div>
     );
   }

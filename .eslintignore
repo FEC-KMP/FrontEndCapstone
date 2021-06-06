@@ -4,3 +4,4 @@
 **/vendor
 **/*.min.js
 **/webpack.config.js
+**/client/dist/bundle.js
