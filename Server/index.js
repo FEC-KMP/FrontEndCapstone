@@ -6,7 +6,7 @@ const PORT = 8080;
 const router = require('./routes.js');
 var app = express();
 
-app.use(express.static(path.join('..', 'client', 'dist')));
+app.use(express.static(path.join(__dirname, '..', 'client/dist')));
 app.use(express.urlencoded());
 app.use(express.json());
 app.use('/', router);
