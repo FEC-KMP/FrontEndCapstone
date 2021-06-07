@@ -40,8 +40,10 @@ jobs:
           command: npm run test
       - store_artifacts:
           path: ~/FrontEndCapstone/spec/artifacts
+          destination: coverage
       - store_test_results:
           path: ~/FrontEndCapstone/spec/test-results
+          destination: test-results
 
 
 workflows:
