@@ -29,7 +29,7 @@ jobs:
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
       # The orb install-packages step will also automatically cache them for faster future runs.
 
-      - node/install-packages
+      - run: npm install
           # app-dir: ~/FrontEndCapstone
       # If you are using yarn instead npm, remove the line above and uncomment the two lines below.
       # - node/install-packages:
@@ -38,6 +38,9 @@ jobs:
       - run:
           name: Run tests
           command: npm run test
+      - store_artifacts:
+          path: coverage
+
 
 workflows:
   # Below is the definition of your workflow.
