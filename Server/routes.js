@@ -10,16 +10,17 @@ const GITHUB_API_KEY = require('./config.js');
 // router.get('/messages', controller.messages.get);
 // router.get('/products', controller.productMain.getListOfProducts);
 router.get('/products', (req, res) => {
+  console.log('req.headers.endpoint',req.headers.endpoint);
   axios.get(req.headers.endpoint, {
-    headers: {
-      Authorization: GITHUB_API_KEY,
-    }
+    headers: {Authorization: GITHUB_API_KEY},
   })
     .then((response) => {
-      res.status(200).send(response.data);
+      console.log('this is response inside get request',response);
+      res.send(response.data);
     })
     .catch((err) => {
-      res.status(404).send(err);
+      console.log('err inside routes.js');
+
     });
 });
 
