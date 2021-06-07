@@ -1,5 +1,6 @@
 import react from 'react';
 import ReviewsListEntry from './ReviewsListEntry.jsx';
+import RatingsAndReviews from '../RatingsAndReviews';
 
 const ReviewsList = {( reviews )} => {
   let reviewsArray = reviews;

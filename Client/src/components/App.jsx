@@ -1,11 +1,8 @@
 import React from 'react';
-<<<<<<< HEAD
 import QuestionsAnswers from './QuestionsAnswersView/QuestionsAnswers.jsx';
 import { getListOfProducts, getListInfoProducts, getListOfReviews, getListOfQuestions } from '../context/ApiContext.jsx';
-=======
 import ProductMain from './productMainView/productMain.jsx';
-import getListOfProducts from '../api/githubApi.js';
->>>>>>> 2b23ac60d9cfded8d92065632f74faa86aeb41fc
+import RatingsAndReviews from './ratingsReviewsView/RatingsAndReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,9 +30,10 @@ class App extends React.Component {
       <div>
         <h1>QUESTIONS AND ANSWERS</h1>
         <QuestionsAnswers />
-      <div className="container">
-        <div className="logoBanner"> logo banner</div>
+        <div className="container">
+          <div className="logoBanner"> logo banner</div></div>
         <ProductMain />
+        <RatingsAndReviews />
       </div>
     );
   }
