@@ -24,4 +24,8 @@ var ProductMain = (props) => {
   );
 };
 
+var getProducts = ()=> {
+  axios.get('/products')
+};
+
 export default ProductMain;

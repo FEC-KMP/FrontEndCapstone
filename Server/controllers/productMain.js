@@ -8,6 +8,12 @@ const API_URL = 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 const GITHUB_API_KEY = require('../config.js');
 
 
+.get(req, res => {
+  var productId = req.body.productId;
+  //format link
+  //get request to api
+  //return results in res.send()
+})
 
 
 // const getListOfProducts = (req, res) => {
