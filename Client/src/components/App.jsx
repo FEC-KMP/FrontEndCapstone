@@ -11,9 +11,10 @@ class App extends React.Component {
 
   componentDidMount() {
     const end = {
-      listProducts: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products?page=1&count=5`
+      listProducts: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products?page=1&count=5'
     };
     getListOfProducts(end.listProducts);
+    console.log(getListOfProducts(end.listProducts));
   }
   render() {
     console.log('app');
