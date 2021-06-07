@@ -7,6 +7,7 @@ const {GITHUB_API_KEY} = require('./config.js');
 
 //Connect controller methods to their corresponding routes
 //example:
+
 // router.get('/messages', controller.messages.get);
 // router.get('/products', controller.productMain.getListOfProducts);
 router.get('/api', (req, res) => {
