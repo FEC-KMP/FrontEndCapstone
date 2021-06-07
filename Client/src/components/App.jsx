@@ -12,7 +12,7 @@ class App extends React.Component {
     console.log('app');
     return (
       <div>
-        hello world!
+        hello !
       </div>
     );
   }
