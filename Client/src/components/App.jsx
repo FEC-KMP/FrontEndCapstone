@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductMain from './productMainView/productMain.jsx';
 import getListOfProducts from '../api/githubApi.js';
 
 class App extends React.Component {
@@ -16,10 +17,10 @@ class App extends React.Component {
     getListOfProducts(end.listProducts);
   }
   render() {
-    console.log('app');
     return (
       <div>
-        hello !
+        <div className="logoBanner"></div>
+        <ProductMain />
       </div>
     );
   }

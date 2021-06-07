@@ -5,7 +5,7 @@ const axios = require('axios');
 var models = require('../models');
 const API_URL = 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 
-// const GITHUB_API_KEY = require('./config.js');
+const GITHUB_API_KEY = require('../config.js');
 
 
 
