@@ -8,12 +8,18 @@ import AddToCart from './AddToCart.jsx';
 
 var ProductMain = (props) => {
   return (
-    <div className="ProductDetail">
-      <ImageGallery />
-      <ProductInformation />
-      <StyleSelector />
-      <AddToCart />
-      <ProductOverview />
+    <div className="ProductDetail row">
+      <div className="col-lg-7">
+        <ImageGallery />
+      </div>
+      <div className="col-lg-5">
+        <ProductInformation />
+        <StyleSelector />
+        <AddToCart />
+      </div>
+      <div className="col-lg-12">
+        <ProductOverview />
+      </div>
     </div>
   );
 };

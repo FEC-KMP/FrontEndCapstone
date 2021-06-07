@@ -18,8 +18,8 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div className="logoBanner"></div>
+      <div className="container">
+        <div className="logoBanner"> logo banner</div>
         <ProductMain />
       </div>
     );
