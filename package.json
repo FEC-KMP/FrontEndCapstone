@@ -7,7 +7,7 @@
     "build:dev": "webpack --config ./webpack.config.js --mode development -w",
     "start": "node server/index.js",
     "start:dev": "npx nodemon server/index.js -w server",
-    "test": "node_modules/jest/bin/jest.js spec/"
+    "test": "node_modules/jest/bin/jest.js spec/ --collectCoverage=true"
   },
   "author": "Kirk Easton, Meagan Provencher, Phong Trinh",
   "license": "UNLICENSED",
@@ -20,7 +20,9 @@
     "@babel/preset-react": "^7.12.10",
     "@babel/register": "^7.12.10",
     "babel-loader": "^8.0.6",
+    "coveralls": "^3.1.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "grunt-coveralls": "^2.0.0",
     "grunt-webpack": "^4.0.3",
     "jest": "^26.6.1",
     "webpack": "^4.46.0",
