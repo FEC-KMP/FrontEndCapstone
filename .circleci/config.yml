@@ -39,7 +39,9 @@ jobs:
           name: Run tests
           command: npm run test
       - store_artifacts:
-          path: coverage
+          path: ~/FrontEndCapstone/spec/artifacts
+      - store_test_results:
+          path: ~/FrontEndCapstone/spec/test-results
 
 
 workflows:
