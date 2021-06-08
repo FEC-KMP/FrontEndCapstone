@@ -27,15 +27,15 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <h1>QUESTIONS AND ANSWERS</h1>
-          <QuestionsAnswers />
 
         </div>
 
         <div className="container">
           <div className="logoBanner"> logo banner</div>
           <ProductMain />
-          <h1>Justin the man</h1>
+          <h1>QUESTIONS AND ANSWERS</h1>
+          <QuestionsAnswers />
+
         </div>
       </div>
     );
