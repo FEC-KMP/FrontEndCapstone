@@ -28,6 +28,16 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <div>
+
+        </div>
+
+        <div className="container">
+          <div className="logoBanner"> logo banner</div>
+          <ProductMain />
+          <h1>QUESTIONS AND ANSWERS</h1>
+          <QuestionsAnswers />
+
         <ProductMain />
         <h1>QUESTIONS AND ANSWERS</h1>
         <QuestionsAnswers />
