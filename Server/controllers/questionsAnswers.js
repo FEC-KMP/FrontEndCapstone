@@ -7,6 +7,7 @@ const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/question
 
 
 router.get('/questions', (req, res) => {
+  //template literal with baseURL and productId, page, and count
   axios.get(BaseUrl, {
     headers: { Authorization: GITHUB_API_KEY },
     // params: {
@@ -29,7 +30,7 @@ router.get('/questions/:question_id/answers', (req, res) => {
   console.log(req.params.question_id);
   const id = req.params.question_id;
   const url = `${BaseUrl}/${id}/answers`;
-  axios.get(url, { headers: { Authorization: GITHUB_API_KEY } })
+  axios.get(url, { headers: { Authorization: GITHUB_API_KEY }, params: {page: , count: } })
     .then((response) => {
       res.status(200).send(response.data);
     })

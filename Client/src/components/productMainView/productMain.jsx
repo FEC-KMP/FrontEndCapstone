@@ -29,8 +29,10 @@ import ProductIdContext from '../ProductIdContext.jsx';
 
 //'/reviews/meta'
 //Query Parameter
-//const res = await axios.get('https://httpbin.org/get', { params: { answer: 42 } });
-// Equivalent to `axios.get('https://httpbin.org/get?answer=42')`
+// axios.get('https://httpbin.org/get', { params: { answer: 42 } });
+
+// Equivalent to:
+// axios.get('https://httpbin.org/get?answer=42')
 
 //POST '/reviews'
 //Body Parameter
