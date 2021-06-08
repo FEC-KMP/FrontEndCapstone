@@ -2,6 +2,8 @@ import React from 'react';
 import QuestionsAnswers from './QuestionsAnswersView/QuestionsAnswers.jsx';
 import { getListOfProducts, getListInfoProducts, getListOfReviews, getListOfQuestions } from '../context/ApiContext.jsx';
 import ProductMain from './productMainView/productMain.jsx';
+import RatingsAndReviews from './ratingsReviewsView/RatingsAndReviews.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -26,16 +28,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <h1>QUESTIONS AND ANSWERS</h1>
-          <QuestionsAnswers />
-
-        </div>
-
+        <ProductMain />
+        <h1>QUESTIONS AND ANSWERS</h1>
+        <QuestionsAnswers />
         <div className="container">
-          <div className="logoBanner"> logo banner</div>
-          <ProductMain />
-          <h1>Justin the man</h1>
+          <div className="logoBanner"> logo banner</div></div>
+        <div>
+          <RatingsAndReviews />
         </div>
       </div>
     );

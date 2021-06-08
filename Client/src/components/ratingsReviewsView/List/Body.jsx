@@ -1,10 +1,10 @@
-import react from 'react';
+import React from 'react';
 
 const Body = ({ body }) => {
   return (
     <div>
       <p>
-        {body}
+        Body: {body}
       </p>
     </div>
   );
