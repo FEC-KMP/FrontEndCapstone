@@ -1,6 +1,7 @@
 import React from 'react';
 
-var AddToCart = () => {
+var AddToCart = ({currentStyleObj}) => {
+  if (!currentStyleObj) { return 'data not found'; }
   return (
     <div className="AddToCart">
       <select name="sizeSelector" id="sizeSelector" className="col-lg-6"></select>

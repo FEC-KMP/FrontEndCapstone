@@ -1,15 +1,19 @@
 import React from 'react';
 
-var ProductInformation = () => {
+//stars based on rating
+//clickhandler for read all reviews --> reviews section
+//
+var ProductInformation = ({currentStyleObj, productInfo}) => {
+  if (!currentStyleObj) { return 'data not found'; }
   return (
     <div className="ProductInformation">
       <div className="ProductRating">
         <span id="ProductStarRating">stars  </span>
         <span id="ProductReviewLink">Read all reviews </span>
       </div>
-      <div className="ProductCategory">Product Category</div>
-      <div className="ProductTitle">Product Title</div>
-      <div className="price">Price</div>
+      <div className="ProductCategory">{productInfo.category}</div>
+      <div className="ProductTitle">{productInfo.name}</div>
+      <div className="price">{currentStyleObj.original_price}</div>
     </div>
   );
 };
