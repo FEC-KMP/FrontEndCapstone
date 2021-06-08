@@ -3,12 +3,12 @@ import axios from 'axios';
 
 
 const end = {
-  listProducts: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products?page=1&count=5',
+  listProducts: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products?page=${}&count=${}',
   listInfo: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/18078',
   // reviews: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews?count=${5}&sort=${helpfulness}&product_id=${18078}`
 };
 
-export const getListOfProducts = (endpoint) => axios.get('/api', {
+export const getListOfProducts = (endpoint, callback) => axios.get('/api', {
   headers: {
     endpoint
   },

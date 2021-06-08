@@ -24,8 +24,18 @@ var ProductMain = (props) => {
   );
 };
 
-var getProducts = ()=> {
-  axios.get('/products')
+var getListOfProducts = () => {
+  var params = {
+    page: 1,
+    count: 5
+  };
+  axios.get('/products', {params})
+    .then((result) => {
+      //add list to state
+    })
+    .catch((err) => {
+      console.log('getListOfProducts err: ', err);
+    });
 };
 
 export default ProductMain;
