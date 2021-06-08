@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 
 const Stars = ({ rating }) => {
   //a whole bunch of logic here determining the rating and then converting that to a
@@ -9,3 +9,5 @@ const Stars = ({ rating }) => {
     </div>
   );
 };
+
+export default Stars;

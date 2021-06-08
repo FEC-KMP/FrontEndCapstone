@@ -1,13 +1,12 @@
-import react from 'react';
+import React from 'react';
 
-const Summary = ({ summary }) => {
-  let fullSummary = summary;
+const ReviewSummary = ({ summary }) => {
   //some sort of logic here conditioning to just do the first 60 characters if clicked on
   return (
     <div>
-      <fullSummary/>
+      <p>{summary}</p>
     </div>
   );
 };
 
-export default Summary;
+export default ReviewSummary;

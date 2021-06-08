@@ -28,12 +28,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <ProductMain />
         <h1>QUESTIONS AND ANSWERS</h1>
         <QuestionsAnswers />
         <div className="container">
           <div className="logoBanner"> logo banner</div></div>
-        <ProductMain />
-        <RatingsAndReviews />
+        <div>
+          <RatingsAndReviews />
+        </div>
       </div>
     );
   }
