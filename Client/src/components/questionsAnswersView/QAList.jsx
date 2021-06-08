@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const QAList = () => {
+const QAList = ({questionsList}) => {
   return (
     <div>
       <div>

@@ -29,7 +29,7 @@ const GITHUB_API_KEY = require('../config.js');
 //     });
 
 router.get('/:product_id', (req, res) => {
-  console.log('get//products/:product_id');
+  // console.log('get//products/:product_id');
   axios.get(`${BaseUrl}/products/${req.params.product_id}`, {
     headers: { Authorization: GITHUB_API_KEY },
   })
@@ -45,7 +45,7 @@ router.get('/:product_id', (req, res) => {
 });
 
 router.get('/:product_id/styles', (req, res) => {
-  console.log('/products/:product_id/styles');
+  // console.log('/products/:product_id/styles');
   axios.get(`${BaseUrl}/products/${req.params.product_id}/styles`, {
     headers: { Authorization: GITHUB_API_KEY },
   })
