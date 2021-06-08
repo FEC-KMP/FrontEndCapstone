@@ -19,3 +19,7 @@ body {
   border: 20px solid blue;
   padding: 10px;
 };
+
+.border-3 {
+  border-width: 3px
+};

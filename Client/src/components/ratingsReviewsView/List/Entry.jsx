@@ -8,7 +8,7 @@ import List from './List.jsx';
 
 const Entry = ({ review }) => {
   return (
-    <div class="border">
+    <div className="border-bottom">
       <Stars rating={review.rating}/>
       <div className="nameAndDate">
         User: {review.reviewer_name}, {review.date}
@@ -17,13 +17,17 @@ const Entry = ({ review }) => {
       <Body body={review.body}/>
       <Response response={review.response}/>
       <Recommend recommend={review.recommend}/>
-      <div className="helpfulAndReport">
-        <button>
-          helpful?
-        </button>
-        <button>
-          report
-        </button>
+      <div>
+        <div className="helpful">
+          <button>
+            helpful?
+          </button>
+        </div>
+        <div>
+          <button>
+            report
+          </button>
+        </div>
       </div>
     </div>
   );

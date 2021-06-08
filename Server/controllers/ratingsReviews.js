@@ -1,10 +1,11 @@
+/* eslint-disable camelcase */
 const express = require('express');
 const axios = require('axios');
 
 const router = express.Router();
 
 const { GITHUB_API_KEY } = require('../config.js');
-const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/rnr/reviews';
+const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews';
 
 
 router.get('/reviews', (req, res) => {
@@ -12,10 +13,10 @@ router.get('/reviews', (req, res) => {
     headers: { Authorization: GITHUB_API_KEY },
     params: {
       // eslint-disable-next-line camelcase
-      product_id: req.query.product_id,
       page: req.query.page,
       count: req.query.count,
-      sort: req.query.sort
+      sort: req.query.sort,
+      product_id: req.query.product_id
     }
   })
     .then((response) => {
@@ -30,6 +31,8 @@ router.get('/reviews', (req, res) => {
 
 router.get('/reviews/meta/:product_id', (req, res) => {
   console.log(req.params);
+  const id = req.params.question_id;
+  const url = `${BaseUrl}/${id}/answers`;
   axios.get(BaseUrl, { headers: { Authorization: GITHUB_API_KEY } }, req.params.product_id)
     .then((response) => {
       res.status(200).send(response.data);

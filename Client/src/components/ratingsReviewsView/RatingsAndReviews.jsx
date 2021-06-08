@@ -21,7 +21,7 @@ class RatingsAndReviews extends React.Component {
         <h4>Ratings & Reviews</h4>
         <div className="RatingsAndReviews row">
           <div className="RatingsContainer">
-            <div className="col-lg-5">
+            <div className="col-lg-3">
               <RatingsContainer ratings={this.state.ratings}/>
             </div>
           </div>
