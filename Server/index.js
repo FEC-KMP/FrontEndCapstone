@@ -4,7 +4,7 @@ const path = require('path');
 const axios = require('axios');
 const PORT = 8080;
 // const router = require('./routes.js');
-const questions = require('./controllers/questionsAnswers.js');
+const questions = require('./controllers/questionsAnswers');
 const reviews = require('./controllers/ratingsReviews.js');
 var app = express();
 
