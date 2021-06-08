@@ -41,7 +41,7 @@ var getProductInfo = (productId, callback) => {
     .then((result) => {
       //add list to state
       console.log("get/getProductInfo success");
-      callback(null, results);
+      callback(null, result);
     })
     .catch((err) => {
       console.log('getProductInfo err: ', err);
@@ -55,7 +55,7 @@ var getStyleInfo = (productId, callback) => {
     .then((result) => {
       //add list to state
       console.log("get/getStyleInfo success");
-      callback(null, results);
+      callback(null, result);
     })
     .catch((err) => {
       console.log('getStyleInfo err: ', err);
@@ -73,12 +73,16 @@ var ProductMain = (props) => {
         console.log('getProductInfo useEffect err: ', err);
       } else {
         console.log('productinfo: ', results);
-        updateProductInfo(results);
+        updateProductInfo(results.data);
       }
     });
   }, [productId]);
 
+  var [currentThumbnail, updateCurrentThumbnail] = useState();
 
+  //FIXME:Unsure which to do here, if stuck switch to id
+  // var [currentStyleId, updateCurrentStyleId] = useState();
+  var [currentStyleObj, updateCurrentStyleObj] = useState();
   var [styleInfo, updateStyleInfo] = useState();
   useEffect(() => {
     getStyleInfo(productId, (err, results) => {
@@ -86,14 +90,12 @@ var ProductMain = (props) => {
         console.log('getProductInfo useEffect err: ', err);
       } else {
         console.log('styleinfo: ', results);
-        updateStyleInfo(results);
+        updateStyleInfo(results.data.results);
+        updateCurrentStyleObj(results.data.results[0]);
       }
     });
   }, [productId]);
 
-  var [currentThumbnail, updateCurrentThumbnail] = useState();
-
-  var [currentStyle, updateCurrentStyle] = useState();
 
   //currently selected thumbnail
   //currently selected style
@@ -103,12 +105,12 @@ var ProductMain = (props) => {
   return (
     <div className="ProductDetail row">
       <div className="col-lg-7">
-        <ImageGallery styleInfo={styleInfo} currentThumbnail={currentThumbnail}/>
+        <ImageGallery currentStyleObj={currentStyleObj} currentThumbnail={currentThumbnail}/>
       </div>
       <div className="col-lg-5">
-        <ProductInformation styleInfo={styleInfo} productInfo={productInfo}/>
-        <StyleSelector styleInfo={styleInfo} productInfo={productInfo}/>
-        <AddToCart styleInfo={styleInfo} currentStyle={currentStyle}/>
+        <ProductInformation currentStyleObj={currentStyleObj} productInfo={productInfo}/>
+        <StyleSelector currentStyleObj={currentStyleObj} productInfo={productInfo}/>
+        <AddToCart currentStyleObj={currentStyleObj}/>
       </div>
       <div className="col-lg-12">
         <ProductOverview productInfo={productInfo}/>

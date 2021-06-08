@@ -3,8 +3,8 @@ import React from 'react';
 //stars based on rating
 //clickhandler for read all reviews --> reviews section
 //
-var ProductInformation = ({styleInfo, productInfo}) => {
-  if (!styleInfo) { return 'data not found'; }
+var ProductInformation = ({currentStyleObj, productInfo}) => {
+  if (!currentStyleObj) { return 'data not found'; }
   return (
     <div className="ProductInformation">
       <div className="ProductRating">
@@ -13,7 +13,7 @@ var ProductInformation = ({styleInfo, productInfo}) => {
       </div>
       <div className="ProductCategory">{productInfo.category}</div>
       <div className="ProductTitle">{productInfo.name}</div>
-      <div className="price">{styleInfo['original_price']}</div>
+      <div className="price">{currentStyleObj.original_price}</div>
     </div>
   );
 };

@@ -35,6 +35,7 @@ router.get('/:product_id', (req, res) => {
   })
     .then((response) => {
       // console.log('this is response inside get request',response);
+      console.log('productMain get response.data: ', response.data);
       res.status(200).send(response.data);
     })
     .catch((err) => {
@@ -50,6 +51,7 @@ router.get('/:product_id/styles', (req, res) => {
   })
     .then((response) => {
       // console.log('this is response inside get request',response);
+      console.log('productMain get styles response.data: ', response.data);
       res.status(200).send(response.data);
     })
     .catch((err) => {
