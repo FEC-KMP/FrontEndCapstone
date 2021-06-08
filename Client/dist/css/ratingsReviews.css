@@ -7,16 +7,15 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #585858;
 }
-
-#RatingsContainer {
-  border: 10px black
+.RatingsContainer {
+  padding: 20px;
 };
 
-#ReviewsContainer {
-  border: 10px black
+.ReviewsContainer {
+  border: 5px solid
 };
 
-#ReviewListEntry {
-  border: 20px black;
+.ReviewListEntry {
+  border: 20px solid blue;
   padding: 10px;
 };

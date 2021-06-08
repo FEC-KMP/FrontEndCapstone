@@ -8,7 +8,7 @@ import List from './List.jsx';
 
 const Entry = ({ review }) => {
   return (
-    <div id="ReviewListEntry">
+    <div class="border">
       <Stars rating={review.rating}/>
       <div className="nameAndDate">
         User: {review.reviewer_name}, {review.date}
