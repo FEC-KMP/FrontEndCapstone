@@ -1,6 +1,10 @@
 import React from 'react';
 
-var StyleSelector = () => {
+var StyleSelector = ({currentStyleObj, productInfo}) => {
+  //arrange thumbnails in rows of 4
+  //click handler on thumbnail to change currentstyle
+
+  if (!currentStyleObj) { return 'data not found'; }
   return (
     <div className="StyleSelector" >
       <div>
