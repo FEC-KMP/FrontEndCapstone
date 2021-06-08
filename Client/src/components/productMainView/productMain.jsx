@@ -42,7 +42,7 @@ var getProductInfo = (productId, callback) => {
   axios.get(`/products/${productId}/`)
     .then((result) => {
       //add list to state
-      console.log("get/getProductInfo success");
+      console.log('get/getProductInfo success');
       callback(null, result);
     })
     .catch((err) => {
@@ -56,7 +56,7 @@ var getStyleInfo = (productId, callback) => {
   axios.get(`/products/${productId}/styles`)
     .then((result) => {
       //add list to state
-      console.log("get/getStyleInfo success");
+      console.log('get/getStyleInfo success');
       callback(null, result);
     })
     .catch((err) => {

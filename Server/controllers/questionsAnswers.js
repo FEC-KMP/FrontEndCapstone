@@ -30,7 +30,7 @@ router.get('/questions/:question_id/answers', (req, res) => {
   console.log(req.params.question_id);
   const id = req.params.question_id;
   const url = `${BaseUrl}/${id}/answers`;
-  axios.get(url, { headers: { Authorization: GITHUB_API_KEY }, params: {page: , count: } })
+  axios.get(url, { headers: { Authorization: GITHUB_API_KEY }, params: {page: 0, count: 5} })
     .then((response) => {
       res.status(200).send(response.data);
     })

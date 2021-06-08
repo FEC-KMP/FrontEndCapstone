@@ -11,15 +11,10 @@ var app = express();
 
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use(express.json());
-<<<<<<< HEAD
-// app.use('/', router);
-app.use('/qa', questions);
-app.use('/rnr', reviews);
-=======
->>>>>>> 6fd988cdae5efaa60ea7fbcb2d97a448686ba63a
 
 app.use('/qa', questions);
 app.use('/products', products);
+app.use('/rnr', reviews);
 //questions
 
 app.listen(PORT, () => {
