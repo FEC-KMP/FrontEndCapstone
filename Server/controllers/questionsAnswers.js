@@ -7,7 +7,6 @@ const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/question
 
 //List questions
 router.get('/questions', (req, res) => {
-  //template literal with baseURL and productId, page, and count
   axios.get(BaseUrl, {
     headers: { Authorization: GITHUB_API_KEY },
     params: {
