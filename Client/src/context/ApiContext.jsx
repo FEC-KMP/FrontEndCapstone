@@ -14,11 +14,11 @@ export const getListOfProducts = (endpoint, callback) => axios.get('/api', {
   },
 })
   .then((response) => {
-    console.log('List of products',response.data)
+    console.log('List of products', response.data);
     // callback(response.data);
   })
   .catch((err) => {
-    console.log('error getting products', err)
+    console.log('error getting products', err);
 
   });
 
@@ -28,7 +28,7 @@ export const getListInfoProducts = (endpoint) => axios.get('/api', {
   },
 })
   .then((response) => {
-    console.log('list of info product',response.data);
+    console.log('list of info product', response.data);
     // callback(response.data);
   })
   .catch((err) => {
@@ -41,7 +41,7 @@ export const getListOfReviews = (endpoint) => axios.get('/api', {
   },
 })
   .then((response) => {
-    console.log('list of reviews',response.data);
+    console.log('list of reviews', response.data);
     // callback(response.data);
   })
   .catch((err) => {
@@ -54,7 +54,7 @@ export const getListOfQuestions = (endpoint) => axios.get('/api', {
   },
 })
   .then((response) => {
-    console.log('list of questions',response.data);
+    console.log('list of questions', response.data);
     // callback(response.data);
   })
   .catch((err) => {
