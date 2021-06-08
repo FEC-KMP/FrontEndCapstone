@@ -3,3 +3,5 @@ client/dist/bundle.js
 
 ## private APIs
 Server/config.js
+
+server/config.js

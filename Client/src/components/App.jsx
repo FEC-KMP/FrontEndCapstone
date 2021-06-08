@@ -3,6 +3,7 @@ import QuestionsAnswers from './QuestionsAnswersView/QuestionsAnswers.jsx';
 import { getListOfProducts, getListInfoProducts, getListOfReviews, getListOfQuestions } from '../context/ApiContext.jsx';
 import ProductMain from './productMainView/productMain.jsx';
 import GITHUB_API_KEY from '../api/githubApi.js';
+import RatingsAndReviews from './ratingsReviewsView/RatingsAndReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,11 +28,33 @@ class App extends React.Component {
   }
   render() {
     return (
+<<<<<<< HEAD
       <div className="container">
         <div className="logoBanner"> logo banner</div>
         <ProductMain />
         <h1>QUESTIONS AND ANSWERS</h1>
         <QuestionsAnswers />
+=======
+      <div>
+        <div>
+
+        </div>
+
+        <div className="container">
+          <div className="logoBanner"> logo banner</div>
+          <ProductMain />
+          <h1>QUESTIONS AND ANSWERS</h1>
+          <QuestionsAnswers />
+
+        <ProductMain />
+        <h1>QUESTIONS AND ANSWERS</h1>
+        <QuestionsAnswers />
+        <div className="container">
+          <div className="logoBanner"> logo banner</div></div>
+        <div>
+          <RatingsAndReviews />
+        </div>
+>>>>>>> 6066f921915abcf81ed3cb1718b97ce0eabc702e
       </div>
     );
   }
