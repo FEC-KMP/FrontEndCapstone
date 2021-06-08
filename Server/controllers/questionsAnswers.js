@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-const { GITHUB_API_KEY } = require('../config');
+const GITHUB_API_KEY = require('../config');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions';
 
 //List questions

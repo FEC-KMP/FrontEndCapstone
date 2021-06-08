@@ -15,10 +15,9 @@ var App = () => {
       <div className="container">
         <div className="logoBanner"> logo banner</div>
         <ProductMain />
-        <h1>QUESTIONS AND ANSWERS</h1>
         <QuestionsAnswers />
         <div>
-          <RatingsAndReviews />
+          <RatingsAndReviews/>
         </div>
       </div>
     </ProductIdContext.Provider>

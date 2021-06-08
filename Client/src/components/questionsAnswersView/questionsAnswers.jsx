@@ -43,7 +43,8 @@ const QuestionsAnswers = () => {
     });
   }, [productId]);
   return (
-    <div>
+    <div className="questionsContainer">
+      <h1>QUESTIONS AND ANSWERS</h1>
       <SearchQAForm />
       <QAList questionsList={questionsList} />
       <AskQuestionForm />

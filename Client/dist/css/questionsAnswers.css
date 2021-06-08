@@ -1,1 +1,3 @@
-/* write individual css here */
+.questionsContainer {
+  border: 3px solid grey;
+}

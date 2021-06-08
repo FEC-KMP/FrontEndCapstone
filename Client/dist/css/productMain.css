@@ -9,6 +9,10 @@ body {
   color: #585858;
 }
 
+.ProductDetail {
+  border: 3px solid grey;
+}
+
 .logoBanner {
   height: 100px;
 }
