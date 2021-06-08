@@ -3,7 +3,7 @@ import React from 'react';
 const Response = ({ response }) => {
   return (
     <div>
-      <p>{response}</p>
+      <p>{response ? 'Response: ' + response : ''}</p>
     </div>
   );
 };

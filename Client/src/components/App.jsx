@@ -2,11 +2,8 @@ import React from 'react';
 import QuestionsAnswers from './QuestionsAnswersView/QuestionsAnswers.jsx';
 import { getListOfProducts, getListInfoProducts, getListOfReviews, getListOfQuestions } from '../context/ApiContext.jsx';
 import ProductMain from './productMainView/productMain.jsx';
-<<<<<<< HEAD
 import RatingsAndReviews from './ratingsReviewsView/RatingsAndReviews.jsx';
 
-=======
->>>>>>> 587cb0cfa966a84c7ecb5b77989cdb9a61593ebd
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +35,7 @@ class App extends React.Component {
           <div className="logoBanner"> logo banner</div></div>
         <div>
           <RatingsAndReviews />
+        </div>
       </div>
     );
   }

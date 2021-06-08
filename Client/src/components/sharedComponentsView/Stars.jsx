@@ -5,7 +5,7 @@ const Stars = ({ rating }) => {
   //specific star amount image
   return (
     <div>
-      <span>Stars logo</span>
+      <span>*** {rating}</span>
     </div>
   );
 };

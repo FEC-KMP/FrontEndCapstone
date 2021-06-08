@@ -1,1 +1,22 @@
-/* write individual css here */
+body {
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  color: #585858;
+}
+
+#RatingsContainer {
+  border: 10px black
+};
+
+#ReviewsContainer {
+  border: 10px black
+};
+
+#ReviewListEntry {
+  border: 20px black;
+  padding: 10px;
+};

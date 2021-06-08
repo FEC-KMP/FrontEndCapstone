@@ -1,6 +1,6 @@
 import React from 'react';
 import RatingsAndReviews from '../RatingsAndReviews.jsx';
-import ReviewsList from '../List/ReviewsList.jsx';
+import List from '../List/List.jsx';
 import WriteReview from '../WriteReview/WriteReview.jsx';
 
 export default class ReviewsContainer extends React.Component {
@@ -14,10 +14,13 @@ export default class ReviewsContainer extends React.Component {
   render() {
     return (
       <div>
-        <div className="reviewslist">
-          <ReviewsList reviews={this.props.reviews}/>
+        <div>
+          <h5>{this.props.reviews.results.length} Total Reviews, sorted by the arbitrary indulgences of the ignorant</h5>
         </div>
-        <div className="writeReview">
+        <div>
+          <List reviews={this.props.reviews}/>
+        </div>
+        <div>
           <WriteReview />
         </div>
       </div>
