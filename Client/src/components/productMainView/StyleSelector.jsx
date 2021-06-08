@@ -3,6 +3,8 @@ import React from 'react';
 var StyleSelector = ({styleInfo, productInfo}) => {
   //arrange thumbnails in rows of 4
   //click handler on thumbnail to change currentstyle
+
+  if (!styleInfo) { return 'data not found'; }
   return (
     <div className="StyleSelector" >
       <div>

@@ -4,7 +4,7 @@ import { getListOfProducts, getListInfoProducts, getListOfReviews, getListOfQues
 import ProductMain from './productMainView/productMain.jsx';
 import GITHUB_API_KEY from '../api/githubApi.js';
 import RatingsAndReviews from './ratingsReviewsView/RatingsAndReviews.jsx';
-import ProductIdContext from './ProductIdContext';
+import ProductIdContext from './ProductIdContext.jsx';
 
 
 

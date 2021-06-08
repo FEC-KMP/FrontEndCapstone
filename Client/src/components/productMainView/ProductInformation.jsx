@@ -4,6 +4,7 @@ import React from 'react';
 //clickhandler for read all reviews --> reviews section
 //
 var ProductInformation = ({styleInfo, productInfo}) => {
+  if (!styleInfo) { return 'data not found'; }
   return (
     <div className="ProductInformation">
       <div className="ProductRating">
