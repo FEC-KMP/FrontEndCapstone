@@ -9,14 +9,11 @@ const products = require('./controllers/productMain');
 var app = express();
 
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
-// app.use(express.urlencoded());
 app.use(express.json());
-// app.use('/', router);
+
 app.use('/qa', questions);
 app.use('/products', products);
-// app.get('/', function (req, res) {
-//   res.status(200).send();
-// });
+
 
 app.listen(PORT, () => {
   console.log('listening on port ' + PORT);

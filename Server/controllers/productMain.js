@@ -28,7 +28,8 @@ const GITHUB_API_KEY = require('../config.js');
 //       res.status(404).send(err);
 //     });
 
-router.get('/products/:product_id', (req, res) => {
+router.get('/:product_id', (req, res) => {
+  console.log('get//products/:product_id');
   axios.get(`${BaseUrl}/products/${req.params.product_id}`, {
     headers: { Authorization: GITHUB_API_KEY },
   })
@@ -38,11 +39,12 @@ router.get('/products/:product_id', (req, res) => {
     })
     .catch((err) => {
       console.log('productMain get err: ', err);
-      res.status(404).send(err);
+      res.status(500).send(err);
     });
 });
 
-router.get('/products/:product_id/styles', (req, res) => {
+router.get('/:product_id/styles', (req, res) => {
+  console.log('/products/:product_id/styles');
   axios.get(`${BaseUrl}/products/${req.params.product_id}/styles`, {
     headers: { Authorization: GITHUB_API_KEY },
   })
@@ -52,7 +54,7 @@ router.get('/products/:product_id/styles', (req, res) => {
     })
     .catch((err) => {
       console.log('productMain get err: ', err);
-      res.status(404).send(err);
+      res.status(500).send(err);
     });
 });
 
