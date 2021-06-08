@@ -1,6 +1,8 @@
 import React from 'react';
 
-var StyleSelector = () => {
+var StyleSelector = ({styleInfo, productInfo}) => {
+  //arrange thumbnails in rows of 4
+  //click handler on thumbnail to change currentstyle
   return (
     <div className="StyleSelector" >
       <div>

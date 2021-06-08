@@ -1,6 +1,6 @@
 import React from 'react';
 
-var ImageGallery = () => {
+var ImageGallery = ({styleInfo}) => {
   return (
     <div className="ImageGallery">Image here</div>
   );

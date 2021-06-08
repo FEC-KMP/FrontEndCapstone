@@ -2,24 +2,45 @@ const path = require('path');
 // const headers = require('./cors');
 const axios = require('axios');
 
-var models = require('../models');
-const API_URL = 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
+const router = express.Router();
+
+
+const BaseUrl = 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products';
 
 const GITHUB_API_KEY = require('../config.js');
 
+router.get('/products', (req, res) => {
+  axios.get(BaseUrl, {
+  headers: { Authorization: GITHUB_API_KEY },
+  params: {
+    product_id: req.query.product_id,
+    page: req.query.page,
+    count: req.query.count
+  }
+})
+  .then((response) => {
+    // console.log('this is response inside get request',response);
+    res.status(200).send(response.data);
+  })
+  .catch((err) => {
+    console.log('productMain get err: ', err);
+    res.status(404).send(err);
+  });
 
-module.exports = {
-  get: (req, res) => {
-    console.log(req.options.params);
-    axios.get('/products', req.options.params, {
-      headers: { Authorization: GITHUB_API_KEY }
+  router.get('/products/:product_id', (req, res) => {
+    axios.get(BaseUrl, {
+      headers: { Authorization: GITHUB_API_KEY },
+      params: {
+        product_id: req.query.product_id,
+        page: req.query.page,
+        count: req.query.count
+      }
     })
       .then((response) => {
+        // console.log('this is response inside get request',response);
         res.status(200).send(response.data);
       })
       .catch((err) => {
+        console.log('productMain get err: ', err);
         res.status(404).send(err);
       });
-  },
-
-};

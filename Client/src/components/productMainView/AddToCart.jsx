@@ -1,6 +1,6 @@
 import React from 'react';
 
-var AddToCart = () => {
+var AddToCart = ({styleInfo}) => {
   return (
     <div className="AddToCart">
       <select name="sizeSelector" id="sizeSelector" className="col-lg-6"></select>
