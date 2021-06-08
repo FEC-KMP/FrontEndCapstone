@@ -8,6 +8,7 @@ import axios from 'axios';
 var getListOfQuestions = (productId, callback, page = 1, count = 5) => {
   //product_id, page, count => parameters
   var params = { productId, page, count };
+  console.log('getListOfQuestions params: ', params);
   axios.get('/qa/questions/', { params })
     .then((results) => {
       console.log('getListOfQuestions get/qa/questions result: ', result);

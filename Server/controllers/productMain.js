@@ -8,7 +8,7 @@ const router = express.Router();
 
 const BaseUrl = 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 
-const GITHUB_API_KEY = require('../config.js');
+const {GITHUB_API_KEY} = require('../config.js');
 
 // router.get('/products', (req, res) => {
 //   axios.get(BaseUrl, {
@@ -35,7 +35,7 @@ router.get('/:product_id', (req, res) => {
   })
     .then((response) => {
       // console.log('this is response inside get request',response);
-      console.log('productMain get response.data: ', response.data);
+      // console.log('productMain get response.data: ', response.data);
       res.status(200).send(response.data);
     })
     .catch((err) => {
@@ -51,7 +51,7 @@ router.get('/:product_id/styles', (req, res) => {
   })
     .then((response) => {
       // console.log('this is response inside get request',response);
-      console.log('productMain get styles response.data: ', response.data);
+      // console.log('productMain get styles response.data: ', response.data);
       res.status(200).send(response.data);
     })
     .catch((err) => {

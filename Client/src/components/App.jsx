@@ -23,7 +23,6 @@ var App = () => {
       </div>
     </ProductIdContext.Provider>
   );
-  // }
 
 };
 
