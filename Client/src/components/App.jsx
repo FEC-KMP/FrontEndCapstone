@@ -2,6 +2,7 @@ import React from 'react';
 import QuestionsAnswers from './QuestionsAnswersView/QuestionsAnswers.jsx';
 import { getListOfProducts, getListInfoProducts, getListOfReviews, getListOfQuestions } from '../context/ApiContext.jsx';
 import ProductMain from './productMainView/productMain.jsx';
+import GITHUB_API_KEY from '../api/githubApi.js';
 import RatingsAndReviews from './ratingsReviewsView/RatingsAndReviews.jsx';
 
 class App extends React.Component {
@@ -27,22 +28,11 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div>
-
-        </div>
-
-        <div className="container">
-          <div className="logoBanner"> logo banner</div>
-          <ProductMain />
-          <h1>QUESTIONS AND ANSWERS</h1>
-          <QuestionsAnswers />
-
+      <div className="container">
+        <div className="logoBanner"> logo banner</div>
         <ProductMain />
         <h1>QUESTIONS AND ANSWERS</h1>
         <QuestionsAnswers />
-        <div className="container">
-          <div className="logoBanner"> logo banner</div></div>
         <div>
           <RatingsAndReviews />
         </div>

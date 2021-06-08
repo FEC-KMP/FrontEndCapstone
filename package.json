@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "webpack --config ./webpack.config.js --mode development ",
+    "build:dev": "webpack --config ./webpack.config.js --mode development -w",
     "start": "node server/index.js",
     "start:dev": "npx nodemon server/index.js -w server",
     "test": "node_modules/jest/bin/jest.js spec/ --collectCoverage=true"
