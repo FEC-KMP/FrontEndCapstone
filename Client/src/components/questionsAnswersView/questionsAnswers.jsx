@@ -8,42 +8,96 @@ import axios from 'axios';
 var getListOfQuestions = (productId, callback, page = 1, count = 5) => {
   //product_id, page, count => parameters
   var params = { productId, page, count };
-  console.log('getListOfQuestions params: ', params);
+  // console.log('C: getListOfQuestions params: ', params);
   axios.get('/qa/questions/', { params })
     .then((results) => {
-      console.log('getListOfQuestions get/qa/questions result: ', result);
-      callback(null, results);
+      console.log('getListOfQuestions get/qa/questions result: ', results);
+      callback(null, results.data);
     })
     .catch((err) => {
-      console.log('getListOfQuestions get/qa/questions err: ', err);
+      console.log('C: getListOfQuestions get/qa/questions err: ', err);
       callback(err, null);
     });
 };
 
-var getListOfAnswers = () => {
-
+var getListOfAnswers = (questionId, callback, page = 1, count = 5) => {
+  //product_id, page, count => parameters
+  const params = { page, count };
+  // console.log('C: getListOfQuestions params: ', params);
+  axios.get(`/qa/questions/${questionId}/answers`, { params })
+    .then((results) => {
+      // console.log('getListOfQuestions get/qa/questions result: ', results);
+      callback(null, results.data);
+    })
+    .catch((err) => {
+      console.log('C: getListOfQuestions get/qa/questions err: ', err);
+      callback(err, null);
+    });
 };
 
-var addAnswer = () => {
+var addQuestion = (body, name, email, productId, callback) => {
+  var data = {
+    body: body,
+    name: name,
+    email: email,
+    'product_id': productId
+  };
+  axios.post('/qa/questions', { data })
+    .then((results) => {
+      console.log('C: addQuestion get/qa/questions success results: ', results);
+      callback(null, results); //FIXME: results? //FIXME: may want to add answer to questionsList
 
-  // axios.post()
+    })
+    .catch((err) => {
+      console.log('C: addQuestion get/qa/questions err: ', err);
+      callback(err, null);
+    });
 };
+
+
+var addAnswer = (body, name, email, photos, questionId, callback) => {
+  const data = {body, name, email, photos};
+  axios.post(`/qa/questions/${questionId}/answers`, { data })
+    .then((results) => {
+      console.log('C: addAnswer get/qa/questions/:questions_id/answers success results: ', results);
+      callback(null, results); //FIXME: results? //FIXME: may want to add answer to answersList
+    })
+    .catch((err) => {
+      console.log('C: addAnswer get/qa/questions/:questions_id/answers err: ', err);
+      callback(err, null);
+    });
+};
+
 
 const QuestionsAnswers = () => {
   var { productId, updateProductId } = useContext(ProductIdContext);
   var [questionsList, updateQuestionsList] = useState();
+  var [answersList, updateAnswersList] = useState();
   useEffect(() => {
     getListOfQuestions(productId, (err, results) => {
       if (err) {
-        console.log('QuestionsAnswers useEffect getListOfQuestions err: ', err);
+        console.log('C: QuestionsAnswers useEffect getListOfQuestions err: ', err);
       } else {
-        console.log('QuestionsAnswers useEffect getListOfQuestions results: ', results);
-        updateQuestionsList(results); //FIXME: possible results.data....?
+        // console.log('C: QuestionsAnswers useEffect getListOfQuestions results: ', results);
+        updateQuestionsList(results);
       }
     });
+
+    //FIXME: this one is based on questionId, so unsure how you want to handle that Phong
+    getListOfAnswers(questionId, (err, results) => {
+      if (err) {
+        console.log('C: QuestionsAnswers useEffect getListOfAnswers err: ', err);
+      } else {
+        console.log('C: QuestionsAnswers useEffect getListOfAnswers results: ', results);
+        updateQuestionsList(results);
+      }
+    });
+
   }, [productId]);
+
   return (
-    <div>
+    <div className="questionsContainer">
+      <h1>QUESTIONS AND ANSWERS</h1>
       <SearchQAForm />
       <QAList questionsList={questionsList} />
       <AskQuestionForm />

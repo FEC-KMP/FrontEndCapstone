@@ -8,7 +8,7 @@ const router = express.Router();
 
 const BaseUrl = 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 
-const {GITHUB_API_KEY} = require('../config.js');
+const GITHUB_API_KEY = require('../config.js');
 
 // router.get('/products', (req, res) => {
 //   axios.get(BaseUrl, {
@@ -28,10 +28,10 @@ const {GITHUB_API_KEY} = require('../config.js');
 //       res.status(404).send(err);
 //     });
 
-router.get('/:product_id', (req, res) => {
+router.get('/:productId', (req, res) => {
   // console.log('get//products/:product_id');
-  axios.get(`${BaseUrl}/products/${req.params.product_id}`, {
-    headers: { Authorization: GITHUB_API_KEY },
+  axios.get(`${BaseUrl}/products/${req.params.productId}`, {
+    headers: { 'Authorization': GITHUB_API_KEY },
   })
     .then((response) => {
       // console.log('this is response inside get request',response);
@@ -39,15 +39,15 @@ router.get('/:product_id', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch((err) => {
-      console.log('productMain get err: ', err);
+      console.log('S: productMain get/:productId err: ', err);
       res.status(500).send(err);
     });
 });
 
-router.get('/:product_id/styles', (req, res) => {
+router.get('/:productId/styles', (req, res) => {
   // console.log('/products/:product_id/styles');
-  axios.get(`${BaseUrl}/products/${req.params.product_id}/styles`, {
-    headers: { Authorization: GITHUB_API_KEY },
+  axios.get(`${BaseUrl}/products/${req.params.productId}/styles`, {
+    headers: { 'Authorization': GITHUB_API_KEY },
   })
     .then((response) => {
       // console.log('this is response inside get request',response);
@@ -55,7 +55,7 @@ router.get('/:product_id/styles', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch((err) => {
-      console.log('productMain get err: ', err);
+      console.log('S: productMain get/:productId/styles err: ', err);
       res.status(500).send(err);
     });
 });

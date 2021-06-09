@@ -42,11 +42,11 @@ var getProductInfo = (productId, callback) => {
   axios.get(`/products/${productId}/`)
     .then((result) => {
       //add list to state
-      console.log("get/getProductInfo success");
+      // console.log('C: productMain getProductInfo get/products/:productId success');
       callback(null, result);
     })
     .catch((err) => {
-      console.log('getProductInfo err: ', err);
+      console.log('C: productMain getProductInfo get/products/:productiD/  err: ', err);
       callback(err, null);
     });
 };
@@ -56,11 +56,11 @@ var getStyleInfo = (productId, callback) => {
   axios.get(`/products/${productId}/styles`)
     .then((result) => {
       //add list to state
-      console.log("get/getStyleInfo success");
+      // console.log("C: productMain get/getStyleInfo get/products/:productiD/styles  success");
       callback(null, result);
     })
     .catch((err) => {
-      console.log('getStyleInfo err: ', err);
+      console.log('C: productMain getStyleInfo get/products/:productiD/styles err: ', err);
       callback(err, null);
     });
 };
@@ -69,34 +69,31 @@ var ProductMain = (props) => {
   var {productId, updateProductId} = useContext(ProductIdContext);
 
   var [productInfo, updateProductInfo] = useState();
+  var [currentThumbnail, updateCurrentThumbnail] = useState();
+  var [currentStyleObj, updateCurrentStyleObj] = useState();
+  var [styleInfo, updateStyleInfo] = useState();
+
   useEffect(() => {
     getProductInfo(productId, (err, results) => {
       if (err) {
-        console.log('getProductInfo useEffect err: ', err);
+        console.log('C: productMain productMain useEffect getProductInfo  err: ', err);
       } else {
-        console.log('productinfo: ', results);
         updateProductInfo(results.data);
       }
+
     });
-  }, [productId]);
 
-  var [currentThumbnail, updateCurrentThumbnail] = useState();
-
-  //FIXME:Unsure which to do here, if stuck switch to id
-  // var [currentStyleId, updateCurrentStyleId] = useState();
-  var [currentStyleObj, updateCurrentStyleObj] = useState();
-  var [styleInfo, updateStyleInfo] = useState();
-  useEffect(() => {
     getStyleInfo(productId, (err, results) => {
       if (err) {
-        console.log('getProductInfo useEffect err: ', err);
+        console.log('C: productMain productMain useEffect getProductInfo  err: ', err);
       } else {
-        console.log('styleinfo: ', results);
         updateStyleInfo(results.data.results);
         updateCurrentStyleObj(results.data.results[0]);
       }
     });
+
   }, [productId]);
+
 
 
   //currently selected thumbnail

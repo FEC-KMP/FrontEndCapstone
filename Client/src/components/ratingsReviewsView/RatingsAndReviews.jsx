@@ -6,7 +6,7 @@ import RatingsContainer from './Containers/RatingsContainer.jsx';
 import ratings from './Ratings/dummyMeta.js';
 
 class RatingsAndReviews extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       reviews: reviews,
@@ -18,16 +18,16 @@ class RatingsAndReviews extends React.Component {
 
     return (
       <div>
-        <h4>Ratings & Reviews</h4>
         <div className="RatingsAndReviews row">
+          <h4>Ratings & Reviews</h4>
           <div id="RatingsContainer">
             <div className="col-lg-3">
-              <RatingsContainer ratings={this.state.ratings}/>
+              <RatingsContainer ratings={this.state.ratings} />
             </div>
           </div>
           <div id="ReviewsContainer">
             <div className="col-lg-7">
-              <ReviewsContainer reviews={this.state.reviews}/>
+              <ReviewsContainer reviews={this.state.reviews} />
             </div>
           </div>
         </div>
