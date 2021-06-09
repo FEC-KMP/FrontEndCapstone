@@ -83,15 +83,15 @@ const QuestionsAnswers = () => {
       }
     });
 
-    //FIXME: this one is based on questionId, so unsure how you want to handle that Phong
-    getListOfAnswers(questionId, (err, results) => {
-      if (err) {
-        console.log('C: QuestionsAnswers useEffect getListOfAnswers err: ', err);
-      } else {
-        console.log('C: QuestionsAnswers useEffect getListOfAnswers results: ', results);
-        updateQuestionsList(results);
-      }
-    });
+    // //FIXME: this one is based on questionId, so unsure how you want to handle that Phong
+    // getListOfAnswers(questionId, (err, results) => {
+    //   if (err) {
+    //     console.log('C: QuestionsAnswers useEffect getListOfAnswers err: ', err);
+    //   } else {
+    //     console.log('C: QuestionsAnswers useEffect getListOfAnswers results: ', results);
+    //     updateQuestionsList(results);
+    //   }
+    // });
 
   }, [productId]);
 

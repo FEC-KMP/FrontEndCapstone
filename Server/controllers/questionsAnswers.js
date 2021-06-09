@@ -55,7 +55,7 @@ router.post('/questions', (req, res) => {
     headers: { Authorization: GITHUB_API_KEY },
   })
     .then((response) => {
-      console.log('S: post/questions/ response: ', response);
+      console.log('S: post/questions/ response.data: ', response.data);
       res.status(201).send(response.data);
     })
     .catch((err) => {
