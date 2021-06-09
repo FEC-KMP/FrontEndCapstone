@@ -39,7 +39,7 @@ router.get('/:productId', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch((err) => {
-      console.log('productMain get err: ', err);
+      console.log('S: productMain get/:productId err: ', err);
       res.status(500).send(err);
     });
 });
@@ -55,7 +55,7 @@ router.get('/:productId/styles', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch((err) => {
-      console.log('productMain get err: ', err);
+      console.log('S: productMain get/:productId/styles err: ', err);
       res.status(500).send(err);
     });
 });
