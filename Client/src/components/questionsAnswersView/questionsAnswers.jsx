@@ -11,8 +11,8 @@ var getListOfQuestions = (productId, callback, page = 1, count = 5) => {
   // console.log('C: getListOfQuestions params: ', params);
   axios.get('/qa/questions/', { params })
     .then((results) => {
-      // console.log('getListOfQuestions get/qa/questions result: ', results);
-      callback(null, results.data.results);
+      console.log('getListOfQuestions get/qa/questions result: ', results);
+      callback(null, results.data);
     })
     .catch((err) => {
       console.log('C: getListOfQuestions get/qa/questions err: ', err);
@@ -27,7 +27,7 @@ var getListOfAnswers = (questionId, callback, page = 1, count = 5) => {
   axios.get(`/qa/questions/${questionId}/answers`, { params })
     .then((results) => {
       // console.log('getListOfQuestions get/qa/questions result: ', results);
-      callback(null, results.data.results);
+      callback(null, results.data);
     })
     .catch((err) => {
       console.log('C: getListOfQuestions get/qa/questions err: ', err);
@@ -35,18 +35,18 @@ var getListOfAnswers = (questionId, callback, page = 1, count = 5) => {
     });
 };
 
-//FIXME: may want to add answer to questionssList
 var addQuestion = (body, name, email, productId, callback) => {
   var data = {
     body: body,
     name: name,
     email: email,
-    product_id: productId
+    'product_id': productId
   };
   axios.post('/qa/questions', { data })
     .then((results) => {
       console.log('C: addQuestion get/qa/questions success results: ', results);
-      callback(null, results); //FIXME: results?
+      callback(null, results); //FIXME: results? //FIXME: may want to add answer to questionsList
+
     })
     .catch((err) => {
       console.log('C: addQuestion get/qa/questions err: ', err);
@@ -54,13 +54,13 @@ var addQuestion = (body, name, email, productId, callback) => {
     });
 };
 
-//FIXME: may want to add answer to answersList
+
 var addAnswer = (body, name, email, photos, questionId, callback) => {
   const data = {body, name, email, photos};
   axios.post(`/qa/questions/${questionId}/answers`, { data })
     .then((results) => {
       console.log('C: addAnswer get/qa/questions/:questions_id/answers success results: ', results);
-      callback(null, results); //FIXME: results?
+      callback(null, results); //FIXME: results? //FIXME: may want to add answer to answersList
     })
     .catch((err) => {
       console.log('C: addAnswer get/qa/questions/:questions_id/answers err: ', err);

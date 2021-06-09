@@ -10,7 +10,7 @@ router.get('/questions', (req, res) => {
   // console.log("got to get/questions serverside, req.body: ", req.query)
   axios.get(BaseUrl, {
     params: {
-      product_id: req.query.productId,
+      'product_id': req.query.productId,
       page: req.query.page,
       count: req.query.count
     },
@@ -35,7 +35,7 @@ router.get('/questions/:questionId/answers', (req, res) => {
     count: req.query.count
   };
 
-  axios.get(url, { headers: { 'Authorization': GITHUB_API_KEY }, params: params })
+  axios.get(url, { params: params, headers: { 'Authorization': GITHUB_API_KEY } })
     .then((response) => {
       // console.log('S: get/questions/:question_id/answers response.data.results: ', response.data.results);
       res.status(200).send(response.data.results);
