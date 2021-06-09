@@ -11,7 +11,7 @@ const List = ({ reviews }) => {
         return (
           <Entry key={review.review_id} review={review}/>
         );
-      })};
+      })}
     </div>
   );
 };

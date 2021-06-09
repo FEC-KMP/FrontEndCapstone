@@ -2,42 +2,86 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-const {GITHUB_API_KEY} = require('../config');
+const GITHUB_API_KEY = require('../config');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions';
 
-
+//List questions
 router.get('/questions', (req, res) => {
-  //template literal with baseURL and productId, page, and count
+  // console.log("got to get/questions serverside, req.body: ", req.query)
   axios.get(BaseUrl, {
-    headers: { Authorization: GITHUB_API_KEY },
-    // params: {
-    //   product_id: req.query.product_id,
-    //   page: req.query.page,
-    //   count: req.query.count
-    // }
+    params: {
+      'product_id': req.query.productId,
+      page: req.query.page,
+      count: req.query.count
+    },
+    headers: { Authorization: GITHUB_API_KEY }
   })
     .then((response) => {
-      // console.log('this is response inside get request',response);
-      res.status(200).send(response.data);
+      // console.log('S: get/qa/questions response', response.data.results);
+      res.status(200).send(response.data.results);
     })
     .catch((err) => {
-      console.log('err inside routes.js');
+      console.log('S: get/qa/questions err: ', err);
+      res.status(404).send(err);
+    });
+});
+//Answers List params: {page: , count: }
+router.get('/questions/:questionId/answers', (req, res) => {
+  // console.log('S: get/questions/:question_id/answers  req.data: ', req.params);
+  const id = req.params.questionId;
+  const url = `${BaseUrl}/${id}/answers`;
+  const params = {
+    page: req.query.page,
+    count: req.query.count
+  };
+
+  axios.get(url, { params: params, headers: { 'Authorization': GITHUB_API_KEY } })
+    .then((response) => {
+      // console.log('S: get/questions/:question_id/answers response.data.results: ', response.data.results);
+      res.status(200).send(response.data.results);
+    })
+    .catch((err) => {
+      console.log('S: get/questions/:question_id/answers err: ', err);
       res.status(404).send(err);
     });
 });
 
-router.get('/questions/:question_id/answers', (req, res) => {
-  console.log(req.params.question_id);
-  const id = req.params.question_id;
-  const url = `${BaseUrl}/${id}/answers`;
-  axios.get(url, { headers: { Authorization: GITHUB_API_KEY }, params: {page: 0, count: 5} })
+//Add a question
+router.post('/questions', (req, res) => {
+  console.log('S: post/questions req.body.data: ', req.body.data);
+  //FIXME: passing in req.body.data as postData params, may need to change
+
+  axios.post(BaseUrl, req.body.data, {
+    headers: { Authorization: GITHUB_API_KEY },
+  })
     .then((response) => {
-      res.status(200).send(response.data);
+      console.log('S: post/questions/ response: ', response);
+      res.status(201).send(response.data);
     })
     .catch((err) => {
-      console.log('err inside routes.js');
-      res.status(404).send(err);
+      console.log('S: post/questions err: ', err);
+      res.status(500).send(err);
     });
 });
+
+//Add an Answer
+router.post('/questions/:questionId/answers', (req, res) => {
+  console.log('S: post/questions/:questionId/answers req.body.data: ', req.body.data);
+  //FIXME: passing in req.body.data as postData params, may need to change
+  axios.post(`${BaseUrl}/${req.params.questionId}/answers`, req.body.data, {
+    headers: { Authorization: GITHUB_API_KEY },
+  })
+    .then((response) => {
+      console.log('S: post/questions/:question_id/answers response: ', response);
+      res.status(201).send(response.data);
+    })
+    .catch((err) => {
+      console.log('S: post/questions/:questionId/answers err: ', err);
+      res.status(500).send(err);
+    });
+});
+
+
 //  router.get('/reviews',
 module.exports = router;
+
