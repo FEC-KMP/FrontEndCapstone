@@ -8,11 +8,15 @@
   border: 10px black
 };
 
-#ReviewsContainer {
-  border: 10px black
+.ReviewsContainer {
+  border: 5px solid
 };
 
-#ReviewListEntry {
-  border: 20px black;
+.ReviewListEntry {
+  border: 20px solid blue;
   padding: 10px;
+};
+
+.border-3 {
+  border-width: 3px
 };
