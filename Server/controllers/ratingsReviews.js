@@ -7,9 +7,9 @@ const router = express.Router();
 const { GITHUB_API_KEY } = require('../config.js');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews';
 
-
+//get reviews
 router.get('/reviews', (req, res) => {
-  axios.get(BaseUrl, {
+  axios.get(`${BaseUrl}`, {
     headers: { Authorization: GITHUB_API_KEY },
     params: {
       // eslint-disable-next-line camelcase
@@ -29,11 +29,12 @@ router.get('/reviews', (req, res) => {
     });
 });
 
-router.get('/reviews/meta/:product_id', (req, res) => {
+//get meta data for a review
+router.get('/reviews/meta', (req, res) => {
   console.log(req.params);
   const id = req.params.question_id;
-  const url = `${BaseUrl}/${id}/answers`;
-  axios.get(BaseUrl, { headers: { Authorization: GITHUB_API_KEY } }, req.params.product_id)
+  const url = `${BaseUrl}/${id}`;
+  axios.get(url, { headers: { Authorization: GITHUB_API_KEY } }, req.params.product_id)
     .then((response) => {
       res.status(200).send(response.data);
     })
@@ -42,5 +43,20 @@ router.get('/reviews/meta/:product_id', (req, res) => {
       res.status(404).send(err);
     });
 });
-//  router.get('/reviews', ())
+
+//post a review
+router.post('/reviews', (req, res) => {
+  const params = [req.body.product_id, req.body.rating, req.body.summary, req.body.body, req.body.recommend, req.body.name, req.body.email, req.body.photos, req.body.characteristics];
+  axios
+    .post(BaseUrl, { headers: { Authorization: GITHUB_API_KEY }}, params)
+    .then((response) => {
+      res.status(200).send(resonse.data);
+    })
+    .catch((err) => {
+      console.log('err posting in routes', err);
+      res.status(404).send(err);
+    });
+});
+
+
 module.exports = router;
