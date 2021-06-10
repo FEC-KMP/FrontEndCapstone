@@ -12,8 +12,8 @@ var ImageGallery = ({ currentStyleObj }) => {
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-          {currentStyleObj.photos.map(((photo) => {
-            return <CaroselImg photo={photo} index={photos.indexOf(photo)}/>;
+          {(currentStyleObj.photos).map(((photoObj) => {
+            return <CaroselImg photoObj={photoObj} index={photos.indexOf(photoObj)}/>;
           }))}
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

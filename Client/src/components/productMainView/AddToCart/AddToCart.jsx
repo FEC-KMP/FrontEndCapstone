@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SizeSelectorOption from './SizeSelectorOption.jsx';
 import QuantSelectorOption from './QuantSelectorOption.jsx';
 
@@ -23,30 +23,35 @@ var findQuant = (currentSizeSelected, skuArray) => {
 };
 
 //FIXME: add cart functionality
-onAddToCart = (currentSizeSelected, currentQuantSelected, currentStyleId) => {
+var onAddToCart = (currentSizeSelected, currentQuantSelected, currentStyleId) => {
 
 };
 
-//show options of size dropdown --> "open"
-var showDropDown = () => {
-  var sizeDropdown = getElementById('sizeSelectorInStock');
-  sizeDropdown.size = sizeDropdown.length;
-  sizeDropdown.focus();
-};
+// //show options of size dropdown --> "open"
+// var showDropDown = () => {
+//   var sizeDropdown = getElementById('sizeSelectorInStock');
+//   sizeDropdown.size = sizeDropdown.length;
+//   sizeDropdown.focus();
+// };
 
 
-var AddToCart = ({ currentStyleObj, styleInfo, onAddToBag }) => {
-  if (!currentStyleObj) { return 'data not found'; }
-
+var AddToCart = ({ currentStyleObj }) => {
+  if (!currentStyleObj) { return ('data not found'); }
   var [currentSizeSelected, updateCurrentSizeSelected] = useState();
   var [currentQuantSelected, updateCurrentQuantSelected] = useState();
   var [isSizeSelected, updateIsSizeSelected] = useState(false);
   var [isQuantSelected, updateIsQuantSelected] = useState(false);
-  var [isInStock, updateIsInStock] = useState(false);
+  var [isInStock, updateIsInStock] = useState();
   var [isSelectMsgVisable, updateIsSelectMsgVisable] = useState(false);
+  var [skusArray, updateSkusArray] = useState(Object.entries(currentStyleObj.skus));
 
-  var skusArray = Object.entries(currentStyleObj.skus);
-  updateIsInStock(inStock(skusArray));
+  useEffect(() => {
+    updateSkusArray(Object.entries(currentStyleObj.skus));
+    updateIsInStock(inStock(skusArray));
+    updateIsSizeSelected(false);
+    updateIsQuantSelected(false);
+    updateIsSelectMsgVisable(false);
+  }, [currentStyleObj]);
 
 
   return (
@@ -70,7 +75,7 @@ var AddToCart = ({ currentStyleObj, styleInfo, onAddToBag }) => {
       </select>
 
       //if size is selected
-      <select name="quantSelector" id="quantSelector" className={`col-lg-3 form-select ${isSizeSelected ? '' : 'hidden'}`} aria-label="Quantity selector" onChange={ (event) => { updateCurrentQuantSelected(event.target.value); }}>
+      <select name="quantSelector" id="quantSelector" className={`col-lg-3 form-select ${isSizeSelected ? '' : 'hidden'}`} aria-label="Quantity selector" onChange={(event) => { updateCurrentQuantSelected(event.target.value); }}>
         {[...Array(currentQuantSelected).keys()].map((num) => {
           if (num + 1 < 16) {
             return <QuantSelectorOption num={num + 1} />;
@@ -87,7 +92,7 @@ var AddToCart = ({ currentStyleObj, styleInfo, onAddToBag }) => {
         if (!isSizeSelected) {
           updateIsSelectMsgVisable(true);
         } else if (isSizeSelected && isQuantSelected) {
-          onAddToBag(currentSizeSelected, currentQuantSelected, currentStyleObj.style_id);
+          onAddToCart(currentSizeSelected, currentQuantSelected, currentStyleObj.style_id);
         }
       }}>Add to Bag</button>
     </div>

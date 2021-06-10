@@ -40,17 +40,17 @@ import ProductIdContext from '../ProductIdContext.jsx';
 
 
 var ProductMain = (props) => {
-  var { productId, updateProductId } = useContext(ProductIdContext);
 
   var [productInfo, updateProductInfo] = useState();
   var [currentThumbnail, updateCurrentThumbnail] = useState();
   var [currentImgIndex, updateCurrentImgIndex] = useState();
   var [currentStyleObj, updateCurrentStyleObj] = useState();
   var [styleInfo, updateStyleInfo] = useState();
+  var { productId, updateProductId } = useContext(ProductIdContext);
 
   var getProductInfo = (productId) => {
     axios.get(`/products/${productId}/`)
-      .then((result) => {
+      .then((results) => {
         //add list to state
         // console.log('C: productMain getProductInfo get/products/:productId success');
         updateProductInfo(results.data);
@@ -63,7 +63,7 @@ var ProductMain = (props) => {
 
   var getStyleInfo = (productId, callback) => {
     axios.get(`/products/${productId}/styles`)
-      .then((result) => {
+      .then((results) => {
         //add list to state
         // console.log("C: productMain get/getStyleInfo get/products/:productiD/styles  success");
         updateStyleInfo(results.data.results);
@@ -84,11 +84,11 @@ var ProductMain = (props) => {
   //container for product info
   //container for styles info
 
-  onStyleThumbnailClick = () => {
+  var onStyleThumbnailClick = () => {
 
   };
 
-  onCaroselThumbnailClick = () => {
+  var onCaroselThumbnailClick = () => {
 
   };
 
@@ -102,7 +102,7 @@ var ProductMain = (props) => {
       <div className="col-lg-5">
         <ProductInformation currentStyleObj={currentStyleObj} productInfo={productInfo} />
         <StyleSelector currentStyleObj={currentStyleObj} productInfo={productInfo} />
-        <AddToCart currentStyleObj={currentStyleObj} styleInfo={styleInfo} />
+        <AddToCart currentStyleObj={currentStyleObj} />
       </div>
       <div className="col-lg-12">
         <ProductOverview productInfo={productInfo} />
