@@ -72,8 +72,8 @@ var AddToCart = ({ currentStyleObj, styleInfo, onAddToBag }) => {
       //if size is selected
       <select name="quantSelector" id="quantSelector" className={`col-lg-3 form-select ${isSizeSelected ? '' : 'hidden'}`} aria-label="Quantity selector" onChange={ (event) => { updateCurrentQuantSelected(event.target.value); }}>
         {[...Array(currentQuantSelected).keys()].map((num) => {
-          if (num < 16) {
-            return <QuantSelectorOption num={num} />;
+          if (num + 1 < 16) {
+            return <QuantSelectorOption num={num + 1} />;
           }
         })}
       </select>
