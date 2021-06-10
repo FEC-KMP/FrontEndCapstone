@@ -33,8 +33,8 @@ router.get('/reviews', (req, res) => {
 router.get('/reviews/meta', (req, res) => {
   console.log(req.params);
   const id = req.params.question_id;
-  const url = `${BaseUrl}/${id}`;
-  axios.get(url, { headers: { Authorization: GITHUB_API_KEY } }, req.params.product_id)
+  const url = `${BaseUrl}/meta/${id}`;
+  axios.get(url, { headers: { Authorization: GITHUB_API_KEY } }, id)
     .then((response) => {
       res.status(200).send(response.data);
     })
