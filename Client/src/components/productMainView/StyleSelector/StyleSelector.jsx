@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import ThumbnailRow from './ThumbnailRow.jsx';
+import Thumbnail from './Thumbnail.jsx';
 
-var StyleSelector = ({ styleInfo }) => {
+var StyleSelector = ({ styleInfo, onStyleThumbnailClick }) => {
   //arrange thumbnails in rows of 4
   //click handler on thumbnail to change currentstyle
   if (!styleInfo) { return 'data not found'; }
 
-  var stylePhotos = styleInfo.map((styleObj) => {
+  var stylePhotoUrls = styleInfo.map((styleObj) => {
     return styleObj.photos[0].thumbnail_url;
   });
 
@@ -16,15 +16,9 @@ var StyleSelector = ({ styleInfo }) => {
         <strong>STYLE &gt; </strong> SELECTED STYLE
       </div>
       <div className="thumbnails">
-        {/* <ThumbnailRow stylePhotos={stylePhotos} /> */}
-        <img className="styleThumbnail" src="./imgs/pug1.jpeg"></img>
-        <img className="styleThumbnail" src="./imgs/pug2.jpeg"></img>
-        <img className="styleThumbnail" src="./imgs/pug3.jpeg"></img>
-        <img className="styleThumbnail" src="./imgs/pug4.jpeg"></img>
-        <img className="styleThumbnail" src="./imgs/pug1.jpeg"></img>
-        <img className="styleThumbnail" src="./imgs/pug2.jpeg"></img>
-        <img className="styleThumbnail" src="./imgs/pug3.jpeg"></img>
-        <img className="styleThumbnail" src="./imgs/pug4.jpeg"></img>
+        {styleInfo.map((styleObj) => {
+          return <Thumbnail styleObj={styleObj} onStyleThumbnailClick={onStyleThumbnailClick}/>;
+        })}
       </div>
     </div>
   );

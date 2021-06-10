@@ -79,13 +79,15 @@ var ProductMain = (props) => {
     getStyleInfo(productId);
   }, [productId]);
 
-  //currently selected thumbnail
-  //currently selected style
-  //container for product info
-  //container for styles info
 
-  var onStyleThumbnailClick = () => {
-
+  var onStyleThumbnailClick = (styleId) => {
+    var newStyleObj;
+    styleInfo.forEach((styleObj) => {
+      if (styleObj.style_id === styleId) {
+        newStyleObj = styleObj;
+      }
+    });
+    updateCurrentStyleObj(newStyleObj);
   };
 
   var onCaroselThumbnailClick = () => {
@@ -101,7 +103,7 @@ var ProductMain = (props) => {
       </div>
       <div className="col-lg-5">
         <ProductInformation currentStyleObj={currentStyleObj} productInfo={productInfo} />
-        <StyleSelector styleInfo={styleInfo} />
+        <StyleSelector styleInfo={styleInfo} onStyleThumbnailClick={onStyleThumbnailClick}/>
         <AddToCart currentStyleObj={currentStyleObj} />
       </div>
       <div className="col-lg-12">
