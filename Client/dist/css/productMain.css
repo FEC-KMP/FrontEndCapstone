@@ -45,12 +45,6 @@ body {
   padding-top: 10px;
 }
 
-.styleThumbnail {
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  padding: 10px;
-}
 
 .ProductOverviewHeader {
   font-weight: 700;
@@ -64,8 +58,13 @@ body {
   padding-top: 10px;
 }
 
-#sizeSelector {
-  padding: 10px;
+#sizeSelectorInStock, #sizeSelectorOutOfStock {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
 
 }
 
@@ -76,4 +75,33 @@ body {
 
 .hidden, .hidden::before {
   display: none;
+}
+
+.btn {
+  border: 2px solid grey;
+  border-radius: 0;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.styleThumbnail {
+  width: 70px;
+  height: 70px;
+  flex: 25%;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.styleThumbnail img {
+  margin-top: 8px;
+  vertical-align: middle;
 }

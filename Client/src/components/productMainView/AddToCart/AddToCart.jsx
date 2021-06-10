@@ -38,7 +38,7 @@ var onAddToCart = (currentSizeSelected, currentQuantSelected, currentStyleId) =>
 var AddToCart = ({ currentStyleObj }) => {
   if (!currentStyleObj) { return ('data not found'); }
   var [currentSizeSelected, updateCurrentSizeSelected] = useState();
-  var [currentQuantSelected, updateCurrentQuantSelected] = useState();
+  var [currentQuantSelected, updateCurrentQuantSelected] = useState(1);
   var [isSizeSelected, updateIsSizeSelected] = useState(false);
   var [isQuantSelected, updateIsQuantSelected] = useState(false);
   var [isInStock, updateIsInStock] = useState();
@@ -60,7 +60,7 @@ var AddToCart = ({ currentStyleObj }) => {
       <div className={`${isSelectMsgVisable ? '' : 'hidden'}`}>Please select size</div>
 
       {/* //in stock selector */}
-      <select name="sizeSelector" id="sizeSelectorInStock" className={`col-lg-6 form-select ${isInStock ? '' : 'hidden'}`} aria-label="Size selector" onChange={(event) => { updateIsSizeSelected(true); updateCurrentSizeSelected(event.target.value); }}>
+      <select name="sizeSelector" id="sizeSelectorInStock" className={`col-lg-7 form-select ${isInStock ? '' : 'hidden'}`} aria-label="Size selector" onChange={(event) => { updateIsSizeSelected(true); updateCurrentSizeSelected(event.target.value); }}>
         <option value='Select Size' selected disabled>Select Size</option>
         {skuArray.map((sku) => {
           if (sku[1].quantity > 0) {
@@ -70,12 +70,12 @@ var AddToCart = ({ currentStyleObj }) => {
       </select>
 
       {/* //Out of stock selector */}
-      <select name="sizeSelector" id="sizeSelectorOutOfStock" className={`col-lg-6 form-select ${isInStock ? 'hidden' : ''}`} aria-label="Size selector - Out of Stock" disabled>
+      <select name="sizeSelector" id="sizeSelectorOutOfStock" className={`col-lg-7 form-select ${isInStock ? 'hidden' : ''}`} aria-label="Size selector - Out of Stock" disabled>
         <option value='OUT OF STOCK' selected>OUT OF STOCK</option>
       </select>
 
       {/* //if size is selected */}
-      <select name="quantSelector" id="quantSelector" className={`col-lg-3 form-select ${isSizeSelected ? '' : 'hidden'}`} aria-label="Quantity selector" onChange={(event) => { updateCurrentQuantSelected(event.target.value); }}>
+      <select name="quantSelector" id="quantSelector" className={`col-lg-4 form-select ${isSizeSelected ? '' : 'hidden'}`} aria-label="Quantity selector" onChange={(event) => { updateCurrentQuantSelected(event.target.value); }} >
         {[...Array(findQuant(currentSizeSelected, skuArray)).keys()].map((num) => {
           if (num + 1 < 16) {
             return <QuantSelectorOption num={num + 1} />;
@@ -84,15 +84,15 @@ var AddToCart = ({ currentStyleObj }) => {
       </select>
 
       {/* //if no size selected */}
-      <select name="quantSelector" id="quantSelector" className={`col-lg-3 form-select ${isSizeSelected ? 'hidden' : ''}`} aria-label="Quantity selector disabled">
-        <option vale='-' disabled>-</option>
+      <select name="quantSelector" id="quantSelector" className={`col-lg-4 form-select ${isSizeSelected ? 'hidden' : ''}`} aria-label="Quantity selector disabled" disabled>
+        <option value='-' disabled selected>-</option>
       </select>
 
       {/* AddToCart button
       if out of stock, is hidden
       if size not selected, makes IsSelectMsgVisable message show
       if quant and size are selected, "adds to cart" */}
-      <button className={`AddToCartButton ${isInStock ? '' : 'hidden'}`} onClick={() => {
+      <button className={`btn AddToCartButton ${isInStock ? '' : 'hidden'}`} onClick={() => {
         if (!isSizeSelected) {
           updateIsSelectMsgVisable(true);
         } else if (isSizeSelected && isQuantSelected) {

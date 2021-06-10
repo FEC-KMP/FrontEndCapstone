@@ -3,7 +3,7 @@ import axios from 'axios';
 import ImageGallery from './ImageGallery/ImageGallery.jsx';
 import ProductInformation from './ProductInformation.jsx';
 import ProductOverview from './ProductOverview.jsx';
-import StyleSelector from './StyleSelector.jsx';
+import StyleSelector from './StyleSelector/StyleSelector.jsx';
 import AddToCart from './AddToCart/AddToCart.jsx';
 import ProductIdContext from '../ProductIdContext.jsx';
 
@@ -101,7 +101,7 @@ var ProductMain = (props) => {
       </div>
       <div className="col-lg-5">
         <ProductInformation currentStyleObj={currentStyleObj} productInfo={productInfo} />
-        <StyleSelector currentStyleObj={currentStyleObj} productInfo={productInfo} />
+        <StyleSelector styleInfo={styleInfo} />
         <AddToCart currentStyleObj={currentStyleObj} />
       </div>
       <div className="col-lg-12">
