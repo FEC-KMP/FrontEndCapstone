@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import SizeSelectorOption from './SizeSelectorOption.jsx';
 import QuantSelectorOption from './QuantSelectorOption.jsx';
 
-var inStock = (skusArray) => {
+var inStock = (skuArray) => {
   var isInStock = false;
-  skusArray.forEach((sku) => {
+  skuArray.forEach((sku) => {
     if (sku[1].quantity > 0) {
       isInStock = true;
     }
@@ -16,7 +16,7 @@ var findQuant = (currentSizeSelected, skuArray) => {
   var quant = 0;
   skuArray.forEach((sku) => {
     if (sku[1].size === currentSizeSelected) {
-      quant = sku[1].quant;
+      quant = sku[1].quantity;
     }
   });
   return quant;
@@ -43,11 +43,11 @@ var AddToCart = ({ currentStyleObj }) => {
   var [isQuantSelected, updateIsQuantSelected] = useState(false);
   var [isInStock, updateIsInStock] = useState();
   var [isSelectMsgVisable, updateIsSelectMsgVisable] = useState(false);
-  var [skusArray, updateSkusArray] = useState(Object.entries(currentStyleObj.skus));
+  var [skuArray, updateSkusArray] = useState(Object.entries(currentStyleObj.skus));
 
   useEffect(() => {
     updateSkusArray(Object.entries(currentStyleObj.skus));
-    updateIsInStock(inStock(skusArray));
+    updateIsInStock(inStock(skuArray));
     updateIsSizeSelected(false);
     updateIsQuantSelected(false);
     updateIsSelectMsgVisable(false);
@@ -56,38 +56,42 @@ var AddToCart = ({ currentStyleObj }) => {
 
   return (
     <div className="AddToCart">
-      //select size message, renders if addToCart button pressed without style selected
+      {/* //select size message, renders if addToCart button pressed without style selected */}
       <div className={`${isSelectMsgVisable ? '' : 'hidden'}`}>Please select size</div>
 
-      //in stock selector
-      <select name="sizeSelector" id="sizeSelectorInStock" className={`col-lg-6 form-select ${isInStock ? '' : 'hidden'}`} aria-label="Size selector" onChange={(event) => { updateIsSizeSelected(true); updateCurrentSizeSelected(event.target.value); updateCurrentQuantSelected(findQuant(currentSizeSelected, skyArray)); }}>
+      {/* //in stock selector */}
+      <select name="sizeSelector" id="sizeSelectorInStock" className={`col-lg-6 form-select ${isInStock ? '' : 'hidden'}`} aria-label="Size selector" onChange={(event) => { updateIsSizeSelected(true); updateCurrentSizeSelected(event.target.value); }}>
         <option value='Select Size' selected disabled>Select Size</option>
-        {skusArray.map((sku) => {
+        {skuArray.map((sku) => {
           if (sku[1].quantity > 0) {
             return <SizeSelectorOption sku={sku} />;
           }
         })}
       </select>
 
-      //Out of stock selector
+      {/* //Out of stock selector */}
       <select name="sizeSelector" id="sizeSelectorOutOfStock" className={`col-lg-6 form-select ${isInStock ? 'hidden' : ''}`} aria-label="Size selector - Out of Stock" disabled>
         <option value='OUT OF STOCK' selected>OUT OF STOCK</option>
       </select>
 
-      //if size is selected
+      {/* //if size is selected */}
       <select name="quantSelector" id="quantSelector" className={`col-lg-3 form-select ${isSizeSelected ? '' : 'hidden'}`} aria-label="Quantity selector" onChange={(event) => { updateCurrentQuantSelected(event.target.value); }}>
-        {[...Array(currentQuantSelected).keys()].map((num) => {
+        {[...Array(findQuant(currentSizeSelected, skuArray)).keys()].map((num) => {
           if (num + 1 < 16) {
             return <QuantSelectorOption num={num + 1} />;
           }
         })}
       </select>
 
-      //if no size selected
+      {/* //if no size selected */}
       <select name="quantSelector" id="quantSelector" className={`col-lg-3 form-select ${isSizeSelected ? 'hidden' : ''}`} aria-label="Quantity selector disabled">
         <option vale='-' disabled>-</option>
       </select>
 
+      {/* AddToCart button
+      if out of stock, is hidden
+      if size not selected, makes IsSelectMsgVisable message show
+      if quant and size are selected, "adds to cart" */}
       <button className={`AddToCartButton ${isInStock ? '' : 'hidden'}`} onClick={() => {
         if (!isSizeSelected) {
           updateIsSelectMsgVisable(true);

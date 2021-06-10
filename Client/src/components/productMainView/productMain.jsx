@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import ImageGallery from './ImageGallery.jsx';
+import ImageGallery from './ImageGallery/ImageGallery.jsx';
 import ProductInformation from './ProductInformation.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import StyleSelector from './StyleSelector.jsx';
@@ -52,7 +52,7 @@ var ProductMain = (props) => {
     axios.get(`/products/${productId}/`)
       .then((results) => {
         //add list to state
-        // console.log('C: productMain getProductInfo get/products/:productId success');
+        console.log('C: productMain getProductInfo get/products/:productId success: ', results.data);
         updateProductInfo(results.data);
       })
       .catch((err) => {
@@ -65,7 +65,7 @@ var ProductMain = (props) => {
     axios.get(`/products/${productId}/styles`)
       .then((results) => {
         //add list to state
-        // console.log("C: productMain get/getStyleInfo get/products/:productiD/styles  success");
+        console.log('C: productMain get/getStyleInfo get/products/:productiD/styles  success');
         updateStyleInfo(results.data.results);
         updateCurrentStyleObj(results.data.results[0]);
       })
@@ -97,7 +97,7 @@ var ProductMain = (props) => {
   return (
     <div className="ProductDetail row">
       <div className="col-lg-7">
-        <ImageGallery currentStyleObj={currentStyleObj} currentThumbnail={currentThumbnail} currentImgIndex={currentImgIndex}/>
+        <ImageGallery currentStyleObj={currentStyleObj} currentThumbnail={currentThumbnail} currentImgIndex={currentImgIndex} />
       </div>
       <div className="col-lg-5">
         <ProductInformation currentStyleObj={currentStyleObj} productInfo={productInfo} />

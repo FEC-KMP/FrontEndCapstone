@@ -19,8 +19,6 @@ body {
 
 /* Image Gallery */
 .ImageGallery {
-  width: 400px;
-  height: 400px;
   background-color: grey;
 }
 
