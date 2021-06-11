@@ -1,6 +1,9 @@
+.navbar {
+  background-color: whitesmoke !important;
+}
 
 body {
-  background: white;
+  background: mintcream;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -9,17 +12,20 @@ body {
   color: #585858;
 }
 
-.ProductDetail {
-  border: 3px solid grey;
+.container {
+  background-color: whitesmoke;
 }
 
-.logoBanner {
-  height: 100px;
+.ProductDetail {
+  /* height: 250px; */
 }
 
 /* Image Gallery */
-.ImageGallery {
-  background-color: grey;
+.carousel-item {
+  height: 400px;
+}
+.carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
+  width: 100%;
 }
 
 .ProductRating {
@@ -94,6 +100,7 @@ body {
 }
 
 .styleThumbnail {
+  display: flex;
   width: 70px;
   height: 70px;
   flex: 25%;
