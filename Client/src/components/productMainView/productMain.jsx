@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import ImageGallery from './ImageGallery.jsx';
+import ImageGallery from './ImageGallery/ImageGallery.jsx';
 import ProductInformation from './ProductInformation.jsx';
 import ProductOverview from './ProductOverview.jsx';
-import StyleSelector from './StyleSelector.jsx';
-import AddToCart from './AddToCart.jsx';
+import StyleSelector from './StyleSelector/StyleSelector.jsx';
+import AddToCart from './AddToCart/AddToCart.jsx';
 import ProductIdContext from '../ProductIdContext.jsx';
 
 // var getListOfProducts = () => {
@@ -38,81 +38,76 @@ import ProductIdContext from '../ProductIdContext.jsx';
 //Body Parameter
 //data object
 
-var getProductInfo = (productId, callback) => {
-  axios.get(`/products/${productId}/`)
-    .then((result) => {
-      //add list to state
-      // console.log('C: productMain getProductInfo get/products/:productId success');
-      callback(null, result);
-    })
-    .catch((err) => {
-      console.log('C: productMain getProductInfo get/products/:productiD/  err: ', err);
-      callback(err, null);
-    });
-};
-
-
-var getStyleInfo = (productId, callback) => {
-  axios.get(`/products/${productId}/styles`)
-    .then((result) => {
-      //add list to state
-      // console.log("C: productMain get/getStyleInfo get/products/:productiD/styles  success");
-      callback(null, result);
-    })
-    .catch((err) => {
-      console.log('C: productMain getStyleInfo get/products/:productiD/styles err: ', err);
-      callback(err, null);
-    });
-};
 
 var ProductMain = (props) => {
-  var {productId, updateProductId} = useContext(ProductIdContext);
 
   var [productInfo, updateProductInfo] = useState();
   var [currentThumbnail, updateCurrentThumbnail] = useState();
+  var [currentImgIndex, updateCurrentImgIndex] = useState();
   var [currentStyleObj, updateCurrentStyleObj] = useState();
   var [styleInfo, updateStyleInfo] = useState();
+  var { productId, updateProductId } = useContext(ProductIdContext);
 
-  useEffect(() => {
-    getProductInfo(productId, (err, results) => {
-      if (err) {
-        console.log('C: productMain productMain useEffect getProductInfo  err: ', err);
-      } else {
+  var getProductInfo = (productId) => {
+    axios.get(`/products/${productId}/`)
+      .then((results) => {
+        //add list to state
+        console.log('C: productMain getProductInfo get/products/:productId success: ', results.data);
         updateProductInfo(results.data);
-      }
+      })
+      .catch((err) => {
+        console.log('C: productMain getProductInfo get/products/:productiD/  err: ', err);
+      });
+  };
 
-    });
 
-    getStyleInfo(productId, (err, results) => {
-      if (err) {
-        console.log('C: productMain productMain useEffect getProductInfo  err: ', err);
-      } else {
+  var getStyleInfo = (productId, callback) => {
+    axios.get(`/products/${productId}/styles`)
+      .then((results) => {
+        //add list to state
+        console.log('C: productMain get/getStyleInfo get/products/:productiD/styles  success');
         updateStyleInfo(results.data.results);
         updateCurrentStyleObj(results.data.results[0]);
-      }
-    });
+      })
+      .catch((err) => {
+        console.log('C: productMain getStyleInfo get/products/:productiD/styles err: ', err);
+      });
+  };
 
+  useEffect(() => {
+    getProductInfo(productId);
+    getStyleInfo(productId);
   }, [productId]);
 
 
+  var onStyleThumbnailClick = (styleId) => {
+    var newStyleObj;
+    styleInfo.forEach((styleObj) => {
+      if (styleObj.style_id === styleId) {
+        newStyleObj = styleObj;
+      }
+    });
+    updateCurrentStyleObj(newStyleObj);
+  };
 
-  //currently selected thumbnail
-  //currently selected style
-  //container for product info
-  //container for styles info
+  var onCaroselThumbnailClick = () => {
+
+  };
+
+
 
   return (
     <div className="ProductDetail row">
       <div className="col-lg-7">
-        <ImageGallery currentStyleObj={currentStyleObj} currentThumbnail={currentThumbnail}/>
+        <ImageGallery currentStyleObj={currentStyleObj} currentThumbnail={currentThumbnail} currentImgIndex={currentImgIndex} />
       </div>
       <div className="col-lg-5">
-        <ProductInformation currentStyleObj={currentStyleObj} productInfo={productInfo}/>
-        <StyleSelector currentStyleObj={currentStyleObj} productInfo={productInfo}/>
-        <AddToCart currentStyleObj={currentStyleObj}/>
+        <ProductInformation currentStyleObj={currentStyleObj} productInfo={productInfo} />
+        <StyleSelector styleInfo={styleInfo} onStyleThumbnailClick={onStyleThumbnailClick}/>
+        <AddToCart currentStyleObj={currentStyleObj} />
       </div>
       <div className="col-lg-12">
-        <ProductOverview productInfo={productInfo}/>
+        <ProductOverview productInfo={productInfo} />
       </div>
     </div>
   );
