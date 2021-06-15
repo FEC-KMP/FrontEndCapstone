@@ -1,6 +1,6 @@
 import React from 'react';
 
-var CaroselImg = ({ photoObj, index }) => {
+var CarouselImg = ({ photoObj, index }) => {
   if (index === 1) {
     return (
       <div className="carousel-item active" >
@@ -15,4 +15,4 @@ var CaroselImg = ({ photoObj, index }) => {
   );
 };
 
-export default CaroselImg;
+export default CarouselImg;

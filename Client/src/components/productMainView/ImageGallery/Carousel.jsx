@@ -1,21 +1,37 @@
 import React, { useState } from 'react';
+import CarouselImg from './CarouselImg.jsx';
 import CarouselThumbnails from './CarouselThumbnails.jsx';
-import Carousel from './Carousel.jsx';
 
-var ImageGallery = ({ currentStyleObj }) => {
-  var [isFirstImg, updateIsFirstImg] = useState(false)
-  var [isExpanded, updateIsExpanded] = useState(false);
-
-
+var Carousel = ({ currentStyleObj, updateIsExpanded }) => {
   if (!currentStyleObj) { return 'data not found'; }
   return (
-    <div className="ImageGallery">
-      <Carousel currentStyleObj={currentStyleObj} updateIsExpanded={updateIsExpanded} />
-    </div>
+    <div className="Carousel">
+      <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+        <a className="expandButton col" onClick={() => { updateIsExpanded(true) }} role="button" data-slide="next">
+          <i class="fas fa-expand"></i>
+        </a>
+        <div className="carousel-inner">
+          <div className="IGThumbnails col-lg-4 col">
+            <CarouselThumbnails currentStyleObj={currentStyleObj} />
+          </div>
+          {(currentStyleObj.photos).map(((photoObj) => {
+            return <CarouselImg photoObj={photoObj} index={currentStyleObj.photos.indexOf(photoObj)} />;
+          }))}
+        </div>
+        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="sr-only">Previous</span>
+        </a>
+        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="sr-only">Next</span>
+        </a>
+      </div>
+    </div >
   );
 };
 
-export default ImageGallery;
+export default Carousel;
 
 
 // <div class="container mt-5">
