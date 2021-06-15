@@ -1,107 +1,103 @@
 import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import SearchQAForm from './SearchQAForm.jsx';
 import QAList from './QAList.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
 import ProductIdContext from '../ProductIdContext.jsx';
-import axios from 'axios';
+import { qAContext } from '../../context/QAContext.jsx';
 
-var getListOfQuestions = (productId, callback, page = 1, count = 5) => {
-  //product_id, page, count => parameters
-  var params = { productId, page, count };
-  // console.log('C: getListOfQuestions params: ', params);
-  axios.get('/qa/questions/', { params })
-    .then((results) => {
-      console.log('getListOfQuestions get/qa/questions result: ', results);
-      callback(null, results.data);
-    })
-    .catch((err) => {
-      console.log('C: getListOfQuestions get/qa/questions err: ', err);
-      callback(err, null);
-    });
-};
-
-var getListOfAnswers = (questionId, callback, page = 1, count = 5) => {
-  //product_id, page, count => parameters
-  const params = { page, count };
-  // console.log('C: getListOfQuestions params: ', params);
-  axios.get(`/qa/questions/${questionId}/answers`, { params })
-    .then((results) => {
-      // console.log('getListOfQuestions get/qa/questions result: ', results);
-      callback(null, results.data);
-    })
-    .catch((err) => {
-      console.log('C: getListOfQuestions get/qa/questions err: ', err);
-      callback(err, null);
-    });
-};
-
-var addQuestion = (body, name, email, productId, callback) => {
-  var data = {
-    body: body,
-    name: name,
-    email: email,
-    'product_id': productId
-  };
-  axios.post('/qa/questions', { data })
-    .then((results) => {
-      console.log('C: addQuestion get/qa/questions success results: ', results);
-      callback(null, results); //FIXME: results? //FIXME: may want to add answer to questionsList
-
-    })
-    .catch((err) => {
-      console.log('C: addQuestion get/qa/questions err: ', err);
-      callback(err, null);
-    });
-};
-
-
-var addAnswer = (body, name, email, photos, questionId, callback) => {
-  const data = {body, name, email, photos};
-  axios.post(`/qa/questions/${questionId}/answers`, { data })
-    .then((results) => {
-      console.log('C: addAnswer get/qa/questions/:questions_id/answers success results: ', results);
-      callback(null, results); //FIXME: results? //FIXME: may want to add answer to answersList
-    })
-    .catch((err) => {
-      console.log('C: addAnswer get/qa/questions/:questions_id/answers err: ', err);
-      callback(err, null);
-    });
-};
 
 
 const QuestionsAnswers = () => {
-  var { productId, updateProductId } = useContext(ProductIdContext);
-  var [questionsList, updateQuestionsList] = useState();
-  var [answersList, updateAnswersList] = useState();
+  const { productId, updateProductId } = useContext(ProductIdContext);
+  const { getListOfQuestions, questionList, setQuestionList, renderListQ, setRenderListQ
+  } = useContext(qAContext);
+
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getListOfQuestions(productId, (err, results) => {
       if (err) {
         console.log('C: QuestionsAnswers useEffect getListOfQuestions err: ', err);
       } else {
-        // console.log('C: QuestionsAnswers useEffect getListOfQuestions results: ', results);
-        updateQuestionsList(results);
+        console.log('C: QuestionsAnswers useEffect getListOfQuestions results: ', results);
+        const sortQuestions = results.sort((a, b) => (b.question_helpfulness - a.question_helpfulness));
+        console.log('sortQuestions', sortQuestions);
+        setQuestionList(sortQuestions);
       }
     });
 
-    // //FIXME: this one is based on questionId, so unsure how you want to handle that Phong
-    // getListOfAnswers(questionId, (err, results) => {
-    //   if (err) {
-    //     console.log('C: QuestionsAnswers useEffect getListOfAnswers err: ', err);
-    //   } else {
-    //     console.log('C: QuestionsAnswers useEffect getListOfAnswers results: ', results);
-    //     updateQuestionsList(results);
-    //   }
-    // });
-
   }, [productId]);
 
-  return (
+  useEffect(() => {
+    if (questionList) {
+      setRenderListQ(questionList.slice(0, 4));
+      setLoading(false);
+    }
+  }, [questionList]);
+
+  const handleSearch = (searchQuestion) => {
+    const searchResult = questionList.filter(question => (question.question_body.toLowerCase().includes(searchQuestion.toLowerCase())));
+    if (searchQuestion.length >= 3) {
+      setRenderListQ(searchResult.slice(0, 4));
+    }
+  };
+
+  const moreQuestions = (renderListQ && questionList.length > 4) ? (
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div id="summary">
+            <div class="collapse" id="collapseSummary">
+              {questionList.slice(0, 6).map(question => (
+                <QAList
+                  key={question.question_id}
+                  question={question}
+                />
+              ))}
+            </div>
+            <a class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  ) : null;
+
+  return !loading ? (
+
     <div className="questionsContainer">
       <h1>QUESTIONS AND ANSWERS</h1>
-      <SearchQAForm />
-      <QAList questionsList={questionsList} />
+      <SearchQAForm handleSearch={handleSearch}/>
+      <div>{renderListQ.map(question => (
+        <QAList
+          key={question.question_id}
+          question={question}
+        />
+      ))}
+      {questionList.length > 4 && (
+        moreQuestion
+      )}
+      </div>
+
+
       <AskQuestionForm />
     </div>
-  );
+  ) : (
+      <h1>Loading...</h1>
+    );
 };
 export default QuestionsAnswers;
+
+
+{/* <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div id="summary">
+        <p class="collapse" id="collapseSummary">
+
+        </p>
+        <a class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary"></a>
+      </div>
+    </div>
+  </div>
+</div> */}

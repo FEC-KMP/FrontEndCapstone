@@ -2,22 +2,23 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-const GITHUB_API_KEY = require('../config');
+const {GITHUB_API_KEY} = require('../config');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions';
+
 
 //List questions
 router.get('/questions', (req, res) => {
   // console.log("got to get/questions serverside, req.body: ", req.query)
   axios.get(BaseUrl, {
     params: {
-      'product_id': req.query.productId,
+      product_id: req.query.product_id,
       page: req.query.page,
       count: req.query.count
     },
     headers: { Authorization: GITHUB_API_KEY }
   })
     .then((response) => {
-      // console.log('S: get/qa/questions response', response.data.results);
+      console.log('S: get/qa/questions response', response.data.results);
       res.status(200).send(response.data.results);
     })
     .catch((err) => {
@@ -50,8 +51,13 @@ router.get('/questions/:questionId/answers', (req, res) => {
 router.post('/questions', (req, res) => {
   console.log('S: post/questions req.body.data: ', req.body.data);
   //FIXME: passing in req.body.data as postData params, may need to change
-
-  axios.post(BaseUrl, req.body.data, {
+  // const params = {
+  //   body: req.body.body,
+  //   name: req.body.name,
+  //   email: req.body.email,
+  //   productId: req.body.product_id
+  // }
+  axios.post(BaseUrl, req.body, {
     headers: { Authorization: GITHUB_API_KEY },
   })
     .then((response) => {
