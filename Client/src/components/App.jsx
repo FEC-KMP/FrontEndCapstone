@@ -5,19 +5,22 @@ import ProductMain from './productMainView/productMain.jsx';
 import GITHUB_API_KEY from '../api/githubApi.js';
 import RatingsAndReviews from './ratingsReviewsView/RatingsAndReviews.jsx';
 import ProductIdContext from './ProductIdContext.jsx';
+import {QAProvider} from '../context/QAContext.jsx';
 
 
 
 var App = () => {
   const [productId, updateProductId] = useState(18078);
   return (
-    <ProductIdContext.Provider value={{productId, updateProductId}}>
+    <ProductIdContext.Provider value={{ productId, updateProductId }}>
       <div className="container">
         <div className="logoBanner"> logo banner</div>
         <ProductMain />
-        <QuestionsAnswers />
+        <QAProvider>
+          <QuestionsAnswers />
+        </QAProvider>
         <div>
-          <RatingsAndReviews/>
+          <RatingsAndReviews />
         </div>
       </div>
     </ProductIdContext.Provider>
