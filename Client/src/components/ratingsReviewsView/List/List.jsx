@@ -3,8 +3,9 @@ import Entry from './Entry.jsx';
 import RatingsAndReviews from '../RatingsAndReviews.jsx';
 import ReviewsContainer from '../Containers/ReviewsContainer.jsx';
 
-const List = ({ reviews }) => {
-  let reviewsArray = reviews.results;
+const List = ({ reviewsInfo }) => {
+  if (!reviewsInfo) { return 'data not found'; }
+  let reviewsArray = reviewsInfo.results;
   return (
     <div>
       {reviewsArray.map((review) => {

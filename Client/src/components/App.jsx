@@ -10,15 +10,14 @@ import ProductIdContext from './ProductIdContext.jsx';
 
 var App = () => {
   const [productId, updateProductId] = useState(18078);
+
   return (
     <ProductIdContext.Provider value={{productId, updateProductId}}>
       <div className="container">
         <div className="logoBanner"> logo banner</div>
-        <ProductMain />
-        <QuestionsAnswers />
-        <div>
-          <RatingsAndReviews/>
-        </div>
+        {/* <ProductMain /> */}
+        {/* <QuestionsAnswers /> */}
+        <RatingsAndReviews/>
       </div>
     </ProductIdContext.Provider>
   );

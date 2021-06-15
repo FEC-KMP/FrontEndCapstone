@@ -1,11 +1,12 @@
 import React from 'react';
 import Ratings from '../Ratings/Ratings.jsx';
 
-export default function RatingsContainer ({ }) {
+export default function RatingsContainer ({ metaInfo }) {
 
+  if (!metaInfo) { return 'data not found'; }
   return (
     <div>
-      <Ratings ratings={this.props.ratings}/>
+      <Ratings metaInfo={metaInfo}/>
     </div>
   );
 }
