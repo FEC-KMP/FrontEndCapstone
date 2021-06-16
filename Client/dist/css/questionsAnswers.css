@@ -56,8 +56,7 @@
 a:link {
   text-decoration: none
 }
-
-.btn .btn-link {
+.btn-link {
   text-decoration: underline
 }
 
@@ -87,3 +86,9 @@ a:link {
 #summary a:not(.collapsed):after {
     content: '- Read Less';
 }
+
+.required {
+  color:red;
+  font-weight:bold
+}
+.human {margin: 0 0 0 12px}

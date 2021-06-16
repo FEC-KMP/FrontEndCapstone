@@ -5,15 +5,18 @@ const SearchQAForm = ({ handleSearch }) => {
   const handleSearchChange = (e) => (setSearchQuestion(e.target.value));
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleSearch(searchQuestion);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   handleSearch(searchQuestion);
+  // };
+  useEffect(() => {
+    handleSearch(searchQuestion)
+  }, [searchQuestion]);
 
   return (
     <div className="d-flex justify-content-center px-5">
       <div className="search">
-        <form onSubmit={handleSubmit}>
+        <form >
           <input type="text"
             className="search-input"
             placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
