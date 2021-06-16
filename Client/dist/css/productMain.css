@@ -91,7 +91,7 @@ body {
   left: 20%;
 }
 .thumbImg {
-  border: 3px solid white !important;
+  border: 3px solid white;
 }
 .selectedThumb {
   border: 3px solid mintcream !important;
@@ -220,4 +220,8 @@ body {
 .styleThumbnail img {
   margin-top: 8px;
   vertical-align: middle;
+}
+
+.selectedStyle {
+  border: 3px solid mintcream !important;
 }
