@@ -4,12 +4,22 @@ import CharacteristicsBar from './CharacteristicsBar.jsx';
 
 export default function Breakdown ({ metaInfo }) {
   if (!metaInfo) { return 'data not found'; }
+  const getOnlyFive = (obj) => {
+    var ratings = {};
+    for (let key in obj) {
+      if (key !== '6') {
+        ratings[key] = obj[key];
+      }
+    }
+    return ratings;
+  };
+  var ratings = getOnlyFive(metaInfo.ratings);
   return (
     <div>
       <div>
         {
-          Object.keys(metaInfo.ratings).map((starRating, index) => (
-            <RatingBar key={index} starRating={starRating} metaInfo={metaInfo} rating={metaInfo.ratings[starRating]}/>
+          Object.keys(ratings).map((starRating, index) => (
+            <RatingBar key={index} starRating={starRating} metaInfo={metaInfo} rating={ratings[starRating]}/>
           ))
         }
       </div>

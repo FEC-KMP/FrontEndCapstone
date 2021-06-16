@@ -25,12 +25,7 @@ export default class WriteReview extends React.Component {
   render() {
     return (
       <div>
-        <button>
-          More Reviews
-        </button>
-        <button>
-          Add a Review +
-        </button>
+
       </div>
     );
   }

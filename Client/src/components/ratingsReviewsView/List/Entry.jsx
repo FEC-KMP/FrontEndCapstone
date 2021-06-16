@@ -4,9 +4,9 @@ import Body from './Body.jsx';
 import Response from './Response.jsx';
 import Recommend from './Recommend.jsx';
 import Stars from '../../sharedComponentsView/Stars.jsx';
-import List from './List.jsx';
 
 const Entry = ({ review }) => {
+  console.log('reviews', review);
   return (
     <div className="border-bottom">
       <Stars rating={review.rating}/>

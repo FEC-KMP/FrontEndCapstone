@@ -1,10 +1,9 @@
 import React from 'react';
 
 const Recommend = ({ recommend }) => {
-  //conditional here if they recommend the product
   return (
     <div>
-      I recommend this product
+      {(recommend ? 'I recommend this' : '')}
     </div>
   );
 };

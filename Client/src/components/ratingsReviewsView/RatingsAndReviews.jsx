@@ -5,6 +5,7 @@ import RatingsContainer from './Containers/RatingsContainer.jsx';
 import axios from 'axios';
 import ProductIdContext from '../ProductIdContext.jsx';
 import Row from 'react-bootstrap/Row';
+import reviewContext from '../ReviewContext.jsx';
 
 
 var postReview = (body, callback) => {
@@ -42,9 +43,9 @@ var reportReview = (reviewId, callback) => {
 
 const RatingsAndReviews = (props) => {
   var {productId, updateProductId} = useContext(ProductIdContext);
-  var [productInfo, updateProductInfo] = useState();
   var [reviewsInfo, updateReviewsInfo] = useState();
   var [metaInfo, updateMetaInfo] = useState();
+  var [starFilter, updateStarFilter] = useState([]);
 
   var getReviewInfo = (productId, page = 1, count = 1000, sort = 'helpful') => {
     axios.get('/rnr/reviews', {params: {
@@ -82,19 +83,25 @@ const RatingsAndReviews = (props) => {
 
   return (
     <div>
-      <div className="RatingsAndReviews row">
-        <h4>Ratings & Reviews</h4>
-        <div id="RatingsContainer">
-          <div className="col-lg-15">
-            <RatingsContainer metaInfo={metaInfo} />
+      <reviewContext.Provider value={{
+        starFilter,
+        updateStarFilter,
+      }
+      }>
+        <div className="RatingsAndReviews row">
+          <h4>Ratings & Reviews</h4>
+          <div id="RatingsContainer">
+            <div className="col-lg-15">
+              <RatingsContainer metaInfo={metaInfo}/>
+            </div>
+          </div>
+          <div id="ReviewsContainer row">
+            <div className="col-lg-15">
+              <ReviewsContainer reviewsInfo={reviewsInfo} postReview={postReview}/>
+            </div>
           </div>
         </div>
-        <div id="ReviewsContainer row">
-          <div className="col-lg-15">
-            <ReviewsContainer reviewsInfo={reviewsInfo} postReview={postReview}/>
-          </div>
-        </div>
-      </div>
+      </reviewContext.Provider>
     </div>
   );
 };
