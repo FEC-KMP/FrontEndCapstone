@@ -3,13 +3,8 @@
 }
 
 body {
-<<<<<<< HEAD
-  background: white;
-  /* display: flex; */
-=======
   background: mintcream;
   display: flex;
->>>>>>> 2ef6065ecfe5fd2038b05febe2ec9d67fa35dae8
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -37,7 +32,6 @@ body {
 .carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
   height: 100%;
   z-index: 1;
-  opacity: 0.2;
   /* position: absolute; */
 }
 .expandButton{
@@ -47,34 +41,61 @@ body {
   z-index: 4;
   font-size: 20px;
 }
-.Carousel {
+.CustomCarousel {
   /* z-index: 1; */
   cursor: zoom-in;
-}
-.carousel {
   position: relative;
+}
+.CC-ThumbnailsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 10px;
+  z-index: 1000;
+  /* border: 3px solid black; */
+  overflow: scroll;
+  top: 50px;
+  left: 50px;
+  max-width: 80px;
+  /* max-height: 400px; */
+  /* background-color: whitesmoke; */
+}
+.CC-MainImageList {
+  z-index: 0;
+  display: flex;
 }
 .carousel-item img {
   object-fit: cover;
 }
-.carousel-thumbnail-item {
+.carousel-thumbnail-item, .carousel-thumbnail-item > img{
   /* position: sticky; */
   cursor: pointer;
-  flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: 100 !important;
-  height:40px !important;
-  width: 40px !important;
-
+  object-fit: cover;
+  max-width: 50px;
+  opacity: 100% !important;
 }
-#carousel-thumbs {
-  background: rgba(255,255,255,.3);
-  top: 0;
-  left: 0;
-  padding: 0 50px;
-  bottom: 0;
-  /* z-index: 3; */
+/* .carousel-control-button {
+  z-index: 1001;
+} */
+.carousel-control-next {
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%);
+}
+.carousel-control-prev {
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%);
+  left: 20%;
+}
+.thumbImg {
+  border: 3px solid white !important;
+}
+.selectedThumb {
+  border: 3px solid mintcream !important;
+  opacity: .5 !important;
 }
 
 .IGThumbnails, .ImageGalleryThumbnails{

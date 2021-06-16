@@ -42,8 +42,6 @@ import ProductIdContext from '../ProductIdContext.jsx';
 var ProductMain = (props) => {
 
   var [productInfo, updateProductInfo] = useState();
-  var [currentThumbnail, updateCurrentThumbnail] = useState();
-  var [currentImgIndex, updateCurrentImgIndex] = useState();
   var [currentStyleObj, updateCurrentStyleObj] = useState();
   var [styleInfo, updateStyleInfo] = useState();
   var { productId, updateProductId } = useContext(ProductIdContext);
@@ -99,7 +97,7 @@ var ProductMain = (props) => {
   return (
     <div className="ProductDetail row">
       <div className="col-lg-7">
-        <ImageGallery currentStyleObj={currentStyleObj} currentThumbnail={currentThumbnail} currentImgIndex={currentImgIndex} />
+        <ImageGallery currentStyleObj={currentStyleObj} />
       </div>
       <div className="col-lg-5">
         <ProductInformation currentStyleObj={currentStyleObj} productInfo={productInfo} />
