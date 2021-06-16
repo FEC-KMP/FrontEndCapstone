@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { qAContext } from '../../context/QAContext.jsx';
 const AskQuestionForm = ({ productId }) => {
   const {questionList, setQuestionList, renderListQ, setRenderListQ, addQuestion, getListOfQuestions} = useContext(qAContext);
-  const [body, setQuestionBody] = useState();
-  const [name, setNickName] = useState();
-  const [email, setYourEmail] = useState();
+  const [body, setQuestionBody] = useState('');
+  const [name, setNickName] = useState('');
+  const [email, setYourEmail] = useState('');
 
   const data = {
     body: body,
@@ -14,15 +14,19 @@ const AskQuestionForm = ({ productId }) => {
   };
 
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    addQuestion(data);
+    addQuestion(data, getListOfQuestions(productId, (results) => {
+      const sortQuestions = results.sort((a, b) => (b.question_helpfulness - a.question_helpfulness));
+      setQuestionList(sortQuestions);
+    }));
   }
 
   return (
     <div>
-      <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD A QUESTION +</button>
-      <div className="modal fade left" id="myModal">
+      <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#QModal">ADD A QUESTION +</button>
+      <div className="modal fade left" id="QModal">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">

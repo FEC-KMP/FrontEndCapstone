@@ -41,12 +41,12 @@ export const QAProvider = (props) => {
   };
 
   const addQuestion = (data, callback) => {
-    var data = {
-      body: body,
-      name: name,
-      email: email,
-      product_id: productId
-    };
+    // var data = {
+    //   body: body,
+    //   name: name,
+    //   email: email,
+    //   product_id: productId
+    // };
     axios.post('/qa/questions', data)
       .then((results) => {
         // console.log('C: addQuestion get/qa/questions success results: ', results);

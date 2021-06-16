@@ -4,7 +4,7 @@ const router = express.Router();
 const app = express();
 app.use(express.json());
 
-const {GITHUB_API_KEY} = require('../config');
+const GITHUB_API_KEY = require('../config');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions';
 
 
@@ -60,7 +60,8 @@ router.post('/questions', (req, res) => {
   //   product_id: 18078
   // }
   axios.post(BaseUrl, req.body, {
-    headers: { Authorization: GITHUB_API_KEY },
+    headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' },
+
   })
     .then((response) => {
       console.log('S: post/questions/ response.data: ', response.data);
