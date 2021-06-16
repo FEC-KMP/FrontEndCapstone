@@ -4,7 +4,9 @@ import { getListOfProducts, getListInfoProducts, getListOfReviews, getListOfQues
 import ProductMain from './productMainView/productMain.jsx';
 import GITHUB_API_KEY from '../api/githubApi.js';
 import RatingsAndReviews from './ratingsReviewsView/RatingsAndReviews.jsx';
+import NavBar from './NavBar.jsx';
 import ProductIdContext from './ProductIdContext.jsx';
+import {QAProvider} from '../context/QAContext.jsx';
 
 
 
@@ -12,12 +14,23 @@ var App = () => {
   const [productId, updateProductId] = useState(18078);
 
   return (
-    <ProductIdContext.Provider value={{productId, updateProductId}}>
+    <ProductIdContext.Provider value={{ productId, updateProductId }}>
       <div className="container">
+<<<<<<< HEAD
         <div className="logoBanner"> logo banner</div>
         {/* <ProductMain /> */}
         {/* <QuestionsAnswers /> */}
         <RatingsAndReviews/>
+=======
+        <NavBar />
+        <ProductMain />
+        <QAProvider>
+          <QuestionsAnswers />
+        </QAProvider>
+        <div>
+          <RatingsAndReviews />
+        </div>
+>>>>>>> 9639ca08c379c3426f76d78a1f67b6f936a60812
       </div>
     </ProductIdContext.Provider>
   );

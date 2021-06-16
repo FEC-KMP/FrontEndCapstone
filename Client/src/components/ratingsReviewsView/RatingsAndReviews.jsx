@@ -91,8 +91,8 @@ const RatingsAndReviews = (props) => {
         <div className="RatingsAndReviews row">
           <h4>Ratings & Reviews</h4>
           <div id="RatingsContainer">
-            <div className="col-lg-15">
-              <RatingsContainer metaInfo={metaInfo}/>
+            <div className="col-lg-5">
+              <RatingsContainer ratings={this.state.ratings} />
             </div>
           </div>
           <div id="ReviewsContainer row">

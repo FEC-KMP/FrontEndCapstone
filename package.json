@@ -31,7 +31,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "bluebird": "^3.7.2",
-    "bootstrap": "^3.4.1",
+    "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
@@ -39,7 +39,7 @@
     "nodemon": "^2.0.7",
     "puppeteer": "^10.0.0",
     "react": "^16.4",
-    "react-bootstrap": "^1.6.0",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "^16.4",
     "react-icons": "^4.2.0",
     "react-stars": "^2.2.5",
