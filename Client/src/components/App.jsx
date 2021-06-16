@@ -12,9 +12,16 @@ import {QAProvider} from '../context/QAContext.jsx';
 
 var App = () => {
   const [productId, updateProductId] = useState(18078);
+
   return (
     <ProductIdContext.Provider value={{ productId, updateProductId }}>
       <div className="container">
+<<<<<<< HEAD
+        <div className="logoBanner"> logo banner</div>
+        {/* <ProductMain /> */}
+        {/* <QuestionsAnswers /> */}
+        <RatingsAndReviews/>
+=======
         <NavBar />
         <ProductMain />
         <QAProvider>
@@ -23,6 +30,7 @@ var App = () => {
         <div>
           <RatingsAndReviews />
         </div>
+>>>>>>> 9639ca08c379c3426f76d78a1f67b6f936a60812
       </div>
     </ProductIdContext.Provider>
   );
