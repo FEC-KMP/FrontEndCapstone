@@ -16,7 +16,7 @@ router.get('/reviews', (req, res) => {
       sort: req.query.sort,
       product_id: req.query.productId
     },
-    headers: { Authorization: GITHUB_API_KEY }
+    headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' },
   })
     .then((response) => {
       // console.log('this is response inside get request',response);
@@ -32,7 +32,7 @@ router.get('/reviews', (req, res) => {
 router.get('/reviews/meta', (req, res) => {
   const url = `${BaseUrl}/reviews/meta`;
   axios.get(url, {
-    headers: { Authorization: GITHUB_API_KEY },
+    headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' },
     params: {
       product_id: req.query.product_id
     }
@@ -47,11 +47,12 @@ router.get('/reviews/meta', (req, res) => {
 });
 
 //post a review
+//need headers
 router.post('/reviews', (req, res) => {
   console.log('S: postReview req.body: ', req.body);
   axios
     .post(`${BaseUrl}/reviews`, req.body, {
-      headers: { Authorization: GITHUB_API_KEY }})
+      headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' }})
     .then((response) => {
       res.status(201).send(resonse.data);
     })

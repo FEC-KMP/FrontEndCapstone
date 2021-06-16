@@ -1,32 +1,28 @@
-import React from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import axios from 'axios';
+import ProductIdContext from '../../ProductIdContext.jsx';
 
+//align these with the get request data
 const emptyState = {
-  overallRating: 0,
+  // eslint-disable-next-line camelcase
+  product_id: 0,
+  rating: 0,
+  summary: 'This is Kirk testing',
+  body: null,
   recommend: null,
-  size: null,
-  width: null,
-  comfort: null,
-  quality: null,
-  length: null,
-  fit: null,
-  summary: '',
-  body: '',
-  photos: [],
-  nickname: '',
-  email: '',
+  name: null,
+  email: null,
+  photo: [],
+  characteristics: {}
 };
-export default class WriteReview extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = emptyState;
-  }
 
-  render() {
-    return (
-      <div>
+export default function WriteReview ({ postReview }) {
+  var {productId, updateProductId} = useContext(ProductIdContext);
+  var [postFormData, setPostFormData] = useState(emptyState);
 
-      </div>
-    );
-  }
+  return (
+    <div>
+
+    </div>
+  );
 }

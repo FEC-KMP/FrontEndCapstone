@@ -16,11 +16,11 @@ var App = () => {
   return (
     <ProductIdContext.Provider value={{ productId, updateProductId }}>
       <div className="container">
-        <NavBar />
+        {/* <NavBar />
         <ProductMain />
         <QAProvider>
           <QuestionsAnswers />
-        </QAProvider>
+        </QAProvider> */}
         <div>
           <RatingsAndReviews />
         </div>

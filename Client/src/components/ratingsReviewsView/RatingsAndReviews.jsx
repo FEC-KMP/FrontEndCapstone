@@ -8,16 +8,7 @@ import Row from 'react-bootstrap/Row';
 import reviewContext from '../ReviewContext.jsx';
 
 
-var postReview = (body, callback) => {
-  axios.post('/rnr/reviews', {body})
-    .then((result) => {
-      callback(null, result);
-    })
-    .catch((err) => {
-      console.log('C: RnR postReview err', err);
-      callback(err, null);
-    });
-};
+
 
 var markReviewHelpful = (reviewId, callback) => {
   axios.put(`/rnr/reviews/${reviewId}/helpful`)
@@ -71,6 +62,17 @@ const RatingsAndReviews = (props) => {
       })
       .catch((err) => {
         console.log('C: RnR getReviewMeta err', err);
+      });
+  };
+
+  var postReview = (body, callback) => {
+    axios.post('/rnr/reviews', {body})
+      .then((result) => {
+        callback(null, result);
+      })
+      .catch((err) => {
+        console.log('C: RnR postReview err', err);
+        callback(err, null);
       });
   };
 
