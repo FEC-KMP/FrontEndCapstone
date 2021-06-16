@@ -14,6 +14,7 @@ body {
 
 .container {
   background-color: whitesmoke;
+  /* opacity: .2; */
 }
 
 
@@ -22,7 +23,7 @@ body {
   display: flex;
   background-color: mintcream;
   justify-content: center;
-  z-index:0;
+  /* z-index:0; */
 }
 /* .carousel-item {
   height: 45rem;
@@ -30,8 +31,9 @@ body {
 } */
 .carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
   height: 100%;
-  z-index: 1
-
+  z-index: 1;
+  opacity: 0.2;
+  /* position: absolute; */
 }
 .expandButton{
   color: white !important;
@@ -41,7 +43,7 @@ body {
   font-size: 20px;
 }
 .Carousel {
-  z-index: 1;
+  /* z-index: 1; */
   cursor: zoom-in;
 }
 .carousel {
@@ -51,10 +53,15 @@ body {
   object-fit: cover;
 }
 .carousel-thumbnail-item {
+  /* position: sticky; */
   cursor: pointer;
   flex-shrink: 0;
   min-width: 100%;
-  min-height: 100%
+  min-height: 100%;
+  z-index: 100 !important;
+  height:40px !important;
+  width: 40px !important;
+
 }
 #carousel-thumbs {
   background: rgba(255,255,255,.3);
@@ -62,13 +69,13 @@ body {
   left: 0;
   padding: 0 50px;
   bottom: 0;
-  z-index: 3;
+  /* z-index: 3; */
 }
 
 .IGThumbnails, .ImageGalleryThumbnails{
-  position:absolute;
-  overflow: scroll;
-  z-index: 3;
+  position: relative;
+  /* overflow: scroll; */
+  z-index: 1000;
 }
 .fa-chevron-down, .fa-chevron-up {
   color: white !important;

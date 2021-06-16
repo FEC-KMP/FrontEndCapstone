@@ -3,7 +3,7 @@ import CarouselThumbnails from './CarouselThumbnails.jsx';
 import Carousel from './Carousel.jsx';
 
 var ImageGallery = ({ currentStyleObj }) => {
-  var [isFirstImg, updateIsFirstImg] = useState(false)
+  var [isFirstImg, updateIsFirstImg] = useState(false);
   var [isExpanded, updateIsExpanded] = useState(false);
 
 
