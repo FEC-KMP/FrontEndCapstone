@@ -1,6 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
+const app = express();
+app.use(express.json());
 
 const {GITHUB_API_KEY} = require('../config');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions';
@@ -49,13 +51,13 @@ router.get('/questions/:questionId/answers', (req, res) => {
 
 //Add a question
 router.post('/questions', (req, res) => {
-  console.log('S: post/questions req.body.data: ', req.body.data);
+  console.log('S: post/questions req.body.data: ', req.body);
   //FIXME: passing in req.body.data as postData params, may need to change
   // const params = {
-  //   body: req.body.body,
-  //   name: req.body.name,
-  //   email: req.body.email,
-  //   productId: req.body.product_id
+  //   body: "can I Iron it",
+  //   name: "cool",
+  //   email: "xyz@gmail.com",
+  //   product_id: 18078
   // }
   axios.post(BaseUrl, req.body, {
     headers: { Authorization: GITHUB_API_KEY },
