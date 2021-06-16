@@ -1,29 +1,44 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import RatingsAndReviews from '../RatingsAndReviews.jsx';
-import List from '../List/List.jsx';
 import WriteReview from '../WriteReview/WriteReview.jsx';
+import ProductIdContext from '../../ProductIdContext.jsx';
+import axios from 'axios';
+import Entry from '../List/Entry.jsx';
 
-export default class ReviewsContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+export default function ReviewsContainer ({ reviewsInfo, postReview}) {
+  if (!reviewsInfo) { return 'data not found'; }
 
-    };
-  }
+  const [count, setCount] = useState(2);
 
-  render() {
-    return (
+  const handleShow = () => {
+    setCount(count + 2);
+  };
+
+  return (
+    <div>
+      <div>
+        <h5>{reviewsInfo.results.length} Total Reviews </h5>
+      </div>
       <div>
         <div>
-          <h5>{this.props.reviews.results.length} Total Reviews, sorted by the arbitrary indulgences of the ignorant</h5>
-        </div>
-        <div>
-          <List reviews={this.props.reviews}/>
-        </div>
-        <div>
-          <WriteReview />
+          {reviewsInfo.results.slice(0, count).map((review) => {
+            return (
+              <Entry key={review.review_id} review={review}/>
+            );
+          })}
         </div>
       </div>
-    );
-  }
+      <div>
+        <button variant="primary" onClick={handleShow}>
+          More Reviews
+        </button>
+        <button>
+          Add a Review +
+          <div>
+            <WriteReview postReview={postReview}/>
+          </div>
+        </button>
+      </div>
+    </div>
+  );
 }

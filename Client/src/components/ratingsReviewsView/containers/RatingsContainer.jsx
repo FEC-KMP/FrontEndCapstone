@@ -1,19 +1,12 @@
 import React from 'react';
 import Ratings from '../Ratings/Ratings.jsx';
 
-export default class RatingsContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+export default function RatingsContainer ({ metaInfo }) {
 
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        <Ratings ratings={this.props.ratings}/>
-      </div>
-    );
-  }
+  if (!metaInfo) { return 'data not found'; }
+  return (
+    <div>
+      <Ratings metaInfo={metaInfo}/>
+    </div>
+  );
 }

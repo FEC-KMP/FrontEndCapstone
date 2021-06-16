@@ -3,8 +3,13 @@
 }
 
 body {
+<<<<<<< HEAD
+  background: white;
+  /* display: flex; */
+=======
   background: mintcream;
   display: flex;
+>>>>>>> 2ef6065ecfe5fd2038b05febe2ec9d67fa35dae8
   flex-direction: row;
   justify-content: center;
   align-items: center;

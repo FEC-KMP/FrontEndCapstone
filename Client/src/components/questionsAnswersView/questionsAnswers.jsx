@@ -37,9 +37,14 @@ const QuestionsAnswers = () => {
   }, [questionList]);
 
   const handleSearch = (searchQuestion) => {
+    console.log('search term', searchQuestion);
     const searchResult = questionList.filter(question => (question.question_body.toLowerCase().includes(searchQuestion.toLowerCase())));
+
     if (searchQuestion.length >= 3) {
       setRenderListQ(searchResult.slice(0, 4));
+      console.log('slice of search result', searchResult.slice(0,4));
+    } else {
+      setRenderListQ(questionList.slice(0, 4));
     }
   };
 
@@ -79,12 +84,11 @@ const QuestionsAnswers = () => {
       )}
       </div>
 
-
-      <AskQuestionForm />
+      <AskQuestionForm productId={productId}/>
     </div>
   ) : (
-      <h1>Loading...</h1>
-    );
+    <h1>Loading...</h1>
+  );
 };
 export default QuestionsAnswers;
 
