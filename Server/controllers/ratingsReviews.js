@@ -5,58 +5,98 @@ const axios = require('axios');
 const router = express.Router();
 
 const { GITHUB_API_KEY } = require('../config.js');
-const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews';
+const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 
 //get reviews
 router.get('/reviews', (req, res) => {
-  axios.get(`${BaseUrl}`, {
-    headers: { Authorization: GITHUB_API_KEY },
+  axios.get(`${BaseUrl}/reviews`, {
     params: {
-      // eslint-disable-next-line camelcase
       page: req.query.page,
       count: req.query.count,
       sort: req.query.sort,
-      product_id: req.query.product_id
-    }
+      product_id: req.query.productId
+    },
+    headers: { Authorization: GITHUB_API_KEY }
   })
     .then((response) => {
       // console.log('this is response inside get request',response);
       res.status(200).send(response.data);
     })
     .catch((err) => {
-      console.log('err inside routes.js');
+      console.log('S: err inside getReviews: ', err);
       res.status(404).send(err);
     });
 });
 
 //get meta data for a review
 router.get('/reviews/meta', (req, res) => {
-  console.log(req.params);
-  const id = req.params.question_id;
-  const url = `${BaseUrl}/${id}`;
-  axios.get(url, { headers: { Authorization: GITHUB_API_KEY } }, req.params.product_id)
+  const url = `${BaseUrl}/reviews/meta`;
+  axios.get(url, {
+    headers: { Authorization: GITHUB_API_KEY },
+    params: {
+      product_id: req.query.product_id
+    }
+  })
     .then((response) => {
       res.status(200).send(response.data);
     })
     .catch((err) => {
-      console.log('err inside routes.js');
+      console.log('S: err getMetaData', err);
       res.status(404).send(err);
     });
 });
 
 //post a review
 router.post('/reviews', (req, res) => {
-  const params = [req.body.product_id, req.body.rating, req.body.summary, req.body.body, req.body.recommend, req.body.name, req.body.email, req.body.photos, req.body.characteristics];
+  console.log('S: postReview req.body: ', req.body);
   axios
-    .post(BaseUrl, { headers: { Authorization: GITHUB_API_KEY }}, params)
+    .post(`${BaseUrl}/reviews`, req.body, {
+      headers: { Authorization: GITHUB_API_KEY }})
     .then((response) => {
-      res.status(200).send(resonse.data);
+      res.status(201).send(resonse.data);
     })
     .catch((err) => {
-      console.log('err posting in routes', err);
+      console.log('S: err postReview: ', err);
       res.status(404).send(err);
     });
 });
 
+router.put('/reviews/:review_id/helpful', (req, res) => {
+  console.log('S: helpful button triggered');
+  // const url = `${BaseUrl}/${req.params}/helpful`;
+  // axios
+  //   .put(url, {
+  //     headers: { Authorization: GITHUB_API_KEY},
+  //     params: {
+  //       review_id: req.params
+  //     }
+  //   })
+  //   .then((response) => {
+  //     res.status(204).send(response.data);
+  //   })
+  //   .catch((err) => {
+  //     res.status(404).send(err);
+  //   });
+
+});
+
+router.put('/reviews/:review_id/report', (req, res) => {
+  console.log('S: Report button triggered');
+  // const url = `${BaseUrl}/${req.params}/report`;
+  // axios
+  //   .put(url, {
+  //     headers: { Authorization: GITHUB_API_KEY},
+  //     params: {
+  //       review_id: req.params
+  //     }
+  //   })
+  //   .then((response) => {
+  //     res.status(204).send(response.data);
+  //   })
+  //   .catch((err) => {
+  //     res.status(404).send(err);
+  //   });
+
+});
 
 module.exports = router;
