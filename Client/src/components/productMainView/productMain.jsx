@@ -5,7 +5,7 @@ import ProductInformation from './ProductInformation.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import StyleSelector from './StyleSelector/StyleSelector.jsx';
 import AddToCart from './AddToCart/AddToCart.jsx';
-import ProductIdContext from '../ProductIdContext.jsx';
+import ProductIdContext from '../../context/ProductIdContext.jsx';
 
 // var getListOfProducts = () => {
 //   var params = {
@@ -42,11 +42,11 @@ import ProductIdContext from '../ProductIdContext.jsx';
 var ProductMain = (props) => {
 
   var [productInfo, updateProductInfo] = useState();
-  var [currentThumbnail, updateCurrentThumbnail] = useState();
-  var [currentImgIndex, updateCurrentImgIndex] = useState();
   var [currentStyleObj, updateCurrentStyleObj] = useState();
   var [styleInfo, updateStyleInfo] = useState();
-  var { productId, updateProductId } = useContext(ProductIdContext);
+  var { productId, updateProductId, productName, updateProductName } = useContext(ProductIdContext);
+  var [isExpanded, updateIsExpanded] = useState(false);
+
 
   var getProductInfo = (productId) => {
     axios.get(`/products/${productId}/`)
@@ -54,6 +54,7 @@ var ProductMain = (props) => {
         //add list to state
         // console.log('C: productMain getProductInfo get/products/:productId success: ', results.data);
         updateProductInfo(results.data);
+        updateProductName(results.data.name);
       })
       .catch((err) => {
         console.log('C: productMain getProductInfo get/products/:productiD/  err: ', err);
@@ -90,20 +91,22 @@ var ProductMain = (props) => {
     updateCurrentStyleObj(newStyleObj);
   };
 
-  var onCaroselThumbnailClick = () => {
+  // if (isExpanded) {
+  //   return (
+  //     <div className="ProductDetail row">
+  //       <IGExpanded currentStyleObj={currentStyleObj}/>
+  //     </div>
+  //   );
 
-  };
-
-
-
+  // }
   return (
     <div className="ProductDetail row">
       <div className="col-lg-7">
-        <ImageGallery currentStyleObj={currentStyleObj} currentThumbnail={currentThumbnail} currentImgIndex={currentImgIndex} />
+        <ImageGallery currentStyleObj={currentStyleObj} updateIsExpanded={updateIsExpanded} />
       </div>
       <div className="col-lg-5">
         <ProductInformation currentStyleObj={currentStyleObj} productInfo={productInfo} />
-        <StyleSelector styleInfo={styleInfo} onStyleThumbnailClick={onStyleThumbnailClick}/>
+        <StyleSelector styleInfo={styleInfo} onStyleThumbnailClick={onStyleThumbnailClick} />
         <AddToCart currentStyleObj={currentStyleObj} />
       </div>
       <div className="col-lg-12">

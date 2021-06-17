@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import RatingsAndReviews from '../RatingsAndReviews.jsx';
 import WriteReview from '../WriteReview/WriteReview.jsx';
-import ProductIdContext from '../../ProductIdContext.jsx';
+import ProductIdContext from '../../../context/ProductIdContext.jsx';
 import axios from 'axios';
 import Entry from '../List/Entry.jsx';
 import ReviewContext from '../../ReviewContext.jsx';

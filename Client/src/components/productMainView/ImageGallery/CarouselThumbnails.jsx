@@ -10,7 +10,7 @@ var CarouselThumbnails = ({ currentStyleObj }) => {
       </a>
       <div id="carousel-thumbs" className="carousel slide" data-ride="carousel">
         {currentStyleObj.photos.map((photoObj) => {
-          return <CarouselThumbnail photoObj={photoObj} photoIndex={currentStyleObj.photos.indexOf(photoObj)} />
+          return <CarouselThumbnail photoObj={photoObj} photoIndex={currentStyleObj.photos.indexOf(photoObj)} />;
         })}
       </div>
       <a className="" href="#carousel-thumbs" role="button" data-slide="next">

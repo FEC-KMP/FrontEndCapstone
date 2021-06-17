@@ -15,7 +15,7 @@ var Carousel = ({ currentStyleObj, updateIsExpanded }) => {
             <CarouselThumbnails currentStyleObj={currentStyleObj} />
           </div>
           {(currentStyleObj.photos).map(((photoObj) => {
-            return <CarouselImg photoObj={photoObj} index={currentStyleObj.photos.indexOf(photoObj)} />;
+            return <CarouselImg photoObj={photoObj} photoIndex={currentStyleObj.photos.indexOf(photoObj)} />;
           }))}
         </div>
         <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
