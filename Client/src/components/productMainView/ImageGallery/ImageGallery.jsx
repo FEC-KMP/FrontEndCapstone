@@ -4,8 +4,7 @@ import Carousel from './Carousel.jsx';
 import CustomCarousel from './CustomCarousel.jsx';
 
 
-var ImageGallery = ({ currentStyleObj }) => {
-  var [isExpanded, updateIsExpanded] = useState(false);
+var ImageGallery = ({ currentStyleObj, updateIsExpanded }) => {
 
   if (!currentStyleObj) { return 'data not found'; }
   return (

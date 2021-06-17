@@ -45,6 +45,8 @@ var ProductMain = (props) => {
   var [currentStyleObj, updateCurrentStyleObj] = useState();
   var [styleInfo, updateStyleInfo] = useState();
   var { productId, updateProductId } = useContext(ProductIdContext);
+  var [isExpanded, updateIsExpanded] = useState(false);
+
 
   var getProductInfo = (productId) => {
     axios.get(`/products/${productId}/`)
@@ -88,20 +90,22 @@ var ProductMain = (props) => {
     updateCurrentStyleObj(newStyleObj);
   };
 
-  var onCaroselThumbnailClick = () => {
+  // if (isExpanded) {
+  //   return (
+  //     <div className="ProductDetail row">
+  //       <IGExpanded currentStyleObj={currentStyleObj}/>
+  //     </div>
+  //   );
 
-  };
-
-
-
+  // }
   return (
     <div className="ProductDetail row">
       <div className="col-lg-7">
-        <ImageGallery currentStyleObj={currentStyleObj} />
+        <ImageGallery currentStyleObj={currentStyleObj} updateIsExpanded={updateIsExpanded} />
       </div>
       <div className="col-lg-5">
         <ProductInformation currentStyleObj={currentStyleObj} productInfo={productInfo} />
-        <StyleSelector styleInfo={styleInfo} onStyleThumbnailClick={onStyleThumbnailClick}/>
+        <StyleSelector styleInfo={styleInfo} onStyleThumbnailClick={onStyleThumbnailClick} />
         <AddToCart currentStyleObj={currentStyleObj} />
       </div>
       <div className="col-lg-12">

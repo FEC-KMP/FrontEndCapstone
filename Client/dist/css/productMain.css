@@ -51,6 +51,7 @@ body {
   right: 45px;
   z-index: 4;
   font-size: 25px;
+  cursor: pointer;
 }
 .CustomCarousel {
   /* z-index: 1; */
@@ -82,8 +83,7 @@ body {
 .MainImg {
   object-fit:cover;
   max-height: 600px;
-  overflow:scroll;
-
+  /* overflow:scroll; */
 }
 .carousel-thumbnail-item, .carousel-thumbnail-item > img{
   /* position: sticky; */

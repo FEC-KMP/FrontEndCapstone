@@ -4,6 +4,7 @@ import CarouselThumbnail from './CarouselThumbnail.jsx';
 
 var CustomCarousel = ({ currentStyleObj, updateIsExpanded }) => {
   var [selectedIndex, updateSelectedIndex] = useState(0);
+  var [stylePhotoLength, updateStylePhotoLength] = useState(currentStyleObj.photos.length);
 
   return (
     <div className='CustomCarousel'>
@@ -29,7 +30,7 @@ var CustomCarousel = ({ currentStyleObj, updateIsExpanded }) => {
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" onClick={() => { if (selectedIndex < currentStyleObj.photos.length - 2) { updateSelectedIndex(selectedIndex + 1); } }}>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" onClick={() => { if (selectedIndex < stylePhotoLength - 1) { updateSelectedIndex(selectedIndex + 1); } }}>
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
