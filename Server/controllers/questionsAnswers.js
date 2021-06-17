@@ -13,12 +13,7 @@ router.get('/questions', (req, res) => {
   // console.log("got to get/questions serverside, req.body: ", req.query)
   axios.get(BaseUrl, {
     params: {
-<<<<<<< HEAD
-      // eslint-disable-next-line camelcase
-      product_id: req.query.product_id,
-=======
       'product_id': req.query.product_id,
->>>>>>> f06e590b56330ad9261777b38d1354d3695fdb8e
       page: req.query.page,
       count: req.query.count
     },

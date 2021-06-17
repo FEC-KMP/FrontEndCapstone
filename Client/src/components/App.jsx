@@ -17,11 +17,7 @@ var App = () => {
   return (
     <ProductIdContext.Provider value={{ productId, updateProductId, productName, updateProductName }}>
       <div className="container">
-<<<<<<< HEAD
-        {/* <NavBar />
-=======
         <NavBar />
->>>>>>> f06e590b56330ad9261777b38d1354d3695fdb8e
         <ProductMain />
         <QAProvider>
           <QuestionsAnswers />
