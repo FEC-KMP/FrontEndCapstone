@@ -70,7 +70,7 @@ const QAList = ({ question }) => {
                         <textarea name="answer" rows="4" required className="form-control" id="answer"
                           placeholder="Type your answer here"
                           value={body}
-                          onChange={(e) => { setAnswerBody(e.target.value) }}
+                          onChange={(e) => { setAnswerBody(e.target.value); }}
                           maxLength="1000"></textarea>
                       </div>
                     </div>

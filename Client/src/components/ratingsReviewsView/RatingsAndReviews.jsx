@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import ReviewsContainer from './Containers/ReviewsContainer.jsx';
 import RatingsContainer from './Containers/RatingsContainer.jsx';
 import axios from 'axios';
-import ProductIdContext from '../ProductIdContext.jsx';
+import ProductIdContext from '../../context/ProductIdContext.jsx';
 import Row from 'react-bootstrap/Row';
 import reviewContext from '../ReviewContext.jsx';
 
@@ -92,7 +92,7 @@ const RatingsAndReviews = (props) => {
           <h4>Ratings & Reviews</h4>
           <div id="RatingsContainer">
             <div className="col-lg-5">
-              <RatingsContainer ratings={this.state.ratings} />
+              <RatingsContainer metaInfo={metaInfo} />
             </div>
           </div>
           <div id="ReviewsContainer row">
