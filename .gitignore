@@ -5,3 +5,4 @@ client/dist/bundle.js
 server/config.js
 
 
+aws-fec-kmp.pem
