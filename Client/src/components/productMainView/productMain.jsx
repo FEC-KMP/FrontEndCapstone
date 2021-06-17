@@ -5,7 +5,7 @@ import ProductInformation from './ProductInformation.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import StyleSelector from './StyleSelector/StyleSelector.jsx';
 import AddToCart from './AddToCart/AddToCart.jsx';
-import ProductIdContext from '../ProductIdContext.jsx';
+import ProductIdContext from '../../context/ProductIdContext.jsx';
 
 // var getListOfProducts = () => {
 //   var params = {
@@ -44,7 +44,7 @@ var ProductMain = (props) => {
   var [productInfo, updateProductInfo] = useState();
   var [currentStyleObj, updateCurrentStyleObj] = useState();
   var [styleInfo, updateStyleInfo] = useState();
-  var { productId, updateProductId } = useContext(ProductIdContext);
+  var { productId, updateProductId, productName, updateProductName } = useContext(ProductIdContext);
   var [isExpanded, updateIsExpanded] = useState(false);
 
 
@@ -54,6 +54,7 @@ var ProductMain = (props) => {
         //add list to state
         console.log('C: productMain getProductInfo get/products/:productId success: ', results.data);
         updateProductInfo(results.data);
+        updateProductName(results.data.name);
       })
       .catch((err) => {
         console.log('C: productMain getProductInfo get/products/:productiD/  err: ', err);
