@@ -6,20 +6,32 @@ import axios from 'axios';
 import Entry from '../List/Entry.jsx';
 import ReviewContext from '../../ReviewContext.jsx';
 
-export default function ReviewsContainer ({ reviewsInfo, postReview}) {
+export default function ReviewsContainer ({ reviewsInfo, postReview, productId}) {
   if (!reviewsInfo) { return 'data not found'; }
 
   var { starFilter, updateStarFilter } = useContext(ReviewContext);
   const [count, setCount] = useState(2);
+  const [showWriteReview, setShowWriteReview] = useState(false);
 
-  // const [filterRating, updateFilterRating] = useState(false);
 
   const handleShow = () => {
     setCount(count + 2);
   };
+
+  const handleShowModal = () => {
+    console.log('handleShowModal clicked');
+    setShowWriteReview(true);
+  };
+  const handleCloseModal = () => {
+    console.log('handleCloseModal clicked');
+    setShowWriteReview(false);
+  };
+
   let reviewEntry;
-  console.log('starFilter', starFilter);
+  let totalReviews;
+  let metaDataLies;
   if (!starFilter.length) {
+    totalReviews = reviewsInfo.results.length;
     reviewEntry = reviewsInfo.results.slice(0, count).map((review) => {
       return (
         <Entry key={review.review_id} review={review}/>
@@ -27,12 +39,13 @@ export default function ReviewsContainer ({ reviewsInfo, postReview}) {
     });
   } else {
     for (var i = 0; i < starFilter.length; i ++) {
-      console.log('reviewsInfoRating', reviewsInfo.results);
       let ratingFilteredArray = reviewsInfo.results.filter((filtered) => {
         return filtered.rating === Number(starFilter[i]);
       });
-      console.log('filtered array', ratingFilteredArray);
-      console.log('current star', Number(starFilter[i]));
+      if (!ratingFilteredArray.length) {
+        metaDataLies = ', the meta data lies';
+      }
+      totalReviews = ratingFilteredArray.length;
       reviewEntry = ratingFilteredArray.slice(0, count).map((review) => {
         return (
           <Entry key={review.review_id} review={review}/>
@@ -43,7 +56,7 @@ export default function ReviewsContainer ({ reviewsInfo, postReview}) {
   return (
     <div>
       <div>
-        <h5>{reviewsInfo.results.length} Total Reviews </h5>
+        <h5>{totalReviews} Total Reviews {metaDataLies}</h5>
       </div>
       <div>
         <div>
@@ -54,12 +67,18 @@ export default function ReviewsContainer ({ reviewsInfo, postReview}) {
         <button variant="primary" onClick={handleShow}>
           More Reviews
         </button>
-        <button>
+        <button onClick={handleShowModal}>
           Add a Review +
-          <div>
-            <WriteReview postReview={postReview}/>
-          </div>
         </button>
+        <div>
+          <WriteReview
+            postReview={postReview}
+            handleCloseModal={handleCloseModal}
+            showWriteReview={showWriteReview}
+            reviewsInfo={reviewsInfo}
+            product_id={productId}
+          />
+        </div>
       </div>
     </div>
   );

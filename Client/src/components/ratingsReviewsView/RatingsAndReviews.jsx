@@ -37,6 +37,7 @@ const RatingsAndReviews = (props) => {
   var [reviewsInfo, updateReviewsInfo] = useState();
   var [metaInfo, updateMetaInfo] = useState();
   var [starFilter, updateStarFilter] = useState([]);
+  var [productInfo, updateProductInfo] = useState();
 
   var getReviewInfo = (productId, page = 1, count = 1000, sort = 'helpful') => {
     axios.get('/rnr/reviews', {params: {
@@ -76,11 +77,11 @@ const RatingsAndReviews = (props) => {
       });
   };
 
+
   useEffect(() => {
     getReviewInfo(productId);
     getReviewMeta(productId);
   }, [productId]);
-
 
 
   return (
@@ -99,7 +100,12 @@ const RatingsAndReviews = (props) => {
           </div>
           <div id="ReviewsContainer row">
             <div className="col-lg-15">
-              <ReviewsContainer reviewsInfo={reviewsInfo} postReview={postReview}/>
+              <ReviewsContainer
+                reviewsInfo={reviewsInfo}
+                postReview={postReview}
+                productInfo={productInfo}
+                productId={productId}
+              />
             </div>
           </div>
         </div>
