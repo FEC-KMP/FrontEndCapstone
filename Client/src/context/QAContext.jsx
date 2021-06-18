@@ -12,6 +12,7 @@ export const QAProvider = (props) => {
 
   const getListOfQuestions = (productId, callback) => {
     //product_id, page, count => parameters
+    // eslint-disable-next-line camelcase
     const params = { product_id: productId, page: 1, count: 5 };
     // console.log('C: getListOfQuestions params: ', params);
     axios.get('/qa/questions/', { params })
@@ -45,6 +46,7 @@ export const QAProvider = (props) => {
       body: body,
       name: name,
       email: email,
+      // eslint-disable-next-line camelcase
       product_id: productId
     };
     axios.post('/qa/questions', data)
