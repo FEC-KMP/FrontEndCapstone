@@ -7,7 +7,7 @@ var Carousel = ({ currentStyleObj, updateIsExpanded }) => {
   return (
     <div className="Carousel">
       <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-        <a className="expandButton col" onClick={() => { updateIsExpanded(true) }} role="button" data-slide="next">
+        <a className="expandButton col" onClick={() => { updateIsExpanded(true); }} role="button" data-slide="next">
           <i class="fas fa-expand"></i>
         </a>
         <div className="carousel-inner">

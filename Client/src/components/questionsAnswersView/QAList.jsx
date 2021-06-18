@@ -9,7 +9,7 @@ const QAList = ({ question }) => {
   const [email, setYourEmail] = useState();
   const handleSubmit = () => {
 
-  }
+  };
   return (question && question.answers) ? (
     <div>
       <div>

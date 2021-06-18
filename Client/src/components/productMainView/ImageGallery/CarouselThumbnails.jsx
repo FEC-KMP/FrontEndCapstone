@@ -2,7 +2,7 @@ import React from 'react';
 import CarouselThumbnail from './CarouselThumbnail.jsx';
 
 var CarouselThumbnails = ({ currentStyleObj }) => {
-  if (!currentStyleObj) { return 'data not found' }
+  if (!currentStyleObj) { return 'data not found'; }
   return (
     <div className="ImageGalleryThumbnails col">
       <a className="" href="#carousel-thumbs" role="button" data-slide="prev">

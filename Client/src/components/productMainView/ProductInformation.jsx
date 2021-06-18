@@ -9,9 +9,9 @@ var ProductInformation = ({currentStyleObj, productInfo}) => {
     <div className="ProductInformation">
       <div className="ProductRating">
         <span id="ProductStarRating">stars  </span>
-        <span id="ProductReviewLink">Read all reviews </span>
+        <a id="ProductReviewLink" href='#RatingsContainer'>Read all reviews </a>
       </div>
-      <div className="ProductCategory">{productInfo.category}</div>
+      <div className="ProductCategory">{productInfo.category.toUpperCase()}</div>
       <div className="ProductTitle">{productInfo.name}</div>
       <div className="price">{currentStyleObj.original_price}</div>
     </div>
