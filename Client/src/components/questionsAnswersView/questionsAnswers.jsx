@@ -42,7 +42,7 @@ const QuestionsAnswers = () => {
 
     if (searchQuestion.length >= 3) {
       setRenderListQ(searchResult.slice(0, 4));
-      console.log('slice of search result', searchResult.slice(0,4));
+      console.log('slice of search result', searchResult.slice(0, 4));
     } else {
       setRenderListQ(questionList.slice(0, 4));
     }
@@ -93,7 +93,7 @@ const QuestionsAnswers = () => {
 export default QuestionsAnswers;
 
 
-{/* <div class="container">
+{ /* <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-4">
       <div id="summary">
@@ -104,4 +104,4 @@ export default QuestionsAnswers;
       </div>
     </div>
   </div>
-</div> */}
+</div> */ }

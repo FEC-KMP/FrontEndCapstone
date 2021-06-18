@@ -12,16 +12,16 @@ import {QAProvider} from '../context/QAContext.jsx';
 
 var App = () => {
   const [productId, updateProductId] = useState(18078);
-  const [productName, updateProductName] = useState("Camo Onesie");
+  const [productName, updateProductName] = useState('Camo Onesie');
 
   return (
     <ProductIdContext.Provider value={{ productId, updateProductId, productName, updateProductName }}>
       <div className="container">
-        <NavBar />
+        {/* <NavBar />
         <ProductMain />
         <QAProvider>
           <QuestionsAnswers />
-        </QAProvider>
+        </QAProvider>  */}
         <div>
           <RatingsAndReviews />
         </div>

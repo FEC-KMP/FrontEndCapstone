@@ -52,7 +52,7 @@ var ProductMain = (props) => {
     axios.get(`/products/${productId}/`)
       .then((results) => {
         //add list to state
-        console.log('C: productMain getProductInfo get/products/:productId success: ', results.data);
+        // console.log('C: productMain getProductInfo get/products/:productId success: ', results.data);
         updateProductInfo(results.data);
         updateProductName(results.data.name);
       })
@@ -66,7 +66,7 @@ var ProductMain = (props) => {
     axios.get(`/products/${productId}/styles`)
       .then((results) => {
         //add list to state
-        console.log('C: productMain get/getStyleInfo get/products/:productiD/styles  success');
+        // console.log('C: productMain get/getStyleInfo get/products/:productiD/styles  success');
         updateStyleInfo(results.data.results);
         updateCurrentStyleObj(results.data.results[0]);
       })
