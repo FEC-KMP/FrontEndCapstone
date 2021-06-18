@@ -99,6 +99,12 @@ var AddToCart = ({ currentStyleObj }) => {
           onAddToCart(currentSizeSelected, currentQuantSelected, currentStyleObj.style_id);
         }
       }}>Add to Bag</button>
+      {/* <div className="socialMediaButtons col" >
+        <i class="fab fa-instagram-square socialMedia"></i>
+        <i class="fab fa-facebook-square socialMedia"></i>
+        <i class="fab fa-twitter-square socialMedia"></i>
+        <i class="fas fa-share-square socialMedia"></i>
+      </div> */}
     </div>
   );
 };

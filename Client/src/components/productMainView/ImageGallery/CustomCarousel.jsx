@@ -26,11 +26,11 @@ var CustomCarousel = ({ currentStyleObj, updateIsExpanded }) => {
                 return <CarouselImg photoObj={photoObj} photoIndex={currentStyleObj.photos.indexOf(photoObj)} updateSelectedIndex={updateSelectedIndex} selectedIndex={selectedIndex} />;
               }))}
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" onClick={() => { if (selectedIndex > 0) { updateSelectedIndex(selectedIndex - 1); } }}>
+            <a class={`carousel-control-prev ${selectedIndex === 0 ? 'hidden' : ''}`}href="#carouselExampleControls" role="button" onClick={() => { if (selectedIndex > 0) { updateSelectedIndex(selectedIndex - 1); } }}>
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" onClick={() => { if (selectedIndex < stylePhotoLength - 1) { updateSelectedIndex(selectedIndex + 1); } }}>
+            <a class={`carousel-control-next ${selectedIndex === stylePhotoLength - 1 ? 'hidden' : ''}`} href="#carouselExampleControls" role="button" onClick={() => { if (selectedIndex < stylePhotoLength - 1) { updateSelectedIndex(selectedIndex + 1); } }}>
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>

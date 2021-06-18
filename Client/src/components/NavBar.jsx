@@ -3,7 +3,7 @@ import React from 'react';
 var NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#">Navbar</a>
+      <a className="navbar-brand" href="#">Catwalk Fashion</a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -14,11 +14,11 @@ var NavBar = () => {
             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <a className="nav-link" href="#">Shop</a>
           </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
+              Categories
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
               <a className="dropdown-item" href="#">Action</a>
@@ -28,7 +28,7 @@ var NavBar = () => {
             </div>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled" href="#">Disabled</a>
+            <a className="nav-link disabled" href="#">Social Media</a>
           </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">

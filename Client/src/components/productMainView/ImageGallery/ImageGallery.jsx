@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import CarouselThumbnails from './CarouselThumbnails.jsx';
-import Carousel from './Carousel.jsx';
 import CustomCarousel from './CustomCarousel.jsx';
 
 
