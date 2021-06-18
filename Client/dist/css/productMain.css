@@ -23,10 +23,11 @@ body {
   display: flex;
   background-color: mintcream;
   justify-content: center;
-  max-height: 600px;
+  vertical-align: center;
+  height: 600px;
   /* z-index:0; */
   object-fit: cover;
-
+  padding-bottom: 15px;
 }
 /* .carousel-item {
   height: 45rem;
@@ -37,12 +38,14 @@ body {
   z-index: 1;
   object-fit: cover;
   max-height:600px;
+  align-items: center;
 
   /* position: absolute; */
 }
 .CC-inner {
   object-fit: cover;
   max-height:600px;
+  align-items: center;
 }
 .expandButton{
   color: white !important;
@@ -69,20 +72,25 @@ body {
   z-index: 1000;
   /* border: 3px solid black; */
   overflow: scroll;
-  top: 50px;
+  top: 0px;
   left: 50px;
   max-width: 80px;
-  max-height: 500px;
-  padding-top: 20px;
-  /* background-color: whitesmoke; */
+  height: 600px;
+  background-color: rgba(255,255,255,.3);
 }
 .CC-MainImageList {
   z-index: 0;
   display: flex;
+  height: 600px;
+  align-items: center;
 }
 .MainImg {
   object-fit:cover;
   max-height: 600px;
+  vertical-align: middle;
+  align-content: center;
+  align-items: center;
+  align-self: center;
   /* overflow:scroll; */
 }
 .carousel-thumbnail-item, .carousel-thumbnail-item > img{
@@ -105,7 +113,7 @@ body {
   position: absolute;
   top: 50% !important;
   transform: translateY(-50%);
-  left: 20%;
+  left: 25%;
   color: #585858 !important;
   z-index: 4000;
 
@@ -160,18 +168,21 @@ body {
 .ProductRating {
   font-weight: 100;
   font-size: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #ProductReviewLink {
   text-decoration: underline;
+  color: black;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .ProductCategory, .price, .StyleSelector{
   font-weight: 100;
   font-size: 12px;
   padding-top: 5px;
-
-
 }
 
 .ProductTitle {
@@ -191,6 +202,11 @@ body {
   font-weight: 100;
   font-size: 10px;
   padding-top: 10px;
+  padding-bottom: 25px;
+}
+
+.StyleSelector {
+  padding-top: 15px;
 }
 
 #sizeSelectorInStock, #sizeSelectorOutOfStock {
@@ -225,7 +241,7 @@ body {
 .thumbnails {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 4px;
+  padding: 15px 4px;
 }
 
 .styleThumbnail {
@@ -243,4 +259,13 @@ body {
 
 .selectedStyle {
   border: 3px solid mintcream !important;
+}
+
+.socialMedia {
+  font-size: 50px !important;
+  padding: 5px;
+}
+
+.hidden {
+  display: none;
 }
