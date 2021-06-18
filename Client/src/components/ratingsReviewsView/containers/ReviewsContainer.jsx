@@ -4,9 +4,9 @@ import WriteReview from '../WriteReview/WriteReview.jsx';
 import ProductIdContext from '../../../context/ProductIdContext.jsx';
 import axios from 'axios';
 import Entry from '../List/Entry.jsx';
-import ReviewContext from '../../ReviewContext.jsx';
+import ReviewContext from '../../../context/ReviewContext.jsx';
 
-export default function ReviewsContainer ({ reviewsInfo, postReview, productId}) {
+export default function ReviewsContainer ({ reviewsInfo, postReview, productId, productName }) {
   if (!reviewsInfo) { return 'data not found'; }
 
   var { starFilter, updateStarFilter } = useContext(ReviewContext);
@@ -19,11 +19,9 @@ export default function ReviewsContainer ({ reviewsInfo, postReview, productId})
   };
 
   const handleShowModal = () => {
-    console.log('handleShowModal clicked');
     setShowWriteReview(true);
   };
   const handleCloseModal = () => {
-    console.log('handleCloseModal clicked');
     setShowWriteReview(false);
   };
 
@@ -77,6 +75,7 @@ export default function ReviewsContainer ({ reviewsInfo, postReview, productId})
             showWriteReview={showWriteReview}
             reviewsInfo={reviewsInfo}
             product_id={productId}
+            productName={productName}
           />
         </div>
       </div>

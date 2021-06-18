@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import ReviewContext from '../../ReviewContext.jsx';
+import ReviewContext from '../../../context/ReviewContext.jsx';
 
 export default function RatingBar ({ metaInfo, starRating, rating }) {
   if (!metaInfo) { return 'data not found'; }

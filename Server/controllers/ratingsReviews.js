@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const router = express.Router();
 
-const GITHUB_API_KEY = require('../config.js');
+const { GITHUB_API_KEY } = require('../config.js');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 
 //get reviews
@@ -19,7 +19,6 @@ router.get('/reviews', (req, res) => {
     headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' },
   })
     .then((response) => {
-      // console.log('this is response inside get request',response);
       res.status(200).send(response.data);
     })
     .catch((err) => {

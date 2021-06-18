@@ -5,7 +5,7 @@ import RatingsContainer from './Containers/RatingsContainer.jsx';
 import axios from 'axios';
 import ProductIdContext from '../../context/ProductIdContext.jsx';
 import Row from 'react-bootstrap/Row';
-import reviewContext from '../ReviewContext.jsx';
+import reviewContext from '../../context/ReviewContext.jsx';
 
 
 
@@ -33,11 +33,10 @@ var reportReview = (reviewId, callback) => {
 };
 
 const RatingsAndReviews = (props) => {
-  var {productId, updateProductId} = useContext(ProductIdContext);
+  var {productId, updateProductId, productName, updateProductName} = useContext(ProductIdContext);
   var [reviewsInfo, updateReviewsInfo] = useState();
   var [metaInfo, updateMetaInfo] = useState();
   var [starFilter, updateStarFilter] = useState([]);
-  var [productInfo, updateProductInfo] = useState();
 
   var getReviewInfo = (productId, page = 1, count = 1000, sort = 'helpful') => {
     axios.get('/rnr/reviews', {params: {
@@ -103,8 +102,8 @@ const RatingsAndReviews = (props) => {
               <ReviewsContainer
                 reviewsInfo={reviewsInfo}
                 postReview={postReview}
-                productInfo={productInfo}
                 productId={productId}
+                productName={productName}
               />
             </div>
           </div>
