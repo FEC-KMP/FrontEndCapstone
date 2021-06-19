@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import QuestionsAnswers from './questionsAnswersView/QuestionsAnswers.jsx';
+import QuestionsAnswers from './questionsAnswersView/questionsAnswers.jsx';
 import { getListOfProducts, getListInfoProducts, getListOfReviews, getListOfQuestions } from '../context/ApiContext.jsx';
 import ProductMain from './productMainView/productMain.jsx';
 import GITHUB_API_KEY from '../api/githubApi.js';
