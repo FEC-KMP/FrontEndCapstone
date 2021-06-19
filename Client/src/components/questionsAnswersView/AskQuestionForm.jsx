@@ -1,28 +1,48 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { qAContext } from '../../context/QAContext.jsx';
 const AskQuestionForm = ({ productId }) => {
-  const {questionList, setQuestionList, renderListQ, setRenderListQ, addQuestion, getListOfQuestions} = useContext(qAContext);
-  const [body, setQuestionBody] = useState();
-  const [name, setNickName] = useState();
-  const [email, setYourEmail] = useState();
+  const { questionList, setQuestionList, renderListQ, setRenderListQ, addQuestion, getListOfQuestions } = useContext(qAContext);
+  const [body, setQuestionBody] = useState('');
+  const [name, setNickName] = useState('');
+  const [email, setYourEmail] = useState('');
 
-  const data = {
-    body: body,
-    name: name,
-    email: email,
-    product_id: productId
-  };
+
 
 
   const handleSubmit = (e) => {
+    const data = {
+      body: body,
+      name: name,
+      email: email,
+      product_id: Number(productId)
+    };
     e.preventDefault();
-    addQuestion(data);
-  }
+    addQuestion(data, (error, results1) => {
+      if (error) {
+        console.log(error);
+      } else {
+
+        getListOfQuestions(productId, (err, results) => {
+          if (err) {
+            console.log(err);
+          } else {
+            const sortQuestions = results.sort((a, b) => (b.question_helpfulness - a.question_helpfulness));
+            setQuestionList(sortQuestions);
+          }
+        });
+      }
+    });
+
+  };
+
+  useEffect(() => {
+    setRenderListQ(questionList.slice(0, 4));
+  }, [questionList]);
 
   return (
     <div>
-      <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD A QUESTION +</button>
-      <div className="modal fade left" id="myModal">
+      <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#QModal">ADD A QUESTION +</button>
+      <div className="modal fade left" id="QModal">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -43,7 +63,7 @@ const AskQuestionForm = ({ productId }) => {
                       name="name"
                       placeholder="Example: jackson11!"
                       value={name}
-                      onChange={(e) => {setNickName(e.target.value)}}
+                      onChange={(e) => { setNickName(e.target.value) }}
                       required />
                     <p>For privacy reasons, do not use your full name or email address</p>
                   </div>
@@ -55,7 +75,7 @@ const AskQuestionForm = ({ productId }) => {
                   <div className="col-sm-9">
                     <input type="email" className="form-control" id="email" name="email" placeholder="Example: jack@email.com"
                       value={email}
-                      onChange={(e) => {setYourEmail(e.target.value)}}
+                      onChange={(e) => { setYourEmail(e.target.value) }}
                       required />
                     <p>For authentication reasons, you will not be emailed</p>
                   </div>
@@ -68,14 +88,14 @@ const AskQuestionForm = ({ productId }) => {
                     <textarea name="question" rows="4" required className="form-control" id="question"
                       placeholder="Type your question here"
                       value={body}
-                      onChange={(e) => {setQuestionBody(e.target.value)}}
+                      onChange={(e) => { setQuestionBody(e.target.value) }}
                       maxLength="1000"></textarea>
                   </div>
                 </div>
 
                 <div className="form-group">
                   <div className="col-sm-offset-3 col-sm-6 col-sm-offset-3">
-                    <button type="submit" id="submit" name="submit" className="btn-lg btn-primary" onSubmit={handleSubmit}>SUBMIT</button>
+                    <button type="button" id="submit" name="submit" className="btn-lg btn-primary" onClick={handleSubmit}>SUBMIT</button>
                   </div>
                 </div>
 

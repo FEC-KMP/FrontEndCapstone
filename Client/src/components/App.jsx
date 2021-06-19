@@ -17,6 +17,7 @@ var App = () => {
   return (
     <ProductIdContext.Provider value={{ productId, updateProductId, productName, updateProductName }}>
       <div className="container">
+        <NavBar />
         {/* <NavBar />
         <ProductMain />
         <QAProvider>

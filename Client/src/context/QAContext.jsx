@@ -12,8 +12,7 @@ export const QAProvider = (props) => {
 
   const getListOfQuestions = (productId, callback) => {
     //product_id, page, count => parameters
-    // eslint-disable-next-line camelcase
-    const params = { product_id: productId, page: 1, count: 5 };
+    const params = { product_id: productId, page: 1, count: 20 };
     // console.log('C: getListOfQuestions params: ', params);
     axios.get('/qa/questions/', { params })
       .then((results) => {
@@ -42,39 +41,64 @@ export const QAProvider = (props) => {
   };
 
   const addQuestion = (data, callback) => {
-    var data = {
-      body: body,
-      name: name,
-      email: email,
-      // eslint-disable-next-line camelcase
-      product_id: productId
-    };
+    console.log('data', data);
     axios.post('/qa/questions', data)
       .then((results) => {
-        // console.log('C: addQuestion get/qa/questions success results: ', results);
         callback(null, results);
-
       })
       .catch((err) => {
-        // console.log('C: addQuestion get/qa/questions err: ', err);
         callback(err, null);
       });
   };
 
 
-  const addAnswer = (body, name, email, photos, questionId, callback) => {
-    const data = { body, name, email, photos };
-    axios.post(`/qa/questions/${questionId}/answers`, { data })
+  const addAnswer = (data, question_id, callback) => {
+    axios.post(`/qa/questions/${question_id}/answers`, data)
       .then((results) => {
-        // console.log('C: addAnswer get/qa/questions/:questions_id/answers success results: ', results);
-        callback(null, results); //FIXME: results? //FIXME: may want to add answer to answersList
+        callback(null, results);
       })
       .catch((err) => {
-        // console.log('C: addAnswer get/qa/questions/:questions_id/answers err: ', err);
         callback(err, null);
       });
   };
 
+  const MarkQuestionHelpful = (data, question_id) => {
+    axios.put(`/qa/questions/${question_id}/helpful`, data)
+      .then((results) => {
+        console.log(results.data);
+      })
+      .catch((err) => {
+        console.log('error mark helpful question', err);
+      });
+  };
+  const reportQuestion = (data, question_id) => {
+    axios.put(`/qa/questions/${question_id}/report`, data)
+      .then((results) => {
+        console.log(results.data);
+      })
+      .catch((err) => {
+        console.log('error report question', err);
+      });
+  };
+
+  const MarkAnswerHelpful = (data, answer_id) => {
+    axios.put(`/qa/answers/${answer_id}/helpful`, data)
+      .then((results) => {
+        console.log(results.data);
+      })
+      .catch((err) => {
+        console.log('error mark helpful answer', err);
+      });
+  };
+  const reportAnswer = (data, answer_id) => {
+    axios.put(`/qa/answers/${answer_id}/report`, data)
+      .then((results) => {
+        console.log(results.data);
+      })
+      .catch((err) => {
+        console.log('error report answer', err);
+      });
+  };
   return (
     <qAContext.Provider value={{
       questionList, setQuestionList,
@@ -85,7 +109,11 @@ export const QAProvider = (props) => {
       getListOfQuestions,
       getListOfAnswers,
       addQuestion,
-      addAnswer
+      addAnswer,
+      MarkQuestionHelpful,
+      MarkAnswerHelpful,
+      reportAnswer,
+      reportQuestion
     }}>
       {props.children}
     </qAContext.Provider>

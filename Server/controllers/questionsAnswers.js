@@ -6,7 +6,7 @@ app.use(express.json());
 
 const GITHUB_API_KEY = require('../config');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions';
-
+const AUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers';
 
 //List questions
 router.get('/questions', (req, res) => {
@@ -52,15 +52,10 @@ router.get('/questions/:questionId/answers', (req, res) => {
 //Add a question
 router.post('/questions', (req, res) => {
   console.log('S: post/questions req.body.data: ', req.body);
-  //FIXME: passing in req.body.data as postData params, may need to change
-  // const params = {
-  //   body: "can I Iron it",
-  //   name: "cool",
-  //   email: "xyz@gmail.com",
-  //   product_id: 18078
-  // }
+
   axios.post(BaseUrl, req.body, {
-    headers: { Authorization: GITHUB_API_KEY },
+    headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' },
+
   })
     .then((response) => {
       console.log('S: post/questions/ response.data: ', response.data);
@@ -73,11 +68,11 @@ router.post('/questions', (req, res) => {
 });
 
 //Add an Answer
-router.post('/questions/:questionId/answers', (req, res) => {
-  console.log('S: post/questions/:questionId/answers req.body.data: ', req.body.data);
+router.post('/questions/:question_id/answers', (req, res) => {
+  console.log('S: post/questions/:questionId/answers req.body.data: ', req.body);
   //FIXME: passing in req.body.data as postData params, may need to change
-  axios.post(`${BaseUrl}/${req.params.questionId}/answers`, req.body.data, {
-    headers: { Authorization: GITHUB_API_KEY },
+  axios.post(`${BaseUrl}/${req.params.question_id}/answers`, req.body, {
+    headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' },
   })
     .then((response) => {
       console.log('S: post/questions/:question_id/answers response: ', response);
@@ -88,8 +83,65 @@ router.post('/questions/:questionId/answers', (req, res) => {
       res.status(500).send(err);
     });
 });
+//  mark question as helpful
+router.put('/questions/:question_id/helpful', (req, res) => {
+  axios.put(`${BaseUrl}/${req.params.question_id}/helpful`, req.body, {
+    headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' },
+  })
+    .then((response) => {
+      console.log('S: put/questions/:question_id/helpful response: ', response);
+      res.status(204).send(response.data);
+    })
+    .catch((err) => {
+      console.log('S: put/questions/:questionId/helpful err: ', err);
+      res.status(400).send(err);
+    });
+});
+// report question
+router.put('/questions/:question_id/report', (req, res) => {
+  axios.put(`${BaseUrl}/${req.params.question_id}/report`, req.body, {
+    headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' },
+  })
+    .then((response) => {
+      console.log('S: put/questions/:question_id/report response: ', response);
+      res.status(204).send(response.data);
+    })
+    .catch((err) => {
+      console.log('S: put/questions/:questionId/report err: ', err);
+      res.status(400).send(err);
+    });
+});
 
+//mark answer as helpful
 
+router.put('/answers/:answer_id/helpful', (req, res) => {
+  axios.put(`${AUrl}/${req.params.answer_id}/helpful`, req.body, {
+    headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' },
+  })
+    .then((response) => {
+      console.log('S: put/answers/:answer_id/helpful response: ', response);
+      res.status(204).send(response.data);
+    })
+    .catch((err) => {
+      console.log('S: put/answers/:answer_id/helpful err: ', err);
+      res.status(400).send(err);
+    });
+});
+
+// report answer
+router.put('/answers/:answer_id/report', (req, res) => {
+  axios.put(`${AUrl}/${req.params.answer_id}/report`, req.body, {
+    headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' },
+  })
+    .then((response) => {
+      console.log('S: put/answers/:answer_id/report response: ', response);
+      res.status(204).send(response.data);
+    })
+    .catch((err) => {
+      console.log('S: put/answers/:answer_id/report err: ', err);
+      res.status(400).send(err);
+    });
+});
 //  router.get('/reviews',
 module.exports = router;
 

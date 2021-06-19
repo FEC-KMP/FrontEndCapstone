@@ -1,5 +1,6 @@
 .questionsContainer {
   border: 3px solid grey;
+  overflow: auto;
   align-items: center;
   justify-content: center;
 }
@@ -58,39 +59,56 @@
 a:link {
   text-decoration: none
 }
-.btn-link {
+.button-link {
   text-decoration: underline
 }
+.qa {
+  border: 0 !important;
+}
+.questionSpace {
 
- /* collapse */
- #summary {
-  font-size: 14px;
-  line-height: 1.5;
+  justify-content: space-between;
 }
 
-#summary p.collapse:not(.show) {
-    height: 42px !important;
-    overflow: hidden;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+.helpful {
+  text-decoration: underline;
+  border: none;
+  font-size: 12px;
 }
-
-#summary p.collapsing {
-    min-height: 42px !important;
+.report {
+  text-decoration: underline;
+  border: none;
+  font-size: 12px;
 }
-
-#summary a.collapsed:after  {
-    content: '+ Read More';
+.addAnswer {
+  text-decoration: underline;
+  border: none;
+  font-size: 12px;
 }
-
-#summary a:not(.collapsed):after {
-    content: '- Read Less';
+.questionBody {
+  display:inline-block;
 }
-
 .required {
   color:red;
   font-weight:bold
 }
 .human {margin: 0 0 0 12px}
+
+
+.moreAnswersButton {
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px;
+  margin-left: 30px;
+  color: darkslategray
+}
+
+.moreQuestion {
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px;
+  margin-left: 30px;
+  color: darkslategray
+}

@@ -48,60 +48,58 @@ const QuestionsAnswers = () => {
     }
   };
 
-  const moreQuestions = (renderListQ && questionList.length > 4) ? (
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-4">
-          <div id="summary">
-            <div class="collapse" id="collapseSummary">
-              {questionList.slice(0, 6).map(question => (
-                <QAList
-                  key={question.question_id}
-                  question={question}
-                />
-              ))}
-            </div>
-            <a class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary"></a>
-          </div>
-        </div>
-      </div>
-    </div>
+  const handleMoreQuestionsClick = () => {
+    console.log('questionListLength', questionList.length)
+    if (renderListQ.length === 4) {
+      setRenderListQ(questionList.slice(0, 6));
+    } else if (renderListQ.length === 6 && renderListQ.length < questionList.length) {
+      setRenderListQ(questionList.slice(0, questionList.length));
+    } else if (renderListQ.length === questionList.length) {
+      setRenderListQ(questionList.slice(0, 4));
+    }
+  };
+
+  let moreQAMessage;
+
+  if (questionList && renderListQ) {
+    if (renderListQ && (renderListQ.length < questionList.length)) {
+      moreQAMessage = 'SEE MORE QUESTIONS';
+    } else if (renderListQ.length === questionList.length && questionList.length > 4) {
+      moreQAMessage = 'COLLAPSE QUESTIONS';
+    }
+  }
+
+  const seeMoreQuestions = renderListQ && questionList.length > 4 ? (
+    <button
+      className="moreQuestion"
+      type="button"
+      onClick={handleMoreQuestionsClick}
+    >
+      {moreQAMessage}
+    </button>
   ) : null;
+
 
   return !loading ? (
 
     <div className="questionsContainer">
       <h1>QUESTIONS AND ANSWERS</h1>
-      <SearchQAForm handleSearch={handleSearch}/>
+      <SearchQAForm handleSearch={handleSearch} />
       <div>{renderListQ.map(question => (
         <QAList
           key={question.question_id}
           question={question}
+          productId={productId}
         />
       ))}
-      {questionList.length > 4 && (
-        moreQuestion
-      )}
+      {seeMoreQuestions}
       </div>
-
-      <AskQuestionForm productId={productId}/>
+      <AskQuestionForm productId={productId} />
     </div>
   ) : (
-    <h1>Loading...</h1>
-  );
+ <h1>Loading...</h1>
+ );
 };
 export default QuestionsAnswers;
 
 
-{ /* <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-4">
-      <div id="summary">
-        <p class="collapse" id="collapseSummary">
-
-        </p>
-        <a class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary"></a>
-      </div>
-    </div>
-  </div>
-</div> */ }
