@@ -3,7 +3,7 @@ import StarRatings from 'react-star-ratings';
 
 
 
-export default function Average ({ metaInfo }) {
+export default function Average({ metaInfo }) {
   if (!metaInfo) { return 'data not found'; }
   const ratingAverage = () => {
     const ratings = metaInfo.ratings;
@@ -19,15 +19,17 @@ export default function Average ({ metaInfo }) {
   };
   const average = ratingAverage();
   return (
-    <div>
-      <h3 className="average">{average} </h3>
-      <StarRatings
-        rating={Number(average)}
-        starRatedColor="blue"
-        numberOfStars={5}
-        name='rating'
-        starDimension="30px"
-      />
+    <div className="row">
+      <span className="average col-2">{average}</span>
+      <div className="ratingsStars col">
+        <StarRatings
+          rating={Number(average)}
+          starRatedColor="grey"
+          numberOfStars={5}
+          name='rating'
+          starDimension="12px"
+        />
+      </div>
     </div>
   );
 }

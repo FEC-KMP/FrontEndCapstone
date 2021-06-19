@@ -1,9 +1,9 @@
 import React from 'react';
-
+{/* <i class="fas fa-check"></i> */}
 const Recommend = ({ recommend }) => {
   return (
-    <div>
-      {(recommend ? 'I recommend this' : '')}
+    <div className="r100 rec">
+      {(recommend ? 'I recommend this product' : '')}
     </div>
   );
 };

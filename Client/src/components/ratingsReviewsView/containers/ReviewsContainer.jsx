@@ -62,20 +62,20 @@ export default function ReviewsContainer ({ reviewsInfo, postReview, productId, 
     }
   }
   return (
-    <div>
+    <div className="r100">
       <div>
-        <h5>{totalReviews} Total Reviews {metaDataLies} {sortedBy}</h5>
+        <span className="r700">{totalReviews} Total Reviews {metaDataLies} {sortedBy}</span>
       </div>
       <div>
         <div>
           {reviewEntry}
         </div>
       </div>
-      <div>
-        <button variant="primary" onClick={handleShow}>
+      <div className="rrButtons">
+        <button className="btn" variant="primary" onClick={handleShow}>
           More Reviews
         </button>
-        <button onClick={handleShowModal}>
+        <button className="btn" onClick={handleShowModal}>
           Add a Review +
         </button>
         <div>

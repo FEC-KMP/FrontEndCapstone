@@ -9,31 +9,37 @@ import StarRatings from 'react-star-ratings';
 
 const Entry = ({ review }) => {
   return (
-    <div className="border-bottom">
-      <StarRatings
-        rating={review.rating}
-        starRatedColor="blue"
-        numberOfStars={5}
-        name='rating'
-        starDimension="10px"
-      />
-      <div className="nameAndDate">
-        {review.reviewer_name}, {formatDate(review.date)}
-      </div>
-      <ReviewSummary reviewSummary={review.summary}/>
-      <Body body={review.body}/>
-      <Response response={review.response}/>
-      <Recommend recommend={review.recommend}/>
-      <div>
-        <div className="helpful">
-          <button>
-            helpful?
-          </button>
+    <div className="border-bottom entry">
+      <div className="starsNameDate row">
+        <div >
+          <StarRatings
+            rating={review.rating}
+            starRatedColor="grey"
+            numberOfStars={5}
+            name='rating'
+            starDimension="12px"
+          />
         </div>
-        <div>
-          <button>
-            report
-          </button>
+        <div className="nameAndDate col">
+          {review.reviewer_name}, {formatDate(review.date)}
+        </div>
+      </div>
+      <ReviewSummary reviewSummary={review.summary} />
+      <Body body={review.body} />
+      <Response response={review.response} />
+      <Recommend recommend={review.recommend} />
+      <div className="helpfulReport row">
+        <div className="rHelpful">
+          Helpful?
+          <a className="helpfulYes">
+            Yes
+          </a>
+        </div>
+        ({review.helpfulness}) |
+        <div className="report">
+          <a>
+            Report
+          </a>
         </div>
       </div>
     </div>

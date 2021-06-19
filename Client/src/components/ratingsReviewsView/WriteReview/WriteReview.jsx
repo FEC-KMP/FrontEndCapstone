@@ -22,10 +22,7 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
   var {productId, updateProductId} = useContext(ProductIdContext);
   var [postFormData, setPostFormData] = useState(emptyState);
   var [ratingLabel, setRatingLabel] = useState('');
-<<<<<<< HEAD
   var [valid, setValid] = useState(true);
-=======
->>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
 
   const revertState = (event) => {
     event.preventDefault(event);
@@ -35,7 +32,6 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
 
   const handlePostReview = (event) => {
     event.preventDefault(event);
-<<<<<<< HEAD
     if (valid) {
       postReview(postFormData, (err) => {
         if (err) {
@@ -44,32 +40,18 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
         console.log('posted review', postFormData);
       });
     }
-=======
-    postReview(postFormData, (err) => {
-      if (err) {
-        console.log('err in handlePostReview', err);
-      }
-      console.log('posted review', postFormData);
-    });
->>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
   };
 
   const ratingChanged = (newRating) => {
     event.preventDefault(newRating);
     postFormData.rating = newRating;
     setPostFormData(postFormData);
-<<<<<<< HEAD
-=======
     console.log('rating', postFormData.rating);
->>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
   };
 
   const onRatingSelected = (rating) => {
     event.preventDefault(rating);
-<<<<<<< HEAD
-=======
     console.log('rating in onRatingSelected', rating);
->>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
     rating === 1 ? setRatingLabel('Poor') : '';
     rating === 2 ? setRatingLabel('Fair') : '';
     rating === 3 ? setRatingLabel('Average') : '';
@@ -82,7 +64,6 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
     setPostFormData(postFormData);
   };
 
-<<<<<<< HEAD
   const handleSummary = (event) => {
     postFormData.summary = event;
   };
@@ -104,8 +85,6 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
   const characterCounter = (event) => {
 
   };
-=======
->>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
   return (
     <div>
       <Modal
@@ -132,7 +111,6 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
                 <div>{ratingLabel}</div>
               </Form.Label>
             </Form.Group>
-<<<<<<< HEAD
             <Form.Group controlId="reviewForm.ControlInputRecommend">
               <Form.Label>
                 Do you recommend this product?
@@ -169,9 +147,6 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
               onChange={e => { handleBody(e); characterCounter(e); }}
             />
           </Form.Group>
-=======
-          </Form>
->>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={e => { handlePostReview(e); revertState(e); }}>

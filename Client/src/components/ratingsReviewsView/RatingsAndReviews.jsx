@@ -33,18 +33,20 @@ var reportReview = (reviewId, callback) => {
 };
 
 const RatingsAndReviews = (props) => {
-  var {productId, updateProductId, productName, updateProductName} = useContext(ProductIdContext);
+  var { productId, updateProductId, productName, updateProductName } = useContext(ProductIdContext);
   var [reviewsInfo, updateReviewsInfo] = useState();
   var [metaInfo, updateMetaInfo] = useState();
   var [starFilter, updateStarFilter] = useState([]);
 
   var getReviewInfo = (productId, page = 1, count = 1000, sort = 'helpful') => {
-    axios.get('/rnr/reviews', {params: {
-      productId: productId,
-      page: page,
-      count: count,
-      sort: sort
-    }})
+    axios.get('/rnr/reviews', {
+      params: {
+        productId: productId,
+        page: page,
+        count: count,
+        sort: sort
+      }
+    })
       .then((result) => {
         updateReviewsInfo(result.data);
       })
@@ -54,9 +56,11 @@ const RatingsAndReviews = (props) => {
   };
 
   var getReviewMeta = (productId) => {
-    axios.get('/rnr/reviews/meta', {params: {
-      product_id: productId
-    }})
+    axios.get('/rnr/reviews/meta', {
+      params: {
+        product_id: productId
+      }
+    })
       .then((result) => {
         updateMetaInfo(result.data);
       })
@@ -66,7 +70,7 @@ const RatingsAndReviews = (props) => {
   };
 
   var postReview = (body, callback) => {
-    axios.post('/rnr/reviews', {body})
+    axios.post('/rnr/reviews', { body })
       .then((result) => {
         callback(null, result);
       })
@@ -90,14 +94,14 @@ const RatingsAndReviews = (props) => {
         updateStarFilter,
       }
       }>
+        <span className="ratingsReviews">RATINGS & REVIEWS</span>
         <div className="RatingsAndReviews row">
-          <h4>Ratings & Reviews</h4>
-          <div id="RatingsContainer" className="col-lg-5">
+          <div id="RatingsContainer" className="col-lg-4">
 
             <RatingsContainer metaInfo={metaInfo} />
           </div>
 
-          <div id="ReviewsContainer" className="col-lg-7">
+          <div id="ReviewsContainer" className="col-lg-8">
 
             <ReviewsContainer
               reviewsInfo={reviewsInfo}
