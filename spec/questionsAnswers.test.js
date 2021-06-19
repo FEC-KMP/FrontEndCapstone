@@ -1,9 +1,8 @@
-<<<<<<< HEAD
-=======
 
 const supertest = require('supertest');
 const axios = require('axios');
 const app = require('../server/index.js');
+const app = require('../server/server.js');
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 const config = require('../server/config.js');
 
@@ -45,4 +44,3 @@ describe('Questions routing', () => {
     );
   });
 });
->>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
