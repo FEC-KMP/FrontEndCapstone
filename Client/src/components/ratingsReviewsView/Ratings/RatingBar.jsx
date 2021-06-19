@@ -44,10 +44,14 @@ export default function RatingBar ({ metaInfo, starRating, rating }) {
 
   };
 
+  const cursorPointer = {
+    cursor: 'pointer'
+  };
+
   return (
     <div>
-      <div onClick={() => handleStarClick(starRating)}
-      >{starRating} stars </div>
+      <div style={cursorPointer} onClick={() => handleStarClick(starRating)}
+      ><p><u>{starRating} stars</u> </p></div>
       <div style={ratingContainer}>
         <div style={filledBar}></div>
       </div>

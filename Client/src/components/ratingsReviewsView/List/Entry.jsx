@@ -3,14 +3,22 @@ import ReviewSummary from './ReviewSummary.jsx';
 import Body from './Body.jsx';
 import Response from './Response.jsx';
 import Recommend from './Recommend.jsx';
-import Stars from '../../sharedComponentsView/Stars.jsx';
+import formatDate from '../../DateFormat.jsx';
+import StarRatings from 'react-star-ratings';
+
 
 const Entry = ({ review }) => {
   return (
     <div className="border-bottom">
-      <Stars rating={review.rating}/>
+      <StarRatings
+        rating={review.rating}
+        starRatedColor="blue"
+        numberOfStars={5}
+        name='rating'
+        starDimension="10px"
+      />
       <div className="nameAndDate">
-        User: {review.reviewer_name}, {review.date}
+        {review.reviewer_name}, {formatDate(review.date)}
       </div>
       <ReviewSummary reviewSummary={review.summary}/>
       <Body body={review.body}/>

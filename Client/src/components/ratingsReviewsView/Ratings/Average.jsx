@@ -1,4 +1,5 @@
 import React from 'react';
+import StarRatings from 'react-star-ratings';
 
 
 
@@ -18,6 +19,15 @@ export default function Average ({ metaInfo }) {
   };
   const average = ratingAverage();
   return (
-    <h3 className="average">{average} </h3>
+    <div>
+      <h3 className="average">{average} </h3>
+      <StarRatings
+        rating={Number(average)}
+        starRatedColor="blue"
+        numberOfStars={5}
+        name='rating'
+        starDimension="30px"
+      />
+    </div>
   );
 }

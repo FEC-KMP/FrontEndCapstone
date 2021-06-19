@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const router = express.Router();
 
-const GITHUB_API_KEY = require('../config.js');
+const { GITHUB_API_KEY } = require('../config.js');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 
 //get reviews
