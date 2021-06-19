@@ -4,37 +4,54 @@ import Answer from './Answer.jsx';
 
 const AnswerList = ({ answerList }) => {
   const sortAnswers = Object.values(answerList).sort((a, b) => (b.helpfulness - a.helpfulness));
+  const [renderListA, setRenderListA] = useState();
 
-  const moreAnswers = (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-4">
-          <div id="summary">
-            <div className="collapse" id="collapseSummary">
 
-              {sortAnswers.map(answer => (
-                <Answer key={answer.id}
-                  answer={answer} />
-              )
-              )}
-            </div>
-            <a className="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+  useEffect(()=> {
+    setRenderListA(sortAnswers.slice(0, 2));
+  }, []);
 
-  return sortAnswers ? (
+  let moreAnswerMessage;
+
+  if (renderListA && sortAnswers) {
+    // console.log(renderListA.length);
+    if (renderListA.length < sortAnswers.length) {
+      // console.log('see more answers')
+      moreAnswerMessage = 'SEE MORE ANSWERS';
+    } else if (renderListA.length === sortAnswers.length && sortAnswers.length > 2) {
+      moreAnswerMessage = 'COLLAPSE ANSWERS';
+    }
+  }
+
+  const handleMoreAnswersClick = () => {
+    if (renderListA.length === 2) {
+      setRenderListA(sortAnswers.slice(0, 4));
+    } else if (renderListA.length === 4 && renderListA.length < sortAnswers.length) {
+      setRenderListA(sortAnswers);
+    } else if (renderListA.length === sortAnswers.length) {
+      setRenderListA(sortAnswers.slice(0, 2));
+    }
+  };
+  const moreAnswers = renderListA && sortAnswers.length > 2 ? (
+    <button
+      className="moreAnswersButton"
+      type="submit"
+      onClick={handleMoreAnswersClick}
+    >
+      {moreAnswerMessage}
+    </button>
+  ) : null;
+
+  return renderListA ? (
     <div>
-      {sortAnswers.slice(0, 2).map(answer => (
+      {renderListA.map(answer => (
         <Answer key={answer.id}
           answer={answer} />
       )
       )}
-      {sortAnswers.length > 2 && (
+      {
         moreAnswers
-      )}
+      }
 
     </div>
   ) : null;
