@@ -125,7 +125,7 @@ const QAList = ({ question, productId }) => {
                         <textarea name="answer" rows="4" required className="form-control" id="answer"
                           placeholder="Type your answer here"
                           value={body}
-                          onChange={(e) => { setAnswerBody(e.target.value) }}
+                          onChange={(e) => { setAnswerBody(e.target.value); }}
                           maxLength="1000"></textarea>
                       </div>
                     </div>
@@ -166,14 +166,3 @@ const QAList = ({ question, productId }) => {
 
 export default QAList;
 
-{/* <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-4">
-      <div id="summary">
-        <p class="collapse" id="collapseSummary">
-
-        </p>
-        <a class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary"></a>
-      </div>
-      </div>
-      </div> */}

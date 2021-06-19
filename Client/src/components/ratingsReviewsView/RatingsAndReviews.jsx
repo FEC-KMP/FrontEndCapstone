@@ -3,21 +3,12 @@ import React, { useContext, useState, useEffect } from 'react';
 import ReviewsContainer from './Containers/ReviewsContainer.jsx';
 import RatingsContainer from './Containers/RatingsContainer.jsx';
 import axios from 'axios';
-import ProductIdContext from '../ProductIdContext.jsx';
+import ProductIdContext from '../../context/ProductIdContext.jsx';
 import Row from 'react-bootstrap/Row';
-import reviewContext from '../ReviewContext.jsx';
+import reviewContext from '../../context/ReviewContext.jsx';
 
 
-var postReview = (body, callback) => {
-  axios.post('/rnr/reviews', {body})
-    .then((result) => {
-      callback(null, result);
-    })
-    .catch((err) => {
-      console.log('C: RnR postReview err', err);
-      callback(err, null);
-    });
-};
+
 
 var markReviewHelpful = (reviewId, callback) => {
   axios.put(`/rnr/reviews/${reviewId}/helpful`)
@@ -42,7 +33,7 @@ var reportReview = (reviewId, callback) => {
 };
 
 const RatingsAndReviews = (props) => {
-  var {productId, updateProductId} = useContext(ProductIdContext);
+  var {productId, updateProductId, productName, updateProductName} = useContext(ProductIdContext);
   var [reviewsInfo, updateReviewsInfo] = useState();
   var [metaInfo, updateMetaInfo] = useState();
   var [starFilter, updateStarFilter] = useState([]);
@@ -74,11 +65,22 @@ const RatingsAndReviews = (props) => {
       });
   };
 
+  var postReview = (body, callback) => {
+    axios.post('/rnr/reviews', {body})
+      .then((result) => {
+        callback(null, result);
+      })
+      .catch((err) => {
+        console.log('C: RnR postReview err', err);
+        callback(err, null);
+      });
+  };
+
+
   useEffect(() => {
     getReviewInfo(productId);
     getReviewMeta(productId);
   }, [productId]);
-
 
 
   return (
@@ -97,7 +99,12 @@ const RatingsAndReviews = (props) => {
           </div>
           <div id="ReviewsContainer row">
             <div className="col-lg-15">
-              <ReviewsContainer reviewsInfo={reviewsInfo} postReview={postReview}/>
+              <ReviewsContainer
+                reviewsInfo={reviewsInfo}
+                postReview={postReview}
+                productId={productId}
+                productName={productName}
+              />
             </div>
           </div>
         </div>

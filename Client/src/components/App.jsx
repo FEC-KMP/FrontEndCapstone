@@ -5,22 +5,24 @@ import ProductMain from './productMainView/productMain.jsx';
 import GITHUB_API_KEY from '../api/githubApi.js';
 import RatingsAndReviews from './ratingsReviewsView/RatingsAndReviews.jsx';
 import NavBar from './NavBar.jsx';
-import ProductIdContext from './ProductIdContext.jsx';
+import ProductIdContext from '../context/ProductIdContext.jsx';
 import {QAProvider} from '../context/QAContext.jsx';
 
 
 
 var App = () => {
   const [productId, updateProductId] = useState(18078);
+  const [productName, updateProductName] = useState('Camo Onesie');
 
   return (
-    <ProductIdContext.Provider value={{ productId, updateProductId }}>
+    <ProductIdContext.Provider value={{ productId, updateProductId, productName, updateProductName }}>
       <div className="container">
         <NavBar />
+        {/* <NavBar />
         <ProductMain />
         <QAProvider>
           <QuestionsAnswers />
-        </QAProvider>
+        </QAProvider>  */}
         <div>
           <RatingsAndReviews />
         </div>

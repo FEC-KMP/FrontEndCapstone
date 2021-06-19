@@ -13,7 +13,7 @@ router.get('/questions', (req, res) => {
   // console.log("got to get/questions serverside, req.body: ", req.query)
   axios.get(BaseUrl, {
     params: {
-      product_id: req.query.product_id,
+      'product_id': req.query.product_id,
       page: req.query.page,
       count: req.query.count
     },

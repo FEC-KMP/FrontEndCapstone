@@ -1,6 +1,8 @@
 .questionsContainer {
   border: 3px solid grey;
   overflow: auto;
+  align-items: center;
+  justify-content: center;
 }
 
 .search {

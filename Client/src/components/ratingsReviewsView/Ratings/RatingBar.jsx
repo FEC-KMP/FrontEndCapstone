@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import ReviewContext from '../../ReviewContext.jsx';
+import ReviewContext from '../../../context/ReviewContext.jsx';
 
 export default function RatingBar ({ metaInfo, starRating, rating }) {
   if (!metaInfo) { return 'data not found'; }
@@ -7,16 +7,14 @@ export default function RatingBar ({ metaInfo, starRating, rating }) {
   var { starFilter, updateStarFilter } = useContext(ReviewContext);
 
   const handleStarClick = (starRating) => {
-    // starFilter.push(starRating);
-    updateStarFilter([starRating]);
-    // for (let i = 0; i < starFilter.length; i ++) {
-    //   if (!starFilter.length) {
-    //     updateStarFilter([starRating]);
-    //   } else {
-    //     starFilter.push(starRating);
-    //   }
-    // }
-    console.log('click event', starFilter);
+    if (starFilter.includes(starRating)) {
+      var filtered = starFilter.filter((rating) => {
+        return starRating !== rating;
+      });
+      updateStarFilter(filtered);
+    } else {
+      updateStarFilter([...starFilter, starRating]);
+    }
   };
 
   const totalRatings = () => {

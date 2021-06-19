@@ -6,7 +6,6 @@ import Recommend from './Recommend.jsx';
 import Stars from '../../sharedComponentsView/Stars.jsx';
 
 const Entry = ({ review }) => {
-  console.log('reviews', review);
   return (
     <div className="border-bottom">
       <Stars rating={review.rating}/>

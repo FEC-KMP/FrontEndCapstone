@@ -3,7 +3,7 @@ import axios from 'axios';
 import SearchQAForm from './SearchQAForm.jsx';
 import QAList from './QAList.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
-import ProductIdContext from '../ProductIdContext.jsx';
+import ProductIdContext from '../../context/ProductIdContext.jsx';
 import { qAContext } from '../../context/QAContext.jsx';
 
 
@@ -92,13 +92,13 @@ const QuestionsAnswers = () => {
           productId={productId}
         />
       ))}
-        {seeMoreQuestions}
+      {seeMoreQuestions}
       </div>
       <AskQuestionForm productId={productId} />
     </div>
   ) : (
-      <h1>Loading...</h1>
-    );
+ <h1>Loading...</h1>
+ );
 };
 export default QuestionsAnswers;
 

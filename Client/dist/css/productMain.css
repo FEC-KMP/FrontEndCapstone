@@ -3,13 +3,8 @@
 }
 
 body {
-<<<<<<< HEAD
-  background: white;
-  /* display: flex; */
-=======
   background: mintcream;
   display: flex;
->>>>>>> 2ef6065ecfe5fd2038b05febe2ec9d67fa35dae8
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -19,6 +14,7 @@ body {
 
 .container {
   background-color: whitesmoke;
+  /* opacity: .2; */
 }
 
 
@@ -27,7 +23,11 @@ body {
   display: flex;
   background-color: mintcream;
   justify-content: center;
-  z-index:0;
+  vertical-align: center;
+  height: 600px;
+  /* z-index:0; */
+  object-fit: cover;
+  padding-bottom: 15px;
 }
 /* .carousel-item {
   height: 45rem;
@@ -35,45 +35,101 @@ body {
 } */
 .carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
   height: 100%;
-  z-index: 1
+  z-index: 1;
+  object-fit: cover;
+  max-height:600px;
+  align-items: center;
 
+  /* position: absolute; */
+}
+.CC-inner {
+  object-fit: cover;
+  max-height:600px;
+  align-items: center;
 }
 .expandButton{
   color: white !important;
   position: absolute;
-  float: inline-end;
+  top: 20px;
+  right: 45px;
   z-index: 4;
-  font-size: 20px;
+  font-size: 25px;
+  cursor: pointer;
 }
-.Carousel {
-  z-index: 1;
+.CustomCarousel {
+  /* z-index: 1; */
+  display: flex;
   cursor: zoom-in;
-}
-.carousel {
   position: relative;
 }
-.carousel-item img {
-  object-fit: cover;
+.CC-ThumbnailsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 10px;
+  z-index: 1000;
+  /* border: 3px solid black; */
+  overflow: scroll;
+  top: 0px;
+  left: 50px;
+  max-width: 80px;
+  height: 600px;
+  background-color: rgba(255,255,255,.3);
 }
-.carousel-thumbnail-item {
+.CC-MainImageList {
+  z-index: 0;
+  display: flex;
+  height: 600px;
+  align-items: center;
+}
+.MainImg {
+  object-fit:cover;
+  max-height: 600px;
+  vertical-align: middle;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  /* overflow:scroll; */
+}
+.carousel-thumbnail-item, .carousel-thumbnail-item > img{
+  /* position: sticky; */
   cursor: pointer;
-  flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%
+  /* object-fit: cover; */
+  max-width: 50px;
+  opacity: 100% !important;
 }
-#carousel-thumbs {
-  background: rgba(255,255,255,.3);
-  top: 0;
-  left: 0;
-  padding: 0 50px;
-  bottom: 0;
-  z-index: 3;
+/* .carousel-control-button {
+  z-index: 1001;
+} */
+.carousel-control-next {
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%);
+  color: 585858 !important;
+}
+.carousel-control-prev {
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%);
+  left: 25%;
+  color: #585858 !important;
+  z-index: 4000;
+
+}
+.thumbImg {
+  border: 3px solid white;
+}
+.selectedThumb {
+  border: 3px solid whitesmoke !important;
+  opacity: .5 !important;
 }
 
 .IGThumbnails, .ImageGalleryThumbnails{
-  position:absolute;
-  overflow: scroll;
-  z-index: 3;
+  position: relative;
+  /* overflow: scroll; */
+  z-index: 1000;
 }
 .fa-chevron-down, .fa-chevron-up {
   color: white !important;
@@ -112,18 +168,21 @@ body {
 .ProductRating {
   font-weight: 100;
   font-size: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #ProductReviewLink {
   text-decoration: underline;
+  color: black;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .ProductCategory, .price, .StyleSelector{
   font-weight: 100;
   font-size: 12px;
   padding-top: 5px;
-
-
 }
 
 .ProductTitle {
@@ -143,6 +202,11 @@ body {
   font-weight: 100;
   font-size: 10px;
   padding-top: 10px;
+  padding-bottom: 25px;
+}
+
+.StyleSelector {
+  padding-top: 15px;
 }
 
 #sizeSelectorInStock, #sizeSelectorOutOfStock {
@@ -177,14 +241,13 @@ body {
 .thumbnails {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 4px;
+  padding: 15px 4px;
 }
 
 .styleThumbnail {
   display: flex;
-  width: 70px;
-  height: 70px;
-  flex: 25%;
+  width: 90px;
+  height: 90px;
   padding: 10px;
   border-radius: 50%;
 }
@@ -192,4 +255,17 @@ body {
 .styleThumbnail img {
   margin-top: 8px;
   vertical-align: middle;
+}
+
+.selectedStyle {
+  border: 3px solid mintcream !important;
+}
+
+.socialMedia {
+  font-size: 50px !important;
+  padding: 5px;
+}
+
+.hidden {
+  display: none;
 }
