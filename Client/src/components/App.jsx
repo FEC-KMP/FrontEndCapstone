@@ -23,7 +23,7 @@ var App = () => {
           <QuestionsAnswers />
         </QAProvider>
         <div>
-          {/* <RatingsAndReviews /> */}
+          <RatingsAndReviews />
         </div>
       </div>
     </ProductIdContext.Provider>
