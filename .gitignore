@@ -1,5 +1,5 @@
 node_modules
-client/dist/bundle.js
+Client/dist/bundle.js
 
 ## private APIs
 server/config.js
