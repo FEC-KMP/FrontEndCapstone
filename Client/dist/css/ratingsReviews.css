@@ -1,17 +1,88 @@
 
 #RatingsContainer {
   border: 10px black
-};
+}
 
 .ReviewsContainer {
   border: 5px solid
-};
+}
 
 .ReviewListEntry {
   border: 20px solid blue;
   padding: 10px;
-};
+}
 
 .border-3 {
   border-width: 3px
-};
+}
+
+.ratingsStars {
+  top: 10px;
+}
+.rec {
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+.average {
+  vertical-align: text-top;
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.ratingsReviews {
+  font-weight: 100;
+  font-size: 12px;
+}
+
+.r100 {
+  font-weight: 100;
+  font-size: 12px;
+}
+
+.r500 {
+  font-weight: 500;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+
+.r700 {
+  font-weight: 700;
+  font-size: 15px
+}
+
+.starsNameDate {
+  margin-left: 0px;
+  display: flex;
+}
+
+.nameAndDate {
+  /* right: 0px; */
+}
+.entry {
+  margin-top:30px;
+  padding-bottom: 10px;
+
+}
+
+.helpfulYes {
+  padding-left: 7px;
+  padding-right: 7px;
+  text-decoration: underline !important;
+}
+
+.report {
+  padding-left: 7px;
+  padding-right: 7px;
+  text-decoration: underline;
+}
+
+.helpfulReport {
+  padding-left: 15px;
+  padding-bottom: 15px;
+
+}
+
+.rrButtons {
+  margin-top: 35px;
+}

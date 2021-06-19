@@ -8,7 +8,7 @@ export default function Ratings ({ metaInfo }) {
   if (!metaInfo) { return 'data not found'; }
 
   return (
-    <div className="ratings">
+    <div className="ratings r100">
       <div>
         <Average metaInfo={metaInfo}/>
       </div>

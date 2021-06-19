@@ -40,23 +40,25 @@ export default function RatingBar ({ metaInfo, starRating, rating }) {
   const filledBar = {
     'width': `${percentageRated || 0}%`,
     'height': '10px',
-    'backgroundColor': 'green',
+    'backgroundColor': '#585858',
 
   };
 
   const cursorPointer = {
-    cursor: 'pointer'
+    'padding-left': '15px',
+    cursor: 'pointer',
+    'padding-right': '10px'
   };
 
   return (
-    <div>
+    <div className="row">
       <div style={cursorPointer} onClick={() => handleStarClick(starRating)}
       ><p><u>{starRating} stars</u> </p></div>
       <div style={ratingContainer}>
         <div style={filledBar}></div>
       </div>
       <div>
-        {rating} reviews
+        {/* {rating} reviews */}
       </div>
     </div>
   );
