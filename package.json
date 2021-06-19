@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build:dev": "webpack --config ./webpack.config.js --mode development -w",
-    "start": "node server/index.js",
-    "start:dev": "npx nodemon server/index.js -w server",
+    "start": "node Server/index.js",
+    "start:dev": "npx nodemon Server/index.js -w Server",
     "test": "node_modules/jest/bin/jest.js spec/ --collectCoverage=true"
   },
   "author": "Kirk Easton, Meagan Provencher, Phong Trinh",

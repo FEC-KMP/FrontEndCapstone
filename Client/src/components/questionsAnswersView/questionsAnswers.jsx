@@ -83,7 +83,7 @@ const QuestionsAnswers = () => {
   return !loading ? (
 
     <div className="questionsContainer">
-      <h1>QUESTIONS AND ANSWERS</h1>
+      <h4>QUESTIONS AND ANSWERS</h4>
       <SearchQAForm handleSearch={handleSearch} />
       <div>{renderListQ.map(question => (
         <QAList
