@@ -174,7 +174,7 @@ body {
 
 #ProductReviewLink {
   text-decoration: underline;
-  color: black;
+  color: #585858;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -187,7 +187,7 @@ body {
 
 .ProductTitle {
   font-weight: 700;
-  font-size: 25px;
+  font-size: 35px;
   padding-top: 10px;
 }
 
@@ -216,12 +216,14 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 10px;
-
+  color: #585858;
 }
 
 #quantSelector {
   padding: 10px;
   margin: 10px;
+  color: #585858;
+
 }
 
 .hidden, .hidden::before {
@@ -232,10 +234,11 @@ body {
   border: 2px solid grey;
   border-radius: 0;
   background-color: white;
-  color: black;
+  color: #585858;
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
+  margin-right: 15px;
 }
 
 .thumbnails {

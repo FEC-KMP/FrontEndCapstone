@@ -13,7 +13,7 @@ export default function Recommended ({ metaInfo }) {
 
   const recommends = recommendedPercent();
   return (
-    <div>
+    <div className="r100 rec">
       {recommends}% of reviews recommend this product
     </div>
   );
