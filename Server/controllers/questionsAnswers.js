@@ -4,9 +4,10 @@ const router = express.Router();
 const app = express();
 app.use(express.json());
 
-const GITHUB_API_KEY = require('../config');
+const GITHUB_API_KEY = require('../config.js');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions';
 const AUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers';
+
 
 //List questions
 router.get('/questions', (req, res) => {
@@ -20,7 +21,7 @@ router.get('/questions', (req, res) => {
     headers: { Authorization: GITHUB_API_KEY }
   })
     .then((response) => {
-      console.log('S: get/qa/questions response', response.body.results);
+      // console.log('S: get/qa/questions response', response.body.results);
       res.status(200).send(response.data.results);
     })
     .catch((err) => {
