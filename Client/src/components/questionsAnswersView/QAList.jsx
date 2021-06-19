@@ -19,6 +19,7 @@ const QAList = ({ question, productId }) => {
       name: name,
       email: email,
     };
+    // eslint-disable-next-line camelcase
     const question_id = question.question_id;
     console.log('question_id', question.question_id);
     e.preventDefault();
@@ -108,7 +109,7 @@ const QAList = ({ question, productId }) => {
                           name="name"
                           placeholder="Example: jackson11!"
                           value={name}
-                          onChange={(e) => { setNickName(e.target.value) }}
+                          onChange={(e) => { setNickName(e.target.value); }}
                           required />
                         <p>For privacy reasons, do not use your full name or email address</p>
                       </div>
@@ -120,7 +121,7 @@ const QAList = ({ question, productId }) => {
                       <div className="col-sm-9">
                         <input type="email" className="form-control" id="email" name="email" placeholder="Example: jack@email.com"
                           value={email}
-                          onChange={(e) => { setYourEmail(e.target.value) }}
+                          onChange={(e) => { setYourEmail(e.target.value); }}
                           required />
                         <p>For authentication reasons, you will not be emailed</p>
                       </div>
@@ -143,7 +144,7 @@ const QAList = ({ question, productId }) => {
                       <input type="file"
                         className="form-control-file"
                         value={photo}
-                        onChange={(e) => { setPhoto() }}
+                        onChange={(e) => { setPhoto(); }}
                         id="FormControlFile1" />
                     </div>
 

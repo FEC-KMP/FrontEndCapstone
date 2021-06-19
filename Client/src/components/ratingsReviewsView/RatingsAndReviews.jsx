@@ -92,21 +92,21 @@ const RatingsAndReviews = (props) => {
       }>
         <div className="RatingsAndReviews row">
           <h4>Ratings & Reviews</h4>
-          <div id="RatingsContainer">
-            <div className="col-lg-5">
-              <RatingsContainer metaInfo={metaInfo} />
-            </div>
+          <div id="RatingsContainer" className="col-lg-5">
+
+            <RatingsContainer metaInfo={metaInfo} />
           </div>
-          <div id="ReviewsContainer row">
-            <div className="col-lg-15">
-              <ReviewsContainer
-                reviewsInfo={reviewsInfo}
-                postReview={postReview}
-                productId={productId}
-                productName={productName}
-              />
-            </div>
+
+          <div id="ReviewsContainer" className="col-lg-7">
+
+            <ReviewsContainer
+              reviewsInfo={reviewsInfo}
+              postReview={postReview}
+              productId={productId}
+              productName={productName}
+            />
           </div>
+
         </div>
       </reviewContext.Provider>
     </div>

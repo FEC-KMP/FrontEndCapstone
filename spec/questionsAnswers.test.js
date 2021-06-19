@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 
 const supertest = require('supertest');
 const axios = require('axios');
@@ -43,3 +45,4 @@ describe('Questions routing', () => {
     );
   });
 });
+>>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4

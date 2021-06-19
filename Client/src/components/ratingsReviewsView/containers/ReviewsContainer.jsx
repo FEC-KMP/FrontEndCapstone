@@ -25,6 +25,16 @@ export default function ReviewsContainer ({ reviewsInfo, postReview, productId, 
     setShowWriteReview(false);
   };
 
+  let sortedBy;
+  const sortedByStars = (starFilter) => {
+    console.log('hitting this');
+    if (starFilter.length) {
+      return sortedBy = 'Sorted By ' + starFilter[starFilter.length - 1] + ' Star Reviews';
+    }
+  };
+  sortedByStars(starFilter);
+
+
   let reviewEntry;
   let totalReviews;
   let metaDataLies;
@@ -41,7 +51,7 @@ export default function ReviewsContainer ({ reviewsInfo, postReview, productId, 
         return filtered.rating === Number(starFilter[i]);
       });
       if (!ratingFilteredArray.length) {
-        metaDataLies = ', the meta data lies';
+        metaDataLies = ', the meta data lies, ';
       }
       totalReviews = ratingFilteredArray.length;
       reviewEntry = ratingFilteredArray.slice(0, count).map((review) => {
@@ -54,7 +64,7 @@ export default function ReviewsContainer ({ reviewsInfo, postReview, productId, 
   return (
     <div>
       <div>
-        <h5>{totalReviews} Total Reviews {metaDataLies}</h5>
+        <h5>{totalReviews} Total Reviews {metaDataLies} {sortedBy}</h5>
       </div>
       <div>
         <div>
