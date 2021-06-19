@@ -22,6 +22,10 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
   var {productId, updateProductId} = useContext(ProductIdContext);
   var [postFormData, setPostFormData] = useState(emptyState);
   var [ratingLabel, setRatingLabel] = useState('');
+<<<<<<< HEAD
+  var [valid, setValid] = useState(true);
+=======
+>>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
 
   const revertState = (event) => {
     event.preventDefault(event);
@@ -31,24 +35,41 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
 
   const handlePostReview = (event) => {
     event.preventDefault(event);
+<<<<<<< HEAD
+    if (valid) {
+      postReview(postFormData, (err) => {
+        if (err) {
+          console.log('err in handlePostReview', err);
+        }
+        console.log('posted review', postFormData);
+      });
+    }
+=======
     postReview(postFormData, (err) => {
       if (err) {
         console.log('err in handlePostReview', err);
       }
       console.log('posted review', postFormData);
     });
+>>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
   };
 
   const ratingChanged = (newRating) => {
     event.preventDefault(newRating);
     postFormData.rating = newRating;
     setPostFormData(postFormData);
+<<<<<<< HEAD
+=======
     console.log('rating', postFormData.rating);
+>>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
   };
 
   const onRatingSelected = (rating) => {
     event.preventDefault(rating);
+<<<<<<< HEAD
+=======
     console.log('rating in onRatingSelected', rating);
+>>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
     rating === 1 ? setRatingLabel('Poor') : '';
     rating === 2 ? setRatingLabel('Fair') : '';
     rating === 3 ? setRatingLabel('Average') : '';
@@ -56,7 +77,35 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
     rating === 5 ? setRatingLabel('Great') : '';
   };
 
+  const handleRecommend = () => {
+    postFormData.recommend = true;
+    setPostFormData(postFormData);
+  };
 
+<<<<<<< HEAD
+  const handleSummary = (event) => {
+    postFormData.summary = event;
+  };
+
+  const checkSummary = () => {
+    let totalChars = 0;
+    for (var i = 0; i < postFormData.summary.length; i ++) {
+      totalChars += i;
+    }
+    if (totalChars > 60) {
+      setValid(false);
+    }
+  };
+
+  const handleBody = (event) => {
+    postFormData.body = event;
+  };
+
+  const characterCounter = (event) => {
+
+  };
+=======
+>>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
   return (
     <div>
       <Modal
@@ -83,7 +132,46 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
                 <div>{ratingLabel}</div>
               </Form.Label>
             </Form.Group>
+<<<<<<< HEAD
+            <Form.Group controlId="reviewForm.ControlInputRecommend">
+              <Form.Label>
+                Do you recommend this product?
+              </Form.Label>
+              {['recommend'].map((type) => {
+                <div key={`default-${type}`} classname="mb-3">
+                  <Form.Check
+                    type={type}
+                    id={`default-${type}`}
+                    label={`default-${type}`}
+                    onClick={handleRecommend}
+                  />
+                </div>;
+              })}
+            </Form.Group>
+            <Form.Group controlId="reviewForm.ControlInputSummary">
+              <Form.Label>
+                Summary
+              </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter summary here, max character length is 60"
+                onChange={handleSummary}
+              />
+            </Form.Group>
           </Form>
+          <Form.Group controlId="reviewForm.ControlInputBody">
+            <Form.Label>
+              Body, must be between 50-1000 characters
+            </Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Why did you like the product or not?"
+              onChange={e => { handleBody(e); characterCounter(e); }}
+            />
+          </Form.Group>
+=======
+          </Form>
+>>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={e => { handlePostReview(e); revertState(e); }}>

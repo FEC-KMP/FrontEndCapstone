@@ -1,10 +1,80 @@
-// import models from '../server/models';
-// import controllers from '../server/controllers';
-// import productMainView from '../client/src/components/productMainView/productMain.jsx';
-// import questionsAnswersView from '../client/src/components/questionsAnswersView/questionsAnswers.jsx';
-// import ratingsReviewsView from '../client/src/components/ratingsReviewsView/ratingsReviews.jsx';
-//something different
+const supertest = require('supertest');
+const axios = require('axios');
+const app = require('../server/index.js');
+const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
+const config = require('../server/config.js');
 
-test('example test', () => {
-  expect(1).toBe(1);
+
+jest.mock('axios');
+const request = supertest(app);
+
+describe('Ratings and Reviews routing', () => {
+  test('Should get ONE specific review details', (done) => {
+    axios.mockImplementationOnce(() => Promise.resolve({
+      data: {
+        'id': 18078,
+        'campus': 'hr-bld',
+        'name': 'Camo Onesie',
+        'slogan': 'Blend in to your crowd',
+        'description': 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
+        'category': 'Jackets',
+        'default_price': '140.00',
+        'created_at': '2021-02-23T05:08:00.350Z',
+        'updated_at': '2021-02-23T05:08:00.350Z',
+        'features': [
+          {
+            'feature': 'Fabric',
+            'value': 'Canvas',
+          },
+          {
+            'feature': 'Buttons',
+            'value': 'Brass',
+          },
+        ],
+      },
+    })
+    );
+
+    request.get('/reviews/meta')
+      .then((response) => {
+        //1 response code
+        expect(response.status).toBe(200);
+
+        //body info/structure
+        expect(response.body).toEqual(
+          expect.objectContaining({
+            'id': 18078,
+            'campus': 'hr-bld',
+            'name': 'Camo Onesie',
+            'slogan': 'Blend in to your crowd',
+            'description': 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
+            'category': 'Jackets',
+            'default_price': '140.00',
+            'created_at': '2021-02-23T05:08:00.350Z',
+            'updated_at': '2021-02-23T05:08:00.350Z',
+            'features': [
+              {
+                'feature': 'Fabric',
+                'value': 'Canvas',
+              },
+              {
+                'feature': 'Buttons',
+                'value': 'Brass',
+              },
+            ],
+
+          })
+        );
+      });
+    //length/ ie not empty
+    expect(Object.keys(response.body).length).toBeGreaterThan(0);
+    //ensure request sent with headers-api key
+    expect(axios.get).toHaveBeenCalledWith(
+      options = {
+        headers: {
+          'Authorization': config.GITHUB_API_KEY
+        }
+      }
+    );
+  });
 });

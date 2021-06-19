@@ -4,7 +4,7 @@ const Body = ({ body }) => {
   return (
     <div>
       <p>
-        Body: {body}
+        {body}
       </p>
     </div>
   );

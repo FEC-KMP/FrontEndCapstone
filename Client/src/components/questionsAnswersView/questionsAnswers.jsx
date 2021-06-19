@@ -49,7 +49,7 @@ const QuestionsAnswers = () => {
   };
 
   const handleMoreQuestionsClick = () => {
-    console.log('questionListLength', questionList.length)
+    console.log('questionListLength', questionList.length);
     if (renderListQ.length === 4) {
       setRenderListQ(questionList.slice(0, 6));
     } else if (renderListQ.length === 6 && renderListQ.length < questionList.length) {
@@ -97,8 +97,8 @@ const QuestionsAnswers = () => {
       <AskQuestionForm productId={productId} />
     </div>
   ) : (
- <h1>Loading...</h1>
- );
+    <h1>Loading...</h1>
+  );
 };
 export default QuestionsAnswers;
 

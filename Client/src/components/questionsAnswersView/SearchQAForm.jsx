@@ -10,7 +10,7 @@ const SearchQAForm = ({ handleSearch }) => {
   //   handleSearch(searchQuestion);
   // };
   useEffect(() => {
-    handleSearch(searchQuestion)
+    handleSearch(searchQuestion);
   }, [searchQuestion]);
 
   return (

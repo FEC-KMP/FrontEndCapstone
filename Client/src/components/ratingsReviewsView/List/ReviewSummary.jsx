@@ -4,7 +4,7 @@ const ReviewSummary = ({ reviewSummary }) => {
   //some sort of logic here conditioning to just do the first 60 characters if clicked on
   return (
     <div>
-      <p>Summary: {reviewSummary}</p>
+      <p>{reviewSummary}</p>
     </div>
   );
 };
