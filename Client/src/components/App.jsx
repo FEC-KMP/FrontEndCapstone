@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import QuestionsAnswers from './QuestionsAnswersView/QuestionsAnswers.jsx';
+import QuestionsAnswers from './questionsAnswersView/QuestionsAnswers.jsx';
 import { getListOfProducts, getListInfoProducts, getListOfReviews, getListOfQuestions } from '../context/ApiContext.jsx';
 import ProductMain from './productMainView/productMain.jsx';
 import GITHUB_API_KEY from '../api/githubApi.js';
@@ -18,13 +18,12 @@ var App = () => {
     <ProductIdContext.Provider value={{ productId, updateProductId, productName, updateProductName }}>
       <div className="container">
         <NavBar />
-        {/* <NavBar />
         <ProductMain />
         <QAProvider>
           <QuestionsAnswers />
-        </QAProvider>  */}
+        </QAProvider>
         <div>
-          <RatingsAndReviews />
+          {/* <RatingsAndReviews /> */}
         </div>
       </div>
     </ProductIdContext.Provider>

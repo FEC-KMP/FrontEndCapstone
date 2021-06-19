@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React, { useContext, useState, useEffect } from 'react';
-import ReviewsContainer from './Containers/ReviewsContainer.jsx';
-import RatingsContainer from './Containers/RatingsContainer.jsx';
+import ReviewsContainer from './containers/ReviewsContainer.jsx';
+import RatingsContainer from './containers/RatingsContainer.jsx';
 import axios from 'axios';
 import ProductIdContext from '../../context/ProductIdContext.jsx';
 import Row from 'react-bootstrap/Row';
