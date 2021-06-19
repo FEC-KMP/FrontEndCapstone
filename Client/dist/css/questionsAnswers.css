@@ -1,6 +1,7 @@
 .questionsContainer {
-  border: 3px solid grey;
-  overflow: auto;
+  /* border: 3px solid grey; */
+  /* overflow: auto;
+  height: 1000px; */
   align-items: center;
   justify-content: center;
 }
@@ -65,15 +66,15 @@ a:link {
 .qa {
   border: 0 !important;
 }
-.questionSpace {
 
-  justify-content: space-between;
-}
 
 .helpful {
   text-decoration: underline;
   border: none;
   font-size: 12px;
+}
+span.helpful {
+  margin-left: 10px;
 }
 .report {
   text-decoration: underline;

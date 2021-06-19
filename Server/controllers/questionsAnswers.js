@@ -10,7 +10,7 @@ const AUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers';
 
 //List questions
 router.get('/questions', (req, res) => {
-  // console.log("got to get/questions serverside, req.body: ", req.query)
+  // console.log("got to get/questions serverside, req.body: ", response.body)
   axios.get(BaseUrl, {
     params: {
       'product_id': req.query.product_id,
@@ -20,7 +20,7 @@ router.get('/questions', (req, res) => {
     headers: { Authorization: GITHUB_API_KEY }
   })
     .then((response) => {
-      console.log('S: get/qa/questions response', response.data.results);
+      console.log('S: get/qa/questions response', response.body.results);
       res.status(200).send(response.data.results);
     })
     .catch((err) => {

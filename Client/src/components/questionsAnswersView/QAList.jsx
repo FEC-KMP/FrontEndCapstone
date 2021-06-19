@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AnswerList from './AnswerList.jsx';
-import AddAnswerForm from './AddAnswerForm.jsx';
 import { qAContext } from '../../context/QAContext.jsx';
 
 const QAList = ({ question, productId }) => {
@@ -21,7 +20,7 @@ const QAList = ({ question, productId }) => {
       email: email,
     };
     const question_id = question.question_id;
-
+    console.log('question_id', question.question_id);
     e.preventDefault();
     addAnswer(data, question_id, (error, results1) => {
       if (error) {
@@ -36,6 +35,9 @@ const QAList = ({ question, productId }) => {
             setQuestionList(sortQuestions);
           }
         });
+        setAnswerBody('');
+        setNickName('');
+        setYourEmail('');
       }
     });
   };
@@ -61,8 +63,13 @@ const QAList = ({ question, productId }) => {
     <div>
       <div>
         <div>
-          <div className="questionBody">
-            <h5 className="questionSpace">Q: {question.question_body}
+          <div className="row">
+            <div className="col justify-content-start">
+              <h5 >Q: {question.question_body} </h5>
+
+            </div>
+            <div style={{justifyContent: "flexEnd" }} className="col justify-content-end">
+
               <span className="helpful"> Helpful?</span>
               <button type="button" className="helpful" onClick={handleMarkQuestionHelpful}>
                 <div>
@@ -73,13 +80,14 @@ const QAList = ({ question, productId }) => {
                 <button type="button" className="report" onClick={handleQuestionReport}>
                   Report
                 </button> : 'Reported!'}
-              <button type="button" className="addAnswer" data-toggle="modal" data-target="#myModal">Add Answer</button>
-            </h5>
+              <button type="button" className="addAnswer" data-toggle="modal" data-target={`#qID${question.question_id}`}>Add Answer</button>
+            </div>
+
           </div>
 
           {/* <button type="button" className="btn btn-link">Add Answer</button> */}
 
-          <div className="modal fade left" id="myModal">
+          <div className="modal fade left" id={`qID${question.question_id}`}>
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
@@ -140,8 +148,21 @@ const QAList = ({ question, productId }) => {
                     </div>
 
                     <div className="form-group">
+                      <label htmlFor="human" className="col-sm-3 control-label">
+                        <span className="required">*</span> Human or Bot:</label>
+                      <div className="col-sm-4">
+                        <h3 className="human">Six + 6 = ?</h3>
+                        <input type="number" className="form-control" id="human" name="human" placeholder="Enter sum in digits" />
+                      </div>
+                    </div>
+
+                    <div className="form-group">
                       <div className="col-sm-offset-3 col-sm-6 col-sm-offset-3">
-                        <button type="button" id="submit" name="submit" className="btn-lg btn-primary" onClick={handleSubmitAnswer}>SUBMIT</button>
+                        <button type="button" id="submit" name="submit" className="btn-lg btn-primary" onClick={(e) => {
+                          console.log('questionId inside handle submit', question.question_id);
+                          handleSubmitAnswer(e);
+
+                        }}>SUBMIT</button>
                       </div>
                     </div>
 
@@ -156,7 +177,7 @@ const QAList = ({ question, productId }) => {
           </div>
 
         </div>
-        <h3>A:</h3>
+        <h5>A:</h5>
         <AnswerList
           answerList={question.answers} />
       </div>
