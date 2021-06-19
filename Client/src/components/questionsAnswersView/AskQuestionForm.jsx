@@ -94,6 +94,15 @@ const AskQuestionForm = ({ productId }) => {
                 </div>
 
                 <div className="form-group">
+                  <label htmlFor="human" className="col-sm-3 control-label">
+                    <span className="required">*</span> Human or Bot:</label>
+                  <div className="col-sm-4">
+                    <h3 className="human">Six + 6 = ?</h3>
+                    <input type="number" className="form-control" id="human" name="human" placeholder="Enter sum in digits" />
+                  </div>
+                </div>
+
+                <div className="form-group">
                   <div className="col-sm-offset-3 col-sm-6 col-sm-offset-3">
                     <button type="button" id="submit" name="submit" className="btn-lg btn-primary" onClick={handleSubmit}>SUBMIT</button>
                   </div>

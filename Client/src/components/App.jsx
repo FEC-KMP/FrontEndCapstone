@@ -18,11 +18,10 @@ var App = () => {
     <ProductIdContext.Provider value={{ productId, updateProductId, productName, updateProductName }}>
       <div className="container">
         <NavBar />
-        {/* <NavBar />
         <ProductMain />
         <QAProvider>
           <QuestionsAnswers />
-        </QAProvider>  */}
+        </QAProvider>
         <div>
           <RatingsAndReviews />
         </div>
