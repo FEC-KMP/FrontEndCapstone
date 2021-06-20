@@ -69,7 +69,7 @@ const QAList = ({ question, productId }) => {
               <h5 >Q: {question.question_body} </h5>
 
             </div>
-            <div style={{justifyContent: "flexEnd" }} className="col justify-content-end">
+            <div style={{justifyContent: 'flexEnd' }} className="col justify-content-end">
 
               <span className="helpful"> Helpful?</span>
               <button type="button" className="helpful" onClick={handleMarkQuestionHelpful}>

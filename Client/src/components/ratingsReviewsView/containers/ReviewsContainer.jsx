@@ -27,7 +27,6 @@ export default function ReviewsContainer ({ reviewsInfo, postReview, productId, 
 
   let sortedBy;
   const sortedByStars = (starFilter) => {
-    console.log('hitting this');
     if (starFilter.length) {
       return sortedBy = 'Sorted By ' + starFilter[starFilter.length - 1] + ' Star Reviews';
     }

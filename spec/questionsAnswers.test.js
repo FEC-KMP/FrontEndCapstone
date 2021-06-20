@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 
 const supertest = require('supertest');
 const axios = require('axios');
@@ -15,6 +13,7 @@ describe('Questions routing', () => {
   test('Should get ', (done) => {
     axios.mockImplementationOnce(() => Promise.resolve({
       data: {
+        // eslint-disable-next-line camelcase
         product_id: 18078,
         results: [{}]
       },
@@ -45,4 +44,3 @@ describe('Questions routing', () => {
     );
   });
 });
->>>>>>> 48f870a626c382d6f33f9756d9cbfb83a623d2f4
