@@ -64,24 +64,27 @@ const QAList = ({ question, productId }) => {
     <div>
       <div>
         <div>
-          <div className="row">
-            <div className="col justify-content-start">
-              <h5 >Q: {question.question_body} </h5>
+          <div class="shadow-sm p-3 mb-5 bg-body rounded">
+            <div className="row">
+              <div className="col justify-content-start">
+                <h5 >Q: {question.question_body} </h5>
 
-            </div>
-            <div style={{justifyContent: "flexEnd" }} className="col justify-content-end">
+              </div>
+              <div style={{textAlign: 'right'}}className="col justify-content-end">
 
-              <span className="helpful"> Helpful?</span>
-              <button type="button" className="helpful" onClick={handleMarkQuestionHelpful}>
-                <div>
-                  Yes({question.question_helpfulness}) |
-                </div>
-              </button>
-              {!qReport ?
-                <button type="button" className="report" onClick={handleQuestionReport}>
-                  Report
-                </button> : 'Reported!'}
-              <button type="button" className="addAnswer" data-toggle="modal" data-target={`#qID${question.question_id}`}>Add Answer</button>
+                <span className="helpful"> Helpful?</span>
+                <button type="button" className="yes" onClick={handleMarkQuestionHelpful}>
+                  <div>
+                    Yes({question.question_helpfulness}) |
+                  </div>
+                </button>
+                {!qReport ?
+                  <button type="button" className="report" onClick={handleQuestionReport}>
+                    Report
+                  </button> : 'Reported!'}
+                <button type="button" className="addAnswer" data-toggle="modal" data-target={`#qID${question.question_id}`}>Add Answer</button>
+              </div>
+
             </div>
 
           </div>
@@ -178,7 +181,6 @@ const QAList = ({ question, productId }) => {
           </div>
 
         </div>
-        <h5>A:</h5>
         <AnswerList
           answerList={question.answers} />
       </div>

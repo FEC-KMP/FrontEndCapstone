@@ -46,12 +46,10 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
     event.preventDefault(newRating);
     postFormData.rating = newRating;
     setPostFormData(postFormData);
-    console.log('rating', postFormData.rating);
   };
 
   const onRatingSelected = (rating) => {
     event.preventDefault(rating);
-    console.log('rating in onRatingSelected', rating);
     rating === 1 ? setRatingLabel('Poor') : '';
     rating === 2 ? setRatingLabel('Fair') : '';
     rating === 3 ? setRatingLabel('Average') : '';

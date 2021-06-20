@@ -22,13 +22,13 @@ const Answer = ({ answer }) => {
   };
 
   return (
-    <div>
+    <div class="shadow-sm p-3 mb-5 bg-body rounded">
       <span>{answer.body}</span>
       <div className="helpfulAndReport">
         <div>
           <span>By {answer.answerer_name}, {DateFormat(answer.date)} |</span>
           <span className="helpful"> Helpful?</span>
-          <button type="button" className="helpful" onClick={handleMarkAnswerHelpful}>
+          <button type="button" className="yes" onClick={handleMarkAnswerHelpful}>
             <div>
               Yes({answer.helpfulness}) |
             </div>

@@ -43,7 +43,7 @@ const AnswerList = ({ answerList }) => {
   ) : null;
 
   return renderListA ? (
-    <div>
+    <div> A:
       {renderListA.map(answer => (
         <Answer key={answer.id}
           answer={answer} />
