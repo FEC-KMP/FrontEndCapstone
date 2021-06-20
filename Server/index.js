@@ -10,7 +10,7 @@ const products = require('./controllers/productMain');
 const reviews = require('./controllers/ratingsReviews.js');
 var app = express();
 
-app.use(express.static(path.join(__dirname, '..', 'Client', 'dist')));
+app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use(express.json());
 
 app.use('/qa', questions);
@@ -21,5 +21,3 @@ app.use('/rnr', reviews);
 app.listen(PORT, () => {
   console.log('listening on port ' + PORT);
 });
-
-module.exports = app;

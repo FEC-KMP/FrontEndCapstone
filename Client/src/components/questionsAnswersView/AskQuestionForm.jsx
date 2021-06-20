@@ -32,7 +32,11 @@ const AskQuestionForm = ({ productId }) => {
           }
         });
       }
+      setQuestionBody('');
+      setNickName('');
+      setYourEmail('');
     });
+
 
   };
 

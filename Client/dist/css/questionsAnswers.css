@@ -69,6 +69,11 @@ a:link {
 
 
 .helpful {
+
+  border: none;
+  font-size: 12px;
+}
+.yes {
   text-decoration: underline;
   border: none;
   font-size: 12px;
