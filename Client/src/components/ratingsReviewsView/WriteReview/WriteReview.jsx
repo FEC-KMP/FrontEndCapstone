@@ -46,10 +46,18 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
     event.preventDefault(newRating);
     postFormData.rating = newRating;
     setPostFormData(postFormData);
+<<<<<<< HEAD
+=======
+    console.log('rating', postFormData.rating);
+>>>>>>> 99abecfd2e732920094362c17c0dbdcfc8c07bd2
   };
 
   const onRatingSelected = (rating) => {
     event.preventDefault(rating);
+<<<<<<< HEAD
+=======
+    console.log('rating in onRatingSelected', rating);
+>>>>>>> 99abecfd2e732920094362c17c0dbdcfc8c07bd2
     rating === 1 ? setRatingLabel('Poor') : '';
     rating === 2 ? setRatingLabel('Fair') : '';
     rating === 3 ? setRatingLabel('Average') : '';
