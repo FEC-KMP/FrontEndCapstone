@@ -56,9 +56,9 @@
   display: flex;
 }
 
-.nameAndDate {
-  /* right: 0px; */
-}
+ /* .nameAndDate {
+   right: 0px;
+} */
 .entry {
   margin-top:30px;
   padding-bottom: 10px;
@@ -85,4 +85,9 @@
 
 .rrButtons {
   margin-top: 35px;
+}
+
+#bounds {
+  display: flex;
+  justify-content: space-between;
 }

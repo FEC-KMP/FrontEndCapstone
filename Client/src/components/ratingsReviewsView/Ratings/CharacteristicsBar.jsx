@@ -6,16 +6,18 @@ export default function Characteristics ({ metaInfo, characteristic, rating }) {
   let upperBound;
 
   const emptyBar = {
-    width: '100%',
-    height: 20,
-    backgroundColor: 'grey'
+    'width': '100%',
+    'margin': 'auto',
+    'height': '10px',
+    'backgroundColor': 'white'
   };
 
-  const innerBar = {
-    display: 'inline-block',
-    width: `${rating * 20}%`,
-    height: '100%'
+  const pointer = {
+    'zIndex': 1,
+    'marginLeft': `${parseInt(rating, 10) / 5 * 100}%`,
+    'transform': 'translate(-8px, -3px)'
   };
+
 
   if (characteristic === 'Fit') {
     lowerBound = 'Poor fit';
@@ -40,14 +42,11 @@ export default function Characteristics ({ metaInfo, characteristic, rating }) {
         <h5>{characteristic}</h5>
       </div>
       <div style={emptyBar}>
-        <div style={innerBar}>
-        </div>
+        <div style={pointer}>▼</div>
       </div>
-      <div>
-        <p>{lowerBound}</p>
-      </div>
-      <div>
-        <p>{upperBound}</p>
+      <div id="bounds">
+        <span>{lowerBound}</span>
+        <span>{upperBound}</span>
       </div>
     </div>
   );
