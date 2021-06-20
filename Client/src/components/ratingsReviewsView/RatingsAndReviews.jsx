@@ -74,6 +74,8 @@ const RatingsAndReviews = (props) => {
       .then((result) => {
         callback(null, result);
       })
+      .then(getReviewInfo(productId))
+      .then(getReviewMeta(productId))
       .catch((err) => {
         console.log('C: RnR postReview err', err);
         callback(err, null);

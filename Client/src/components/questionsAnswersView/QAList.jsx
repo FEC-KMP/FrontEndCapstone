@@ -69,6 +69,10 @@ const QAList = ({ question, productId }) => {
               <div className="col justify-content-start">
                 <h5 >Q: {question.question_body} </h5>
 
+<<<<<<< HEAD
+            </div>
+            <div style={{justifyContent: 'flexEnd' }} className="col justify-content-end">
+=======
               </div>
               <div style={{textAlign: 'right'}}className="col justify-content-end">
 
@@ -84,6 +88,7 @@ const QAList = ({ question, productId }) => {
                   </button> : 'Reported!'}
                 <button type="button" className="addAnswer" data-toggle="modal" data-target={`#qID${question.question_id}`}>Add Answer</button>
               </div>
+>>>>>>> c23b6ba5df1bcb8784d4bcbe674476ae92fe3e5f
 
             </div>
 

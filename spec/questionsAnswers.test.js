@@ -14,6 +14,7 @@ describe('Questions routing', () => {
   test('Should get ', (done) => {
     axios.mockImplementationOnce(() => Promise.resolve({
       data: {
+        // eslint-disable-next-line camelcase
         product_id: 18078,
         results: [{}]
       },
