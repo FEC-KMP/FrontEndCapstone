@@ -2,7 +2,6 @@
 const supertest = require('supertest');
 const axios = require('axios');
 const app = require('../server/index.js');
-const app = require('../server/server.js');
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 const config = require('../server/config.js');
 

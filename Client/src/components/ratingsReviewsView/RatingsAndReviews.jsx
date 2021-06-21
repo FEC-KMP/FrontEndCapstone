@@ -70,7 +70,13 @@ const RatingsAndReviews = (props) => {
   };
 
   var postReview = (body, callback) => {
-    axios.post('/rnr/reviews', { body })
+    console.log('body in axios', body);
+    // axios({
+    //   method: 'post',
+    //   url: 'http://localhost:3000/rnr/reviews',
+    //   data: body
+    // })
+    axios.post('http://localhost:3000/rnr/reviews', body)
       .then((result) => {
         callback(null, result);
       })
@@ -110,6 +116,7 @@ const RatingsAndReviews = (props) => {
               postReview={postReview}
               productId={productId}
               productName={productName}
+              metaInfo={metaInfo}
             />
           </div>
 
