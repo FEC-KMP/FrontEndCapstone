@@ -5,9 +5,8 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import ReactStars from 'react-stars';
 
 let emptyState = {
-  // eslint-disable-next-line camelcase
-  product_id: 0,
-  rating: 0,
+  product_id: 18078,
+  rating: 1,
   summary: '',
   body: '',
   recommend: false,
@@ -15,7 +14,7 @@ let emptyState = {
   email: '',
   photos: ['text'],
   characteristics: {}
-};
+}
 
 // eslint-disable-next-line camelcase
 export default function WriteReview ({ postReview, handleCloseModal, showWriteReview, productInfo, product_id, productName, metaInfo }) {
