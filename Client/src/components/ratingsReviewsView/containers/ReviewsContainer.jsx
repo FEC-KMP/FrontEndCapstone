@@ -6,7 +6,7 @@ import axios from 'axios';
 import Entry from '../List/Entry.jsx';
 import ReviewContext from '../../../context/ReviewContext.jsx';
 
-export default function ReviewsContainer ({ reviewsInfo, postReview, productId, productName }) {
+export default function ReviewsContainer ({ reviewsInfo, postReview, productId, productName, metaInfo }) {
   if (!reviewsInfo) { return 'data not found'; }
 
   var { starFilter, updateStarFilter } = useContext(ReviewContext);
@@ -85,6 +85,7 @@ export default function ReviewsContainer ({ reviewsInfo, postReview, productId, 
             reviewsInfo={reviewsInfo}
             product_id={productId}
             productName={productName}
+            metaInfo={metaInfo}
           />
         </div>
       </div>

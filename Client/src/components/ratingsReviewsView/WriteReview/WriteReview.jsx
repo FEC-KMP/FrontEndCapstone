@@ -18,7 +18,7 @@ let emptyState = {
 };
 
 // eslint-disable-next-line camelcase
-export default function WriteReview ({ postReview, handleCloseModal, showWriteReview, productInfo, product_id, productName }) {
+export default function WriteReview ({ postReview, handleCloseModal, showWriteReview, productInfo, product_id, productName, metaInfo }) {
   var {productId, updateProductId} = useContext(ProductIdContext);
   var [postFormData, setPostFormData] = useState(emptyState);
   var [ratingLabel, setRatingLabel] = useState('');
@@ -27,6 +27,7 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
   const revertState = (event) => {
     setPostFormData(emptyState);
     setRatingLabel('');
+    setValid(false);
   };
 
   const handlePostReview = (event) => {
@@ -124,8 +125,47 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
   const checkEmail = (email) => {
     emailChars = 60 - email.length < 0 ?
     `Over character count: ${email.length - 60}` : '';
-  }
+  };
   checkEmail(postFormData.email);
+
+  const handleCharacteristicChoice = (event) => {
+    setPostFormData({
+      ...postFormData,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const charOptions = {
+    Fit: [
+      'Runs tight',
+      'Runs slightly tight',
+      'Perfect',
+      'Runs slightly long',
+      'Runs long'
+    ],
+    Length: [
+      'Runs Short',
+      'Runs slightly short',
+      'Perfect',
+      'Runs slightly long',
+      'Runs long'
+    ],
+    Comfort: [
+      'Uncomfortable',
+      'Slightly uncomfortable',
+      'Ok',
+      'Comfortable',
+      'Perfect'
+    ],
+    Quality: [
+      'Poor',
+      'Below average',
+      'What I expected',
+      'Pretty great',
+      'Perfect'
+    ]
+  }
+
 
   const checkValid = (charactersLeft, totalChars, rating, name, nameChars, email, emailchars) => {
     if (charactersLeft === 'Minimum reached' && totalChars === '' && rating && name && nameChars === '' && email && emailChars === '') {
@@ -180,6 +220,30 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
                 />
                <Form.Text classname="text-muted">{ratingLabel}</Form.Text>
             </Form.Group>
+            <div>
+              <label>Characteristics</label>
+                {
+                  Object.keys(metaInfo.characteristics).map(char => (
+                    <Form.Group key={char}>
+                      <Form.Label>{char}</Form.Label>
+                    {
+                      charOptions[char].map((option, i) => {
+                        <Form.Group key={option}>
+                          <Form.Control
+                            type="checkbox"
+                            label={option}
+                            name={char}
+                            value={i + 1}
+                            onClick={e => handleCharacteristicChoice(e)}
+                          />
+                        </Form.Group>
+                      })
+                    }
+                    </Form.Group>
+                  ))
+
+                  }
+            </div>
             <Form.Group>
               <Form.Label>
                 Do you recommend this product?
@@ -216,7 +280,7 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
                 name="name"
                 placeholder="Example: jackson11!"
                 onChange={e => handleName(e)}
-                />
+              />
               <Form.Text classname="text-muted">For privacy reasons, do not use your full name or email address</Form.Text>
             </Form.Group>
             <Form.Group>
@@ -226,7 +290,7 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
                 name="email"
                 placeholder="Example: jackson11!@hotmail.com"
                 onChange={e => handleEmail(e)}
-                />
+              />
               <Form.Text classname="text-muted">For privacy reasons, do not use your full name or email address</Form.Text>
             </Form.Group>
           </Form>

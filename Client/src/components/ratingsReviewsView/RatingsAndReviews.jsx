@@ -110,6 +110,7 @@ const RatingsAndReviews = (props) => {
               postReview={postReview}
               productId={productId}
               productName={productName}
+              metaInfo={metaInfo}
             />
           </div>
 
