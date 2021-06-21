@@ -8,7 +8,6 @@
 // jest.mock('axios');
 // const request = supertest(app);
 
-<<<<<<< HEAD
 describe('Ratings and Reviews routing', () => {
   test('Should get ONE specific review details', (done) => {
     axios.mockImplementationOnce(() => Promise.resolve({
@@ -48,7 +47,6 @@ describe('Ratings and Reviews routing', () => {
       },
     })
     );
-=======
 // describe('Ratings and Reviews routing', () => {
 //   test('Should get ONE specific review details', (done) => {
 //     axios.mockImplementationOnce(() => Promise.resolve({
@@ -75,14 +73,12 @@ describe('Ratings and Reviews routing', () => {
 //       },
 //     })
 //     );
->>>>>>> c23b6ba5df1bcb8784d4bcbe674476ae92fe3e5f
 
 //     request.get('/reviews/meta')
 //       .then((response) => {
 //         //1 response code
 //         expect(response.status).toBe(200);
 
-<<<<<<< HEAD
         //body info/structure
         expect(response.body).toEqual(
           expect.objectContaining({
@@ -120,7 +116,6 @@ describe('Ratings and Reviews routing', () => {
             },
 
 
-=======
 //         //body info/structure
 //         expect(response.body).toEqual(
 //           expect.objectContaining({
@@ -143,7 +138,6 @@ describe('Ratings and Reviews routing', () => {
 //                 'value': 'Brass',
 //               },
 //             ],
->>>>>>> c23b6ba5df1bcb8784d4bcbe674476ae92fe3e5f
 
 //           })
 //         );
