@@ -10,10 +10,10 @@ let emptyState = {
   rating: 0,
   summary: '',
   body: '',
-  recommend: null,
+  recommend: false,
   name: '',
   email: '',
-  photo: [],
+  photos: ['text'],
   characteristics: {}
 };
 
@@ -128,10 +128,30 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
   };
   checkEmail(postFormData.email);
 
-  const handleCharacteristicChoice = (event) => {
+  const handleCharId = (name) => {
+    if (name === 'Fit') {
+      return 60618
+    }
+    if (name === 'Comfort') {
+      return 60620
+    }
+    if (name === 'Length') {
+      return 60619
+    }
+    if (name === 'Quality') {
+      return 60621
+    }
+  }
+
+  const handleCharacteristicChoice = (event, i) => {
+    let value = i + 1;
+    let id = handleCharId(event.target.name)
     setPostFormData({
       ...postFormData,
-      [event.target.name]: event.target.value
+      characteristics: {
+        ...postFormData.characteristics,
+        [event.target.name]: {id, value}
+      }
     });
   };
 
@@ -193,7 +213,6 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
       alert('Your email is too long');
     }
   };
-
   return (
     <div>
       <Modal
@@ -220,30 +239,31 @@ export default function WriteReview ({ postReview, handleCloseModal, showWriteRe
                 />
                <Form.Text classname="text-muted">{ratingLabel}</Form.Text>
             </Form.Group>
-            <div>
-              <label>Characteristics</label>
+            <Form.Group>
+              <Form.Label>Characteristics</Form.Label>
                 {
                   Object.keys(metaInfo.characteristics).map(char => (
-                    <Form.Group key={char}>
-                      <Form.Label>{char}</Form.Label>
+                    <div key={char}>
+                      <label>{char}</label>
                     {
                       charOptions[char].map((option, i) => {
-                        <Form.Group key={option}>
-                          <Form.Control
-                            type="checkbox"
-                            label={option}
-                            name={char}
-                            value={i + 1}
-                            onClick={e => handleCharacteristicChoice(e)}
+                        return(
+                          <>
+                          <Form.Check key={option}
+                              type="radio"
+                              label={option}
+                              name={char}
+                              onClick={e => handleCharacteristicChoice(e, i)}
                           />
-                        </Form.Group>
+                        </>
+                        )
                       })
                     }
-                    </Form.Group>
+                    </div>
                   ))
 
                   }
-            </div>
+            </Form.Group>
             <Form.Group>
               <Form.Label>
                 Do you recommend this product?
