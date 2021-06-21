@@ -96,7 +96,7 @@ const RatingsAndReviews = (props) => {
 
 
   return (
-    <div>
+    <div className="rrComp">
       <reviewContext.Provider value={{
         starFilter,
         updateStarFilter,

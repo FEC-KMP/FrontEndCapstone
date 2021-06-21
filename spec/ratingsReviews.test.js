@@ -47,14 +47,83 @@ describe('Ratings and Reviews routing', () => {
       },
     })
     );
+<<<<<<< HEAD
   });
 }
+=======
+// describe('Ratings and Reviews routing', () => {
+//   test('Should get ONE specific review details', (done) => {
+//     axios.mockImplementationOnce(() => Promise.resolve({
+//       data: {
+//         'id': 18078,
+//         'campus': 'hr-bld',
+//         'name': 'Camo Onesie',
+//         'slogan': 'Blend in to your crowd',
+//         'description': 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
+//         'category': 'Jackets',
+//         'default_price': '140.00',
+//         'created_at': '2021-02-23T05:08:00.350Z',
+//         'updated_at': '2021-02-23T05:08:00.350Z',
+//         'features': [
+//           {
+//             'feature': 'Fabric',
+//             'value': 'Canvas',
+//           },
+//           {
+//             'feature': 'Buttons',
+//             'value': 'Brass',
+//           },
+//         ],
+//       },
+//     })
+//     );
+>>>>>>> aad7eea85959e453294141148b77821448477a56
 
 //     request.get('/reviews/meta')
 //       .then((response) => {
 //         //1 response code
 //         expect(response.status).toBe(200);
 
+<<<<<<< HEAD
+=======
+        //body info/structure
+        expect(response.body).toEqual(
+          expect.objectContaining({
+
+            'product_id': 18078,
+            'ratings': {
+              '1': '12',
+              '2': '13',
+              '3': '17',
+              '4': '39',
+              '5': '45',
+              '6': '1'
+            },
+            'recommended': {
+              'false': '68',
+              'true': '59'
+            },
+            'characteristics': {
+              Comfort: {
+                id: 60620,
+                value: '3.1346153846153846'
+              },
+              Fit: {
+                id: 60618,
+                value: '2.5820895522388060'
+              },
+              Length: {
+                id: 60619,
+                value: '2.8596491228070175'
+              },
+              Quality: {
+                id: 60618,
+                value: '2.9811320754716981'
+              },
+            },
+
+
+>>>>>>> aad7eea85959e453294141148b77821448477a56
 //         //body info/structure
 //         expect(response.body).toEqual(
 //           expect.objectContaining({

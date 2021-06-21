@@ -68,7 +68,10 @@ const QAList = ({ question, productId }) => {
             <div className="row">
               <div className="col justify-content-start">
                 <h5 >Q: {question.question_body} </h5>
+<<<<<<< HEAD
 
+=======
+>>>>>>> aad7eea85959e453294141148b77821448477a56
               </div>
               <div style={{textAlign: 'right'}}className="col justify-content-end">
 
