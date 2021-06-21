@@ -47,10 +47,8 @@ describe('Ratings and Reviews routing', () => {
       },
     })
     );
-<<<<<<< HEAD
   });
 }
-=======
 // describe('Ratings and Reviews routing', () => {
 //   test('Should get ONE specific review details', (done) => {
 //     axios.mockImplementationOnce(() => Promise.resolve({
@@ -77,15 +75,12 @@ describe('Ratings and Reviews routing', () => {
 //       },
 //     })
 //     );
->>>>>>> aad7eea85959e453294141148b77821448477a56
 
 //     request.get('/reviews/meta')
 //       .then((response) => {
 //         //1 response code
 //         expect(response.status).toBe(200);
 
-<<<<<<< HEAD
-=======
         //body info/structure
         expect(response.body).toEqual(
           expect.objectContaining({
@@ -123,7 +118,6 @@ describe('Ratings and Reviews routing', () => {
             },
 
 
->>>>>>> aad7eea85959e453294141148b77821448477a56
 //         //body info/structure
 //         expect(response.body).toEqual(
 //           expect.objectContaining({
