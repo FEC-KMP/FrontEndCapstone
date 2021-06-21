@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const router = express.Router();
 
-const GITHUB_API_KEY = require('../config.js');
+const { GITHUB_API_KEY } = require('../config.js');
 const BaseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 
 //get reviews
@@ -48,12 +48,33 @@ router.get('/reviews/meta', (req, res) => {
 //post a review
 //need headers
 router.post('/reviews', (req, res) => {
+  const data = {
+    product_id: Number(req.body.product_id),
+    rating: Number(req.body.rating),
+    summary: req.body.summary,
+    body: req.body.body,
+    recommend: req.body.recommend,
+    name: req.body.name,
+    email: req.body.email,
+    photos: req.body.photos,
+    characteristics: req.body.characteristics
+  };
+  console.log('data', data);
   console.log('S: postReview req.body: ', req.body);
-  axios
-    .post(`${BaseUrl}/reviews`, req.body, {
-      headers: { Authorization: GITHUB_API_KEY, 'Content-Type': 'application/json' }})
+  const options = {
+    method: 'post',
+    url: `${BaseUrl}/reviews`,
+    headers: {
+      'User-Agent': 'request',
+      Authorization: `${GITHUB_API_KEY}`,
+      'Content-Type': 'application/json',
+      Connection: 'keep-alive',
+    },
+    data: data,
+  };
+  axios(options)
     .then((response) => {
-      res.status(201).send(resonse.data);
+      res.status(201).send(response.data);
     })
     .catch((err) => {
       console.log('S: err postReview: ', err);
